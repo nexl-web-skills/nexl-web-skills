@@ -93,3 +93,31 @@
 - P1：加 `scripts/build-gallery.cjs`(INDEX→docs/gallery/index.html) 配 GitHub Pages；改 community-check.yml 或新 rebuild-index.yml 在 PR 合入 main 时自动重建 INDEX；template.json 加 preview_image 字段 + 截图规范。
 
 **铁律（新增）**：审计须引用事实（GitHub 官方文档 + 同类项目真实做法），禁凭推测下结论；贡献路径达标标准 = 达 Hugo Themes 级健康共建（画廊+自动重建+CODEOWNERS+PR/Issue 模板+行为准则）。
+
+---
+
+## 第 23 棒 · 执行 P0+P1（贡献治理 + 画廊自动化）· 2026-07-21 · 观涛虾🦐
+
+**指令**：主人拍板"执行 P0+P1"（覆盖第 22 棒"下一棒预期"，已执行）。
+
+**P0 治理文件（已落地）**：
+- `.github/PULL_REQUEST_TEMPLATE/`（config.yml + template-submission.md 模板贡献 / showcase-submission.md 案例贡献，双模板拆分）
+- `.github/ISSUE_TEMPLATE/`（config.yml 含 Discussions 联系链接 + bug_report.md + feature_request.md）
+- `CODE_OF_CONDUCT.md`（Contributor Covenant 2.1 官方英文版）
+- `.github/CODEOWNERS`（护 builder.md / skills/ / templates/INDEX.json / docs/PLATFORM-ROUTING.md，强制核心审核）
+
+**P1 体验+自动化（已落地）**：
+- `preview_image` 字段加进 template.json / _template / INDEX.json schema
+- `templates/catalog/portfolio/aurora-minimal/site/preview.svg`（1500×1000 种子预览图）
+- `scripts/build-gallery.cjs`（INDEX→docs/gallery/index.html 橱窗，Apple 极简深色，支持 --validate）
+- `scripts/rebuild-index.cjs`（扫描 catalog 自动重建 INDEX，保留 _meta）
+- `.github/workflows/rebuild-index.yml`（合入 main 自动重建 INDEX）
+- `.github/workflows/deploy-pages.yml`（GitHub Pages 发布 gallery，首次需 Settings 选 GitHub Actions 源）
+- `package.json`（npm run check / gallery / index 三脚本）
+- `CONTRIBUTING.md` 补 event 类目 + 预览图 4.5 步 + 第六章集体画廊
+
+**验证**：本地 node 跑 rebuild-index（扫出 1 模板）→ build-gallery 生成 1 卡片 → --validate 零报错 ✓
+
+**双仓推送**：公开 `6f1df30..157dc27`（18 文件）、私有 `60befbb..e0d783b`（同 17 文件，排除 builder.md）✓
+
+**铁律（新增）**：贡献治理达标 = Hugo Themes 级（PR/Issue 模板 + 行为准则 + CODEOWNERS + 自动画廊 + CI 自动重建）；preview_image 强制 3:2（1500×1000/900×600）；核心真相源改动必经 CODEOWNERS 审核。
