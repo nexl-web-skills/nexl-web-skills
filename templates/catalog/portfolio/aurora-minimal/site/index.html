@@ -4,103 +4,309 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aurora — 极简作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803;
     --line:rgba(245,245,245,.12);
+    --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --ease:cubic-bezier(.22,1,.36,1);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg); color:var(--fg);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-family:var(--display);
     line-height:1.5; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
+  ::selection{background:var(--accent);color:#0A0A0A}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:10;
+  .mono{font-family:var(--mono)}
+
+  /* ── 自定义光标 ── */
+  .cursor-dot,.cursor-ring{
+    position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
+    border-radius:50%;mix-blend-mode:difference;
+    transform:translate(-50%,-50%);
+  }
+  .cursor-dot{width:6px;height:6px;background:#fff}
+  .cursor-ring{
+    width:38px;height:38px;border:1px solid #fff;
+    transition:width .25s var(--ease),height .25s var(--ease),opacity .25s;
+  }
+  .cursor-ring.is-hover{width:64px;height:64px;background:rgba(255,255,255,.08)}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
     display:flex;justify-content:space-between;align-items:center;
-    padding:18px 28px;background:rgba(10,10,10,.72);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line)}
-  nav a{color:var(--fg);text-decoration:none;font-size:13px;letter-spacing:.04em;margin-left:22px}
-  nav a:hover{color:var(--accent)}
-  nav .brand{font-weight:600;letter-spacing:.02em}
-  /* HERO — 视觉锤 */
-  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px}
-  h1{font-size:clamp(56px,11vw,140px);font-weight:700;line-height:.94;letter-spacing:-.03em}
-  .lede{margin-top:26px;font-size:clamp(18px,2.4vw,26px);color:var(--muted);max-width:30ch}
+    padding:20px 28px;
+    background:rgba(10,10,10,0);border-bottom:1px solid transparent;
+    transition:background .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);
+  }
+  nav.scrolled{
+    background:rgba(10,10,10,.7);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);padding:14px 28px;
+  }
+  nav .brand{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:-.06em}
+  nav .menu{display:flex;gap:26px}
+  nav .menu a{
+    color:var(--fg);text-decoration:none;font-family:var(--mono);
+    font-size:13px;letter-spacing:-.02em;position:relative;padding:4px 0;
+  }
+  nav .menu a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--accent);transition:width .3s var(--ease);
+  }
+  nav .menu a:hover{color:var(--accent)}
+  nav .menu a:hover::after{width:100%}
+
+  /* ── HERO ── */
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .eyebrow{
+    font-family:var(--mono);color:var(--accent);font-size:13px;
+    letter-spacing:.24em;text-transform:uppercase;margin-bottom:28px;
+    opacity:0;transform:translateY(12px);animation:fadeUp .8s var(--ease) .1s forwards;
+  }
+  h1{font-weight:700;line-height:.9;letter-spacing:-.045em;font-size:clamp(64px,13vw,168px)}
+  h1 .line{display:block;overflow:hidden}
+  h1 .char{
+    display:inline-block;transform:translateY(110%);
+    animation:charIn .9s var(--ease) forwards;
+    animation-delay:calc(.25s + var(--i) * .035s);
+  }
+  .lede{
+    margin-top:34px;font-size:clamp(18px,2.2vw,25px);color:var(--muted);
+    max-width:34ch;line-height:1.45;
+    opacity:0;transform:translateY(16px);animation:fadeUp .9s var(--ease) .9s forwards;
+  }
   .lede b{color:var(--fg);font-weight:500}
-  /* SECTION */
-  section{padding:120px 0;border-top:1px solid var(--line)}
-  h2{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:48px}
-  /* WORK GRID */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  .card{aspect-ratio:4/3;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;transition:border-color .25s,transform .25s}
-  .card:hover{border-color:var(--accent);transform:translateY(-4px)}
-  .card .k{color:var(--accent);font-size:12px;letter-spacing:.16em}
-  .card .t{font-size:22px;font-weight:600;margin-top:8px}
-  .card .d{color:var(--muted);font-size:14px;margin-top:6px}
-  /* ABOUT */
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-  .about p{font-size:17px;color:var(--muted)}
-  .about p + p{margin-top:18px}
-  /* CONTACT */
-  .contact h3{font-size:clamp(32px,6vw,64px);font-weight:700;letter-spacing:-.02em;line-height:1.05}
-  .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
-  /* FOOTER */
-  footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer a{color:var(--muted);text-decoration:none}
+  .scroll-hint{
+    position:absolute;bottom:36px;left:28px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+    opacity:0;animation:fadeUp 1s var(--ease) 1.4s forwards;
+  }
+  .scroll-hint .bar{width:36px;height:1px;background:var(--muted);position:relative;overflow:hidden}
+  .scroll-hint .bar::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:slide 2.2s var(--ease) infinite}
+
+  /* ── SECTION ── */
+  section{padding:130px 0;border-top:1px solid var(--line)}
+  h2{
+    font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:54px;
+    display:flex;align-items:center;gap:14px;
+  }
+  h2::before{content:"";width:28px;height:1px;background:var(--accent)}
+
+  /* ── WORK GRID ── */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{
+    position:relative;aspect-ratio:4/3;border:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+    overflow:hidden;transition:transform .4s var(--ease),border-color .4s var(--ease);
+    text-decoration:none;color:inherit;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;background:var(--accent);
+    transform:scaleY(0);transform-origin:bottom;opacity:.06;
+    transition:transform .5s var(--ease);
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .card:hover::before{transform:scaleY(1)}
+  .card .index{
+    position:absolute;top:22px;right:26px;font-family:var(--mono);
+    font-size:12px;color:var(--muted);letter-spacing:.1em;
+  }
+  .card .k{font-family:var(--mono);color:var(--accent);font-size:12px;letter-spacing:.14em;position:relative}
+  .card .t{font-size:24px;font-weight:600;margin-top:10px;letter-spacing:-.02em;position:relative;transition:transform .4s var(--ease)}
+  .card .d{color:var(--muted);font-size:14px;margin-top:8px;position:relative}
+  .card:hover .t{transform:translateX(6px)}
+
+  /* ── ABOUT ── */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+  .about p{font-size:18px;color:var(--muted);line-height:1.6}
+  .about p b{color:var(--fg);font-weight:500}
+  .about p + p{margin-top:20px}
+  .about .tag{
+    display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    color:var(--accent);border:1px solid var(--accent);border-radius:999px;
+    padding:4px 12px;margin-bottom:26px;
+  }
+
+  /* ── CONTACT ── */
+  .contact h3{font-size:clamp(34px,6.5vw,72px);font-weight:700;letter-spacing:-.03em;line-height:1.02}
+  .contact a{
+    color:var(--accent);text-decoration:none;
+    border-bottom:1px solid var(--accent);padding-bottom:3px;
+    transition:opacity .3s var(--ease);
+  }
+  .contact a:hover{opacity:.7}
+  .contact .mail{margin-top:32px;font-family:var(--mono);font-size:clamp(16px,2vw,22px)}
+
+  /* ── FOOTER ── */
+  footer{
+    padding:54px 0;border-top:1px solid var(--line);color:var(--muted);
+    font-family:var(--mono);font-size:12px;letter-spacing:.02em;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  }
+  footer a{color:var(--muted);text-decoration:none;transition:color .3s}
   footer a:hover{color:var(--fg)}
+
+  /* ── reveal ── */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @keyframes charIn{to{transform:translateY(0)}}
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+  @keyframes slide{to{transform:translateX(100%)}}
+
   @media(max-width:720px){
     .grid,.about{grid-template-columns:1fr}
-    nav a{margin-left:14px}
+    nav .menu{gap:16px}
+    section{padding:96px 0}
+  }
+  @media(hover:none){
+    .cursor-dot,.cursor-ring{display:none}
+    .card:hover{transform:none}
   }
 </style>
 </head>
 <body>
-<nav>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav id="nav">
   <span class="brand">AURORA</span>
-  <span><a href="#work">作品</a><a href="#about">关于</a><a href="#contact">联系</a></span>
+  <span class="menu">
+    <a href="#work" data-magnetic>作品</a>
+    <a href="#about" data-magnetic>关于</a>
+    <a href="#contact" data-magnetic>联系</a>
+  </span>
 </nav>
 
 <header class="wrap">
   <div class="eyebrow">Independent Designer · 独立设计师</div>
-  <h1>林奥<br> Aurora Lin</h1>
-  <p class="lede">我用<b>最少的形</b>，讲<b>最清楚的事</b>。视觉系统、品牌与界面，一处生长。</p>
+  <h1>
+    <span class="line" data-split>Aurora</span>
+    <span class="line" data-split>Lin</span>
+  </h1>
+  <p class="lede">用<b>最少的形</b>，讲<b>最清楚的事</b>。视觉系统、品牌与界面，在一处生长。</p>
+  <div class="scroll-hint"><span class="bar"></span> Scroll</div>
 </header>
 
 <section id="work" class="wrap">
-  <h2>精选作品 / Selected Work</h2>
+  <h2 class="reveal">精选作品 / Selected Work</h2>
   <div class="grid">
-    <div class="card"><div class="k">2026 · 品牌</div><div class="t">NOVA 视觉系统</div><div class="d">为新能源品牌建立的暗黑极简识别</div></div>
-    <div class="card"><div class="k">2025 · 产品</div><div class="t">Pulse 仪表盘</div><div class="d">零装饰的数据界面，信息即美学</div></div>
-    <div class="card"><div class="k">2025 · 出版</div><div class="t">《留白》画册</div><div class="d">强排版编辑设计，单色克制</div></div>
-    <div class="card"><div class="k">2024 · 空间</div><div class="t">Atelier 展陈</div><div class="d">线下展览的视觉与导视系统</div></div>
+    <a class="card reveal" href="#" data-magnetic>
+      <span class="index">01</span>
+      <span class="k">2026 · 品牌</span>
+      <span class="t">NOVA 视觉系统</span>
+      <span class="d">为新能源品牌建立的暗黑极简识别</span>
+    </a>
+    <a class="card reveal" href="#" data-magnetic>
+      <span class="index">02</span>
+      <span class="k">2025 · 产品</span>
+      <span class="t">Pulse 仪表盘</span>
+      <span class="d">零装饰的数据界面，信息即美学</span>
+    </a>
+    <a class="card reveal" href="#" data-magnetic>
+      <span class="index">03</span>
+      <span class="k">2025 · 出版</span>
+      <span class="t">《留白》画册</span>
+      <span class="d">强排版编辑设计，单色克制</span>
+    </a>
+    <a class="card reveal" href="#" data-magnetic>
+      <span class="index">04</span>
+      <span class="k">2024 · 空间</span>
+      <span class="t">Atelier 展陈</span>
+      <span class="d">线下展览的视觉与导视系统</span>
+    </a>
   </div>
 </section>
 
 <section id="about" class="wrap about">
-  <h2 style="grid-column:1/-1">关于 / About</h2>
   <div>
-    <p>我相信好设计是「被相信」，不是「被浏览」。多数网站死在第一屏——拼命展示业务，却没回答你是谁。</p>
-    <p>我的顺序永远是反的：先钉死视觉锤，再让它长成系统。</p>
+    <span class="tag reveal">ABOUT</span>
+    <p class="reveal">我相信好设计是<b>被相信</b>，不是<b>被浏览</b>。多数网站死在第一屏——拼命展示业务，却没回答你是谁。</p>
+    <p class="reveal">我的顺序永远是反的：先钉死视觉锤，再让它长成系统。</p>
   </div>
   <div>
-    <p>十年间服务艺术家、消费品牌与独立产品。不堆砌，只做减法。</p>
-    <p>本模板由 nexl 驱动，可携品牌底稿复用，换品牌不换骨架。</p>
+    <p class="reveal">页面会过时，<b>那一份品牌底稿不会</b>。换项目、换平台，骨架与声音都复用，边际成本趋零。</p>
+    <p class="reveal">本页是 nexl 模板示例——姓名、项目与文案皆可替换，视觉系统原样保留。</p>
   </div>
 </section>
 
 <section id="contact" class="wrap contact">
-  <h2>联系 / Contact</h2>
-  <h3>说清你是谁，<br>剩下的交给我。</h3>
-  <p style="margin-top:28px;color:var(--muted)">邮件 <a href="mailto:hello@aurora.studio">hello@aurora.studio</a></p>
+  <h2 class="reveal">联系 / Contact</h2>
+  <h3 class="reveal">说清你是谁，<br>剩下的交给我。</h3>
+  <p class="mail reveal"><a href="mailto:hello@yourdomain.com" data-magnetic>hello@yourdomain.com</a></p>
 </section>
 
 <footer class="wrap">
   <span>© 2026 Aurora Lin · 模板 MIT 授权</span>
   <span>由 <a href="https://github.com/nexl-web-skills/nexl-web-skills" target="_blank" rel="noopener">nexl</a> 驱动 · 独立站数字资产</span>
 </footer>
+
+<script>
+(function(){
+  // 字符拆分（保留 <br>/结构，仅拆文本节点）
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    var chars = Array.from(el.textContent);
+    el.textContent = '';
+    chars.forEach(function(ch, i){
+      var s = document.createElement('span');
+      s.className = 'char';
+      s.style.setProperty('--i', i);
+      s.textContent = ch === ' ' ? '\u00A0' : ch;
+      el.appendChild(s);
+    });
+  });
+
+  // 滚动揭示
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // 导航毛玻璃
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+  // 自定义光标（rAF 平滑跟随）
+  var dot = document.querySelector('.cursor-dot');
+  var ring = document.querySelector('.cursor-ring');
+  var mx = 0, my = 0, rx = 0, ry = 0;
+  window.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+  (function loop(){
+    rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+    dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+    ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a, [data-magnetic]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ ring.classList.add('is-hover'); });
+    el.addEventListener('mouseleave', function(){ ring.classList.remove('is-hover'); });
+  });
+
+  // 磁吸
+  document.querySelectorAll('[data-magnetic]').forEach(function(el){
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width/2;
+      var y = e.clientY - r.top - r.height/2;
+      el.style.transform = 'translate(' + x*0.25 + 'px,' + y*0.35 + 'px)';
+    });
+    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+  });
+})();
+</script>
 </body>
 </html>
