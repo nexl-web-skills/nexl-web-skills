@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coze 建站预算透明模块 · nexl-builder</title>
+<style>
+  :root { --bg:#0b0b0f; --card:#16161c; --line:#26262e; --fg:#e8e8ee; --sub:#9a9aa8; --accent:#FFD803; --green:#0D7A5F; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Helvetica Neue",sans-serif; line-height:1.6; padding:48px 20px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { font-size:30px; font-weight:600; letter-spacing:-0.02em; margin:0 0 6px; }
+  .meta { color:var(--sub); font-size:13px; margin-bottom:36px; }
+  h2 { font-size:19px; font-weight:600; margin:42px 0 14px; padding-left:12px; border-left:3px solid var(--accent); }
+  p, li { color:#cfcfd8; font-size:15px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 24px; margin:16px 0; }
+  table { width:100%; border-collapse:collapse; font-size:14px; margin:8px 0; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+  th { color:var(--sub); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .accent { color:var(--accent); font-weight:600; }
+  .green { color:#3fd6a8; }
+  .bar { display:flex; align-items:center; gap:10px; margin:9px 0; font-size:13px; }
+  .bar .lab { width:120px; color:var(--sub); text-align:right; }
+  .bar .track { flex:1; background:#1d1d25; border-radius:6px; height:22px; overflow:hidden; }
+  .bar .fill { height:100%; border-radius:6px; }
+  .bar .val { width:130px; color:var(--fg); font-variant-numeric:tabular-nums; }
+  .budget-card { background:linear-gradient(135deg,#16161c,#1c1c24); border:1px solid var(--accent); border-radius:16px; padding:24px; }
+  .budget-card .title { color:var(--accent); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
+  .budget-card .row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  .budget-card .row:last-child { border-bottom:none; }
+  .budget-card .big { font-size:26px; font-weight:700; color:#fff; margin-top:10px; }
+  code { background:#1d1d25; padding:2px 6px; border-radius:5px; font-size:13px; color:#ffd58a; }
+  .foot { color:var(--sub); font-size:12px; margin-top:40px; border-top:1px solid var(--line); padding-top:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Coze 建站预算透明模块</h1>
+  <div class="meta">nexl-builder × Coze 积分 · 第 12 棒接力文档 · 2026-07-20 · 观涛虾🦐 (TideShell)</div>
+
+  <div class="card">
+    <p>大多数建站工具把成本藏进黑盒。<strong>nexl-builder 反其道</strong>——建站前先把预估积分报给用户，精确到「一杯水钱换一个 Awwwards 级站点」。这是与模板工具、外包工作室的<strong class="accent">量化差异点</strong>。</p>
+  </div>
+
+  <h2>一、代价差对比（一次建站）</h2>
+  <div class="card">
+    <div class="bar"><span class="lab">外包工作室</span><span class="track"><span class="fill" style="width:100%;background:#c0392b"></span></span><span class="val">¥20,000–80,000</span></div>
+    <div class="bar"><span class="lab">模板年费</span><span class="track"><span class="fill" style="width:6%;background:#e67e22"></span></span><span class="val">¥300–3,000/年</span></div>
+    <div class="bar"><span class="lab">自写+备案</span><span class="track"><span class="fill" style="width:3%;background:#8e44ad"></span></span><span class="val">¥0 算力 · 20天</span></div>
+    <div class="bar"><span class="lab">nexl 纯对话</span><span class="track"><span class="fill" style="width:1%;background:var(--green)"></span></span><span class="val">¥0.4</span></div>
+    <div class="bar"><span class="lab">nexl +4图</span><span class="track"><span class="fill" style="width:1.4%;background:var(--accent)"></span></span><span class="val">¥1.3</span></div>
+    <p style="font-size:12px;color:var(--sub);margin-top:14px">条形按对数感知压缩；nexl-builder 成本不足外包的 <strong class="green">0.002%</strong>。</p>
+  </div>
+
+  <h2>二、场景数值（budget.cjs 实测）</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>模型档</th><th class="num">12 轮</th><th class="num">15 轮</th><th class="num">20 轮</th><th class="num">区间 ¥</th></tr></thead>
+      <tbody>
+        <tr><td>doubao-pro（质量）</td><td class="num">261</td><td class="num accent">399</td><td class="num">672</td><td class="num">0.26–0.67</td></tr>
+        <tr><td>GLM-4.7（均衡）</td><td class="num">—</td><td class="num">264</td><td class="num">—</td><td class="num">0.26</td></tr>
+        <tr><td>DeepSeek-V3.2（省钱）</td><td class="num">—</td><td class="num">207</td><td class="num">393</td><td class="num">0.21–0.39</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--sub)">单位：Coze 积分（1 积分 ≈ ¥0.001）。含 4 张 Seedream 5.0 生图：+880 积分 → 总 1087–1279（≈¥1.1–1.3）。</p>
+  </div>
+
+  <h2>三、预算卡（用户看到的样子）</h2>
+  <div class="budget-card">
+    <div class="title">⚡ 本次建站预算估算</div>
+    <div class="row"><span>模型档</span><span>doubao-seed-2.0-pro（质量）</span></div>
+    <div class="row"><span>预估对话轮数</span><span>15 轮（6 步 ask 模式）</span></div>
+    <div class="row"><span>AI 生图</span><span>4 张 Seedream 5.0</span></div>
+    <div class="row"><span>预估消耗</span><span class="accent">1279 积分</span></div>
+    <div class="row"><span>折合人民币</span><span class="accent">≈ ¥1.28</span></div>
+    <div class="big">约一杯水钱，换一个 Awwwards 级站点。</div>
+  </div>
+
+  <h2>四、Coze 计费规则（官方核验）</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>上下文</th><th class="num">doubao-pro 输入</th><th class="num">输出</th><th class="num">缓存命中</th><th class="num">DeepSeek 输入</th><th class="num">输出</th></tr></thead>
+      <tbody>
+        <tr><td>[0, 32K]</td><td class="num">3.2</td><td class="num">16</td><td class="num">0.64</td><td class="num">2.0</td><td class="num">3.0</td></tr>
+        <tr><td>(32, 128K]</td><td class="num">4.8</td><td class="num">24</td><td class="num">0.96</td><td class="num">4.0</td><td class="num">6.0</td></tr>
+        <tr><td>(128, 256K]</td><td class="num">9.6</td><td class="num">48</td><td class="num">1.92</td><td class="num">8.0</td><td class="num">12.0</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--sub)">单位：积分/千 tokens。跨 32K 后输出单价翻倍。<strong>生图 Seedream 5.0 = 220 积分/张</strong>，是最大变量。真实消耗结构：大模型 38% / 插件 27% / 后台 22% / 浪费 13%。</p>
+  </div>
+
+  <h2>五、设计原则</h2>
+  <div class="card">
+    <p><strong class="accent">不报预算，不许开工。</strong> SKILL.md 在六步框架前新增 <code>Step 0 · 预算透明</code>：用户说「建站」→ Agent 用 budget.cjs 等效逻辑估算 → 输出预算卡 → 用户确认档位（省钱/质量/含生图）→ 才进 Step 1。第六步若超预估轮数，主动提示已用 X 积分。</p>
+  </div>
+
+  <div class="foot">
+    文件：skills/nexl-builder/budget.json（定价表）· budget.cjs（估算器）· SKILL.md（Step 0）· docs/COZE-BUDGET.md<br/>
+    下一棒：预算可视化网页 / Coze 工作流预算节点 / 国际版换算表。
+  </div>
+</div>
+</body>
+</html>

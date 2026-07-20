@@ -1,0 +1,50 @@
+{
+  "version": "2026-07-20",
+  "source": "Coze 官方 internal_integrations_fee（内置集成费用）",
+  "unit": {
+    "name": "积分",
+    "rmb_per_credit": 0.001,
+    "note": "1 积分 ≈ ¥0.001（由 doubao-seed-2.0-pro 输入 3.2积分=¥0.0032 反推）；1000 积分 ≈ ¥1。资源包抵扣价更低（方舟 doubao-pro-32k 输入0.8/输出2），此处取平台直购价。"
+  },
+  "tiering": {
+    "model": "按上下文长度阶梯计费：上下文越长，输入/输出单价越高（输出在跨 32K 后翻倍）。缓存命中（静态前缀如 SKILL.md）按 cache 单价计。",
+    "tiers_k": [32, 128, 256]
+  },
+  "models": {
+    "doubao-pro": {
+      "label": "doubao-seed-2.0-pro（质量优先·推荐）",
+      "tiers": [
+        { "max_k": 32,  "in": 3.2, "out": 16, "cache": 0.64 },
+        { "max_k": 128, "in": 4.8, "out": 24, "cache": 0.96 },
+        { "max_k": 256, "in": 9.6, "out": 48, "cache": 1.92 }
+      ]
+    },
+    "deepseek": {
+      "label": "DeepSeek-V3.2（省钱优先）",
+      "tiers": [
+        { "max_k": 32,  "in": 2.0, "out": 3.0, "cache": 0.4 },
+        { "max_k": 128, "in": 4.0, "out": 6.0, "cache": 0.8 },
+        { "max_k": 256, "in": 8.0, "out": 12.0, "cache": 1.6 }
+      ]
+    },
+    "glm": {
+      "label": "GLM-4.7（均衡）",
+      "tiers": [
+        { "max_k": 32,  "in": 2.0, "out": 8.0,  "cache": 0.4 },
+        { "max_k": 128, "in": 4.0, "out": 16.0, "cache": 0.8 },
+        { "max_k": 200, "in": 6.0, "out": 24.0, "cache": 1.2 }
+      ]
+    }
+  },
+  "image_models": {
+    "seedream-5": { "label": "Doubao-Seedream-5.0", "per_image": 220, "type": "文生图/图生图" },
+    "seedream-45": { "label": "Doubao-Seedream-4.5", "per_image": 250, "type": "文生图/图生图" }
+  },
+  "assumptions": {
+    "sys_tokens": 3000,
+    "per_turn_fresh_input": "150 + (turn-1)*450（用户新消息 + 历史增量）",
+    "per_turn_output": 600,
+    "default_turns_for_6_steps": 15,
+    "cache_prefix_tokens": 3000
+  }
+}
