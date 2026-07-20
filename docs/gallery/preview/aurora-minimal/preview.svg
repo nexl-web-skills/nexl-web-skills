@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+  <rect width="1500" height="1000" fill="#0A0A0A"/>
+  <!-- nav -->
+  <text x="70" y="80" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="-1" fill="#F5F5F5">AURORA</text>
+  <rect x="1230" y="66" width="60" height="2" fill="#8A8A8A"/>
+  <rect x="1310" y="66" width="60" height="2" fill="#8A8A8A"/>
+  <rect x="1390" y="66" width="60" height="2" fill="#8A8A8A"/>
+  <!-- eyebrow -->
+  <text x="70" y="252" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="5" fill="#FFD803">INDEPENDENT DESIGNER</text>
+  <!-- h1 -->
+  <text x="64" y="412" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="150" letter-spacing="-6" fill="#F5F5F5">Aurora</text>
+  <text x="64" y="542" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="150" letter-spacing="-6" fill="#F5F5F5">Lin</text>
+  <!-- lede bars -->
+  <rect x="70" y="602" width="430" height="12" rx="6" fill="#2A2A2A"/>
+  <rect x="70" y="630" width="320" height="12" rx="6" fill="#2A2A2A"/>
+  <!-- work grid -->
+  <g stroke="#FFD803" stroke-width="1.5" fill="none" opacity="0.9">
+    <rect x="70" y="720" width="330" height="180" rx="10"/>
+    <rect x="430" y="720" width="330" height="180" rx="10"/>
+    <rect x="790" y="720" width="330" height="180" rx="10"/>
+    <rect x="1150" y="720" width="280" height="180" rx="10"/>
+  </g>
+  <text x="92" y="772" font-family="JetBrains Mono, monospace" font-size="14" fill="#FFD803">01 · 品牌</text>
+  <text x="452" y="772" font-family="JetBrains Mono, monospace" font-size="14" fill="#FFD803">02 · 产品</text>
+  <text x="812" y="772" font-family="JetBrains Mono, monospace" font-size="14" fill="#FFD803">03 · 出版</text>
+  <text x="1172" y="772" font-family="JetBrains Mono, monospace" font-size="14" fill="#FFD803">04 · 空间</text>
+  <text x="92" y="862" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="26" fill="#F5F5F5">NOVA 视觉系统</text>
+  <text x="452" y="862" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="26" fill="#F5F5F5">Pulse 仪表盘</text>
+  <text x="812" y="862" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="26" fill="#F5F5F5">《留白》画册</text>
+  <text x="1172" y="862" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="26" fill="#F5F5F5">Atelier 展陈</text>
+</svg>

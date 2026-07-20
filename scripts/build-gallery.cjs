@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 // build-gallery.cjs — 从 templates/INDEX.json 生成 docs/gallery/index.html（集体数字资产橱窗）
+// 同时把每个模板的可运行站点复制为 Pages 内预览页 docs/gallery/preview/{id}/index.html，
+// 使画廊卡片「查看」直接渲染（而非跳转 raw 源码）。
 // 用法: node scripts/build-gallery.cjs [--validate]
 const fs = require('fs');
 const path = require('path');
@@ -29,11 +31,27 @@ if (!ok) { console.error('格式校验未通过'); process.exit(1); }
 console.log(`✓ 校验通过：${tpls.length} 个模板`);
 if (validateOnly) { console.log('（--validate 模式，不写文件）'); process.exit(0); }
 
+// 复制每个模板的可运行站点到 Pages 内预览目录（渲染用，非源码）
+const PREVIEW_DIR = path.join(OUT_DIR, 'preview');
+const rawRe = /\/templates\/(.+)$/;
+for (const t of tpls) {
+  const dir = path.join(PREVIEW_DIR, t.id);
+  fs.mkdirSync(dir, { recursive: true });
+  const h = String(t.preview || '').match(rawRe);
+  if (h) { const s = path.join(ROOT, 'templates', h[1]); if (fs.existsSync(s)) fs.copyFileSync(s, path.join(dir, 'index.html')); }
+  const i = String(t.preview_image || '').match(rawRe);
+  if (i) { const s = path.join(ROOT, 'templates', i[1]); if (fs.existsSync(s)) fs.copyFileSync(s, path.join(dir, 'preview.svg')); }
+}
+console.log(`✓ 已复制 ${tpls.length} 个模板预览页到 docs/gallery/preview/`);
+
 const stars = (n) => '★'.repeat(Math.max(0, Math.min(5, n))) + '☆'.repeat(Math.max(0, 5 - Math.min(5, n)));
-const cards = tpls.map((t) => `
+const cards = tpls.map((t) => {
+  const page = `preview/${t.id}/index.html`;
+  const img = `preview/${t.id}/preview.svg`;
+  return `
   <article class="card">
-    <a class="thumb" href="${esc(t.preview)}" target="_blank" rel="noopener">
-      <img src="${esc(t.preview_image)}" alt="${esc(t.name)}" loading="lazy"/>
+    <a class="thumb" href="${esc(page)}" target="_blank" rel="noopener">
+      <img src="${esc(img)}" alt="${esc(t.name)}" loading="lazy"/>
     </a>
     <div class="body">
       <div class="meta"><span class="badge">${esc(t.category)}</span><span class="author">@${esc(t.author)}</span></div>
@@ -45,9 +63,10 @@ const cards = tpls.map((t) => `
         <span>性价比 ${stars(t.ratings.cost_efficiency)}</span>
         <span>稳定 ${stars(t.ratings.stability)}</span>
       </div>
-      <a class="cta" href="${esc(t.preview)}" target="_blank" rel="noopener">查看 ↗</a>
+      <a class="cta" href="${esc(page)}" target="_blank" rel="noopener">查看 ↗</a>
     </div>
-  </article>`).join('');
+  </article>`;
+}).join('');
 
 const html = `<!doctype html>
 <html lang="zh-CN">
