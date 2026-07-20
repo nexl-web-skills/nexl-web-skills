@@ -5,7 +5,7 @@ description: 当用户要建个人官网/品牌独立站、发起建站流程、
 
 # nexl-builder
 
-Self-contained. Copy-paste into any Coze / Claude / Codex agent. The agent becomes a brand-site architect for super-IPs. No surrounding context required.
+Self-contained. Copy-paste into any Coze / 秒悟 Meoo / Claude / Codex / Cursor agent. The agent becomes a brand-site architect for super-IPs. No surrounding context required.
 
 ---
 
@@ -19,6 +19,31 @@ Self-contained. Copy-paste into any Coze / Claude / Codex agent. The agent becom
    - 发布时勾选 **API 渠道**（否则无法通过 API 调用）。
    - 用户对智能体说"用 nexl-builder 帮我建个人官网" → 触发渐进式披露，本技能被加载。
 3. **PAT Token**：扣子平台 → 个人设置 → API Token 生成（`Authorization: Bearer {PAT}`）。
+
+---
+
+## 一-B、元层 · 平台识别与预算顾问（激活后第一动作）
+
+当用户发送激活语「请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。」并加载本技能后，**第一动作不是问需求，而是识别平台并跑预算顾问**：
+
+1. **自报平台**：你（Agent）自身可知运行环境。向用户说明：当前是 **Coze（扣子）** 还是 **秒悟 Meoo**？若是其他（Claude / Codex / Cursor），按 Coze 同款预算逻辑处理（默认 doubao-pro 档）。
+2. **加载对应预算档案**（同目录）：
+   - Coze → `budget.json` + `budget.cjs`（单位「积分」，1 ≈ ¥0.001）
+   - Meoo → `budget-meoo.json` + `budget-meoo.cjs`（单位同名但费率独立，切勿混用）
+3. **执行预算顾问协议**（完整输出给用户）：
+   - **① 政策快照**：报告截至快照日期的当前套餐 / 积分 / Night Plan 政策（Coze 见 `docs/COZE-BUDGET.md`，Meoo 见 `docs/MEOO-WHITEPAPER.md`）；注明政策可能变动，最新以官方文档为准（Coze `docs.coze.cn` / Meoo `docs.meoo.com`）。
+   - **② 剩余积分**：若平台提供账户查询能力则读取，否则**请用户告知当前剩余积分**（Meoo：Free 新人 10,000 + 每日 2,000；Pro 100,000/月；Max 200,000/月）。
+   - **③ 性价比推荐**：给出「性价比最高」与「最贵但效果最好」两档——
+
+     | 平台 | 性价比最高 | 效果最好（旗舰） | 单价最贵 |
+     |------|-----------|----------------|---------|
+     | **Meoo** | `deepseek-v3.2` ≈ 140 积分 / ¥0.14（或 `qwen3.7-plus` ≈ 148 / ¥0.15） | `qwen3.7-max` ≈ 502 / ¥0.50 | `GLM-5.2-Fast` ≈ 1512 / ¥1.51 |
+     | **Coze** | DeepSeek 档 ≈ 210 / ¥0.21 | doubao-pro 档 ≈ 400 / ¥0.40 | GLM 档 ≈ 264 / ¥0.26 |
+
+     > Meoo 独有放大器：若用户是 Pro/Max 且当前为 **UTC+8 22:00–08:00**，套用 **Night Plan**，`qwen3.7-max` @0.2x ≈ **100 积分 / ¥0.10**（旗舰质量近免费），`qwen3.7-plus` @0.4x ≈ 59 / ¥0.059。
+   - **④ 预计准备积分**：用对应估算器 `node budget-meoo.cjs --model <档> --turns 15 --images <n>`（或 `budget.cjs`），对比用户剩余额度；不足则建议升级（Meoo Pro 限时 ¥39 / Max 限时 ¥89 含自定义域名）或错峰。
+   - **⑤ 成本结构拆分**：向用户展示「LLM 对话积分 + 生图积分（Meoo 200/张，Coze Seedream 220/张）」两项拆分，并对比替代方案（外包 ¥2万–8万 / 模板年费 / 自写+备案 20 天），给出推荐选择。
+4. **合规红线（Meoo）**：只调境内合规模型（qwen / kimi / glm / deepseek / MiniMax），**不得引导接 OpenAI 等境外模型**（违反 Meoo 规则⑩）；Coze 国际版不受此限。
 
 ---
 
@@ -63,13 +88,16 @@ Self-contained. Copy-paste into any Coze / Claude / Codex agent. The agent becom
 > **铁律：不报预算，不许开工**——进入 Step 1 前必须先完成 Step 0 预算透明。
 
 **Step 0 · 预算透明（硬性前置，先报后做）**
-- 用户说「建站 / 做官网 / 用 nexl-builder」时，**第一步不是问需求，而是报成本**。
-- 用本技能同目录的 `budget.cjs` 估算（`node budget.cjs --model <档> --turns 15 --images <n>`；或 `--json` 程序化调用；无环境时按下方心算区间）。
-- 输出一张**预算卡**：模型档 / 预估轮数（默认 15）/ 生图张数 / 预估积分 / ≈人民币 / 对比替代方案（外包 ¥2万–8万、模板年费、自写+备案 20天）。
-- 心算基线（Coze 官方费率，1 积分 ≈ ¥0.001）：质量档 doubao-pro ≈ 400 积分（¥0.4）/ 15 轮；省钱档 DeepSeek ≈ 210 积分（¥0.21）；均衡档 GLM ≈ 264 积分（¥0.26）；每加 1 张 Seedream 5.0 生图 +220 积分。
+- 用户说「建站 / 做官网 / 用 nexl-builder」时，**第一步不是问需求，而是跑「元层·平台识别与预算顾问」（见本文件一-B 节）**：识别 Coze / Meoo 平台 → 加载对应预算档案 → 报政策快照 + 剩余积分 + 性价比推荐 + 预计准备积分 + 成本结构拆分。
+- 用本技能同目录的对应估算器：`budget-meoo.cjs`（Meoo）或 `budget.cjs`（Coze）。
+  - `node budget-meoo.cjs --model <档> --turns 15 --images <n>`（Meoo，可加 `--night` 套 Night Plan）；`node budget.cjs --model <档> --turns 15 --images <n>`（Coze）；均可加 `--json` 程序化调用。
+- 输出一张**预算卡**：平台 / 模型档 / 预估轮数（默认 15）/ 生图张数 / 预估积分 / ≈人民币 / 对比替代方案（外包 ¥2万–8万、模板年费、自写+备案 20天）。
+- 心算基线（1 积分 ≈ ¥0.001）：
+  - **Meoo**：deepseek-v3.2 ≈ 140 积分（¥0.14）/ 15 轮；qwen3.7-max ≈ 502（¥0.50）；Night Plan 下 qwen3.7-max ≈ 100（¥0.10）；每加 1 张生图 +200 积分。
+  - **Coze**：质量档 doubao-pro ≈ 400 积分（¥0.4）/ 15 轮；省钱档 DeepSeek ≈ 210 积分（¥0.21）；均衡档 GLM ≈ 264 积分（¥0.26）；每加 1 张 Seedream 5.0 生图 +220 积分。
 - 用户确认档位（省钱 / 质量 / 含生图）后，才进入 Step 1。
 - Step 6 迭代若超出预估轮数，主动提示「已用 X 积分，预计还需 Y，是否继续」。
-- 定价与模型档见 `budget.json`；完整方法论见 nexl-web-skills 仓库 `docs/COZE-BUDGET.md`。
+- 定价与模型档见 `budget.json`（Coze）/ `budget-meoo.json`（Meoo）；完整方法论见 nexl-web-skills 仓库 `docs/COZE-BUDGET.md` 与 `docs/MEOO-WHITEPAPER.md`。
 
 **Step 1 · 用户研究（输入）**
 - 问清：职业/身份、核心价值、目标受众（招聘？客户？粉丝？）。
