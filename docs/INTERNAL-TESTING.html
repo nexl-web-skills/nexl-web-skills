@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四平台内测激活卡 · NEXL</title>
+<style>
+  :root{
+    --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803;
+    --line:rgba(245,245,245,.12); --panel:rgba(245,245,245,.04);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:48px 28px 80px}
+  .wrap{max-width:1040px;margin:0 auto}
+  .meta{color:var(--muted);font-size:12px;letter-spacing:.04em;margin-bottom:10px}
+  h1{font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:-.02em}
+  h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:56px 0 22px}
+  .sub{color:var(--muted);margin-top:12px;max-width:62ch}
+  /* 激活语块 */
+  .phrase{margin-top:28px;border:1px solid var(--accent);border-radius:14px;padding:22px 24px;background:rgba(255,216,3,.05);font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.6;word-break:break-all;position:relative}
+  .phrase .tag{position:absolute;top:-10px;left:18px;background:var(--bg);color:var(--accent);font-size:11px;letter-spacing:.12em;padding:0 8px}
+  .copy{margin-top:14px;display:inline-block;background:var(--accent);color:#0A0A0A;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+  .warn{margin-top:14px;font-size:13px;color:#FF6B6B;border-left:2px solid #FF6B6B;padding-left:12px}
+  .ok{margin-top:10px;font-size:13px;color:#7CE38B}
+  /* 四平台卡片 */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--panel)}
+  .card h3{font-size:18px;font-weight:600;display:flex;align-items:center;gap:10px}
+  .card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .card .row{margin-top:14px;font-size:13px;color:var(--muted)}
+  .card .row b{color:var(--fg);font-weight:600}
+  .card .red{color:#FF6B6B;font-size:12.5px;margin-top:10px}
+  /* 回流表 */
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;color:var(--muted)}
+  th{color:var(--fg);background:var(--panel);font-weight:600;letter-spacing:.02em}
+  td:first-child{color:var(--fg);font-weight:600}
+  /* 铁律清单 */
+  ul{list-style:none;margin-top:8px}
+  ul li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"🔒";margin-right:10px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}body{padding:32px 18px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">nexl-builder 内测文档 · 观涛虾🦐 (TideShell) · 2026-07-21 · 四平台内测统一激活语 + 操作卡 + 回流表</div>
+  <h1>四平台内测激活卡</h1>
+  <p class="sub">一句固定激活语，四个平台自识别、加载对应预算档案、校验时效并服务建站。带着这张卡去 Coze / Meoo / WorkBuddy / MIAODA 实测，测完回填下方回流表。</p>
+
+  <h2>0 · 唯一激活语（铁律 · 一字不改）</h2>
+  <div class="phrase">
+    <span class="tag">ACTIVATION PHRASE</span>
+    请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。
+  </div>
+  <button class="copy" onclick="copyPhrase()">复制激活语</button>
+  <div class="ok">✓ 已验证 GitHub main 上 builder.md = HTTP 200 + 含最新 1.6 案例召回引用（新鲜度 OK）</div>
+  <div class="warn">⚠ 禁用路径变体：COZE-INTERNAL-TEST.* 里的 …/skills/nexl-builder/SKILL.md 是旧方案 B 测试句，非铁律句。本轮内测统一用上方指向 builder.md 的句。</div>
+
+  <h2>1 · 四平台操作卡</h2>
+  <div class="grid">
+    <div class="card">
+      <h3><span class="dot"></span>Coze（扣子）</h3>
+      <div class="row"><b>怎么发：</b>建 Bot → 知识库预置 builder.md（在线网页填 raw URL 自动同步）→ 人设写「掌握 nexl-builder」→ 发激活语</div>
+      <div class="row"><b>生效：</b>方案 A 知识库预置最稳（GFW 阻断 raw 仍命中）；方案 B 工作流抓 URL</div>
+      <div class="row"><b>验证成功：</b>回「✅ 已识别：Coze」+ 报预算卡 + 跑六步</div>
+      <div class="row"><b>预算：</b>15 轮≈400 积分（¥0.4）；含 4 图≈1280（¥1.3）</div>
+      <div class="red">⚠ jsDelivr 弃用；coze.cn 下 raw 是否 GFW 干扰待验证；扣子无终端</div>
+    </div>
+    <div class="card">
+      <h3><span class="dot"></span>秒悟 Meoo</h3>
+      <div class="row"><b>怎么发：</b>对话首句粘贴激活语</div>
+      <div class="row"><b>生效：</b>agent 本地读 templates/INDEX.json（或经 MCP）</div>
+      <div class="row"><b>验证成功：</b>识别为 Meoo + 报预算（Night Plan 2 折≈¥0.10）</div>
+      <div class="row"><b>预算：</b>15 轮 ¥0.14–2.3；Night Plan 2 折≈¥0.10</div>
+      <div class="red">🔴 合规红线：禁接境外模型（OpenAI/Google）；域名必备案</div>
+    </div>
+    <div class="card">
+      <h3><span class="dot"></span>腾讯 WorkBuddy</h3>
+      <div class="row"><b>怎么发：</b>技能激活 nexl-builder（本地）；或把激活语发给观涛虾</div>
+      <div class="row"><b>生效：</b>技能激活即加载 INDEX；免费额度内无限检索</div>
+      <div class="row"><b>验证成功：</b>识别为 WorkBuddy + 跑 budget-workbuddy.cjs</div>
+      <div class="row"><b>预算：</b>免费 500 积分/月≈6 次建站（15 轮≈¥0.075）</div>
+      <div class="red">ℹ 本地技能需在 skills 目录；本机已装观涛虾技能集</div>
+    </div>
+    <div class="card">
+      <h3><span class="dot"></span>百度秒哒 MIAODA</h3>
+      <div class="row"><b>怎么发：</b>对话粘贴激活语 / 装 Miaoda App Builder Skill</div>
+      <div class="row"><b>生效：</b>全栈原生 clone 模板 scaffold；Skill 内嵌 INDEX</div>
+      <div class="row"><b>验证成功：</b>识别为 MIAODA + 跑 budget-miaoda.cjs（秒点）</div>
+      <div class="row"><b>预算：</b>免费 610 秒点 = 1.26 次全栈建站</div>
+      <div class="red">ℹ 全栈原生（前后端+数据库+小程序+APP）</div>
+    </div>
+  </div>
+
+  <h2>2 · 内测回流表（每平台测完回填）</h2>
+  <table>
+    <tr><th>平台</th><th>激活时间</th><th>自识别成功?</th><th>预算卡触发?</th><th>8维守门?</th><th>质量(1-5)</th><th>卡点/问题</th><th>截图链接</th></tr>
+    <tr><td>Coze</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Meoo</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>WorkBuddy</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>MIAODA</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+
+  <h2>3 · 铁律校验（激活后 agent 必须遵守）</h2>
+  <ul>
+    <li>激活语零改动，不为任何平台加后缀</li>
+    <li>不报预算不许开工（Step 0 预算顾问协议）</li>
+    <li>8 维一致性守门每版必过</li>
+    <li>底稿必导出可复制文本块（brand-profile 复利）</li>
+    <li>合规红线：Meoo 不接境外模型 / 域名必备案</li>
+  </ul>
+
+  <h2>4 · 内测重点验证项</h2>
+  <ul>
+    <li>Coze GFW 风险：coze.cn 下 raw GitHub 是否被拦截 → 决定方案 A/B</li>
+    <li>四平台自识别成功率：Agent 首句是否报出平台名</li>
+    <li>预算卡真实触发：Meoo Night Plan 折后价 / MIAODA 秒点扣减</li>
+    <li>案例召回：能否调出 aurora-minimal 当标杆</li>
+  </ul>
+</div>
+<script>
+function copyPhrase(){
+  const t='请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。';
+  navigator.clipboard.writeText(t);
+  const b=document.querySelector('.copy');const o=b.textContent;b.textContent='已复制 ✓';setTimeout(()=>b.textContent=o,1500);
+}
+</script>
+</body>
+</html>
