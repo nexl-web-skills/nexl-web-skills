@@ -28,7 +28,7 @@ We don't build "yet another website generator". We turn any AI agent into a **br
 
 **A. Send this to your Coze / Claude / Codex Agent:**
 
-> 请阅读 https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/nexl-builder.md 文档，按照步骤为我激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。
+> 请阅读 https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md 文档，按照步骤为我激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。
 
 **B. Or one line in your terminal:**
 
