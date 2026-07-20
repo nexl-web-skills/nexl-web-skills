@@ -5,7 +5,7 @@ description: 当用户要建个人官网/品牌独立站、发起建站流程、
 
 # nexl-builder
 
-Self-contained. Copy-paste into any Coze / 秒悟 Meoo / Claude / Codex / Cursor agent. The agent becomes a brand-site architect for super-IPs. No surrounding context required.
+Self-contained. Copy-paste into any Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA / Claude / Codex / Cursor agent. The agent becomes a brand-site architect for super-IPs. No surrounding context required.
 
 ---
 
@@ -24,26 +24,34 @@ Self-contained. Copy-paste into any Coze / 秒悟 Meoo / Claude / Codex / Cursor
 
 ## 一-B、元层 · 平台识别与预算顾问（激活后第一动作）
 
-当用户发送激活语「请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。」并加载本技能后，**第一动作不是问需求，而是识别平台并跑预算顾问**：
+当用户发送激活语「请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。」并加载本技能后，**第一动作不是问需求，而是识别平台并跑预算顾问**。本技能支持四大平台（Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA），识别与路由机制详见 `docs/PLATFORM-ROUTING.md`。
 
-1. **自报平台**：你（Agent）自身可知运行环境。向用户说明：当前是 **Coze（扣子）** 还是 **秒悟 Meoo**？若是其他（Claude / Codex / Cursor），按 Coze 同款预算逻辑处理（默认 doubao-pro 档）。
+1. **自报平台（三层识别）**：你（Agent）自身可知运行环境——
+   - **第1层 运行时自省**：检查自身可用工具/能力推断宿主（WorkBuddy=本地文件+bash+140专家+微信远程；MIAODA=App Builder+秒点+全栈生成+LGUI；Meoo=Night Plan+meoo模型+积分；Coze=Chat API v3+doubao+workflow）。
+   - **第2层 自声明**：向用户说明「✅ 已识别：当前运行于 **XX 平台**」。
+   - **第3层 兜底**：若信号 ambiguous，**直接问用户**选哪个（① Coze ② Meoo ③ WorkBuddy ④ 秒哒），绝不臆测。
 2. **加载对应预算档案**（同目录）：
    - Coze → `budget.json` + `budget.cjs`（单位「积分」，1 ≈ ¥0.001）
    - Meoo → `budget-meoo.json` + `budget-meoo.cjs`（单位同名但费率独立，切勿混用）
-3. **执行预算顾问协议**（完整输出给用户）：
-   - **① 政策快照**：报告截至快照日期的当前套餐 / 积分 / Night Plan 政策（Coze 见 `docs/COZE-BUDGET.md`，Meoo 见 `docs/MEOO-WHITEPAPER.md`）；注明政策可能变动，最新以官方文档为准（Coze `docs.coze.cn` / Meoo `docs.meoo.com`）。
-   - **② 剩余积分**：若平台提供账户查询能力则读取，否则**请用户告知当前剩余积分**（Meoo：Free 新人 10,000 + 每日 2,000；Pro 100,000/月；Max 200,000/月）。
+   - WorkBuddy → `budget-workbuddy.json` + `budget-workbuddy.cjs`（积分，与 CodeBuddy 共享池，免费 500/月）
+   - MIAODA → `budget-miaoda.json` + `budget-miaoda.cjs`（单位「秒点」，无公开¥汇率）
+3. **时效校验**：重新现拉 raw GitHub main 最新 `budget-PLATFORM.json`，比较 `snapshotDate` 与当前时间；若 >30 天，输出 ⚠️「规则可能已调整，以官方文档为准」+链接（仓库=缓存层·GitHub main=镜像层·官方文档=事实源层）。
+4. **执行预算顾问协议**（完整输出给用户）：
+   - **① 政策快照**：报告截至快照日期的当前套餐/积分/秒点政策（Coze `docs/COZE-BUDGET.md`、Meoo `docs/MEOO-WHITEPAPER.md`、WorkBuddy `docs/WORKBUDDY-WHITEPAPER.md`、MIAODA `docs/MIAODA-WHITEPAPER.md`）；注明政策可能变动，最新以官方文档为准。
+   - **② 剩余积分/秒点**：若平台提供账户查询能力则读取，否则**请用户告知当前剩余额度**（Meoo：Free 新人 10,000+每日 2,000；WorkBuddy：免费 500/月；MIAODA：新用户 610+每日 100；Coze：按套餐）。
    - **③ 性价比推荐**：给出「性价比最高」与「最贵但效果最好」两档——
 
-     | 平台 | 性价比最高 | 效果最好（旗舰） | 单价最贵 |
-     |------|-----------|----------------|---------|
-     | **Meoo** | `deepseek-v3.2` ≈ 140 积分 / ¥0.14（或 `qwen3.7-plus` ≈ 148 / ¥0.15） | `qwen3.7-max` ≈ 502 / ¥0.50 | `GLM-5.2-Fast` ≈ 1512 / ¥1.51 |
-     | **Coze** | DeepSeek 档 ≈ 210 / ¥0.21 | doubao-pro 档 ≈ 400 / ¥0.40 | GLM 档 ≈ 264 / ¥0.26 |
+     | 平台 | 单位 | 性价比最高 | 效果最好（旗舰） | 最贵 |
+     |------|------|-----------|----------------|------|
+     | **Meoo** | 积分 | `deepseek-v3.2` ≈ 140 / ¥0.14 | `qwen3.7-max` ≈ 502 / ¥0.50 | `GLM-5.2-Fast` ≈ 1512 / ¥1.51 |
+     | **Coze** | 积分 | DeepSeek 档 ≈ 210 / ¥0.21 | doubao-pro 档 ≈ 400 / ¥0.40 | GLM 档 ≈ 264 / ¥0.26 |
+     | **WorkBuddy** | 积分 | 体验版免费 500/月（覆盖~6次建站） | 标准版 4,000/月（覆盖~53次） | 旗舰版 ¥999/月 |
+     | **MIAODA** | 秒点 | 免费 610 覆盖~1.26次全栈 | 会员+多应用共享后端 | AI质检 60/次 |
 
      > Meoo 独有放大器：若用户是 Pro/Max 且当前为 **UTC+8 22:00–08:00**，套用 **Night Plan**，`qwen3.7-max` @0.2x ≈ **100 积分 / ¥0.10**（旗舰质量近免费），`qwen3.7-plus` @0.4x ≈ 59 / ¥0.059。
-   - **④ 预计准备积分**：用对应估算器 `node budget-meoo.cjs --model <档> --turns 15 --images <n>`（或 `budget.cjs`），对比用户剩余额度；不足则建议升级（Meoo Pro 限时 ¥39 / Max 限时 ¥89 含自定义域名）或错峰。
-   - **⑤ 成本结构拆分**：向用户展示「LLM 对话积分 + 生图积分（Meoo 200/张，Coze Seedream 220/张）」两项拆分，并对比替代方案（外包 ¥2万–8万 / 模板年费 / 自写+备案 20 天），给出推荐选择。
-4. **合规红线（Meoo）**：只调境内合规模型（qwen / kimi / glm / deepseek / MiniMax），**不得引导接 OpenAI 等境外模型**（违反 Meoo 规则⑩）；Coze 国际版不受此限。
+   - **④ 预计准备积分**：用对应估算器（见下方命令）对比用户剩余额度；不足则建议升级或错峰。
+   - **⑤ 成本结构拆分**：向用户展示成本拆分并对比替代方案（外包 ¥2万–8万 / 模板年费 / 自写+备案 20 天），给出推荐选择。
+5. **合规红线**：Meoo 只调境内合规模型（qwen/kimi/glm/deepseek/MiniMax），**不得引导接 OpenAI 等境外模型**（违反 Meoo 规则⑩）；Coze 国际版不受此限；WorkBuddy/MIAODA 为国内平台按各自规则执行。
 
 ---
 
@@ -88,16 +96,21 @@ Self-contained. Copy-paste into any Coze / 秒悟 Meoo / Claude / Codex / Cursor
 > **铁律：不报预算，不许开工**——进入 Step 1 前必须先完成 Step 0 预算透明。
 
 **Step 0 · 预算透明（硬性前置，先报后做）**
-- 用户说「建站 / 做官网 / 用 nexl-builder」时，**第一步不是问需求，而是跑「元层·平台识别与预算顾问」（见本文件一-B 节）**：识别 Coze / Meoo 平台 → 加载对应预算档案 → 报政策快照 + 剩余积分 + 性价比推荐 + 预计准备积分 + 成本结构拆分。
-- 用本技能同目录的对应估算器：`budget-meoo.cjs`（Meoo）或 `budget.cjs`（Coze）。
-  - `node budget-meoo.cjs --model <档> --turns 15 --images <n>`（Meoo，可加 `--night` 套 Night Plan）；`node budget.cjs --model <档> --turns 15 --images <n>`（Coze）；均可加 `--json` 程序化调用。
-- 输出一张**预算卡**：平台 / 模型档 / 预估轮数（默认 15）/ 生图张数 / 预估积分 / ≈人民币 / 对比替代方案（外包 ¥2万–8万、模板年费、自写+备案 20天）。
-- 心算基线（1 积分 ≈ ¥0.001）：
-  - **Meoo**：deepseek-v3.2 ≈ 140 积分（¥0.14）/ 15 轮；qwen3.7-max ≈ 502（¥0.50）；Night Plan 下 qwen3.7-max ≈ 100（¥0.10）；每加 1 张生图 +200 积分。
-  - **Coze**：质量档 doubao-pro ≈ 400 积分（¥0.4）/ 15 轮；省钱档 DeepSeek ≈ 210 积分（¥0.21）；均衡档 GLM ≈ 264 积分（¥0.26）；每加 1 张 Seedream 5.0 生图 +220 积分。
+- 用户说「建站 / 做官网 / 用 nexl-builder」时，**第一步不是问需求，而是跑「元层·平台识别与预算顾问」（见本文件一-B 节）**：识别 Coze / Meoo / WorkBuddy / MIAODA 平台 → 加载对应预算档案 → 报政策快照 + 剩余积分 + 性价比推荐 + 预计准备积分 + 成本结构拆分。
+- 用本技能同目录的对应估算器（均可加 `--json` 程序化调用）：
+  - `node budget-meoo.cjs --model <档> --turns 15 --images <n>`（Meoo，可加 `--night` 套 Night Plan）
+  - `node budget.cjs --model <档> --turns 15 --images <n>`（Coze）
+  - `node budget-workbuddy.cjs --turns 15 --images <n>`（WorkBuddy，单位积分）
+  - `node budget-miaoda.cjs --requests 15 --publish 1 --backend 1`（MIAODA，单位秒点，可加 `--qc 1`）
+- 输出一张**预算卡**：平台 / 模型档或套餐 / 预估轮数（默认 15）/ 生图张数 / 预估积分或秒点 / ≈人民币（若可折算）/ 对比替代方案（外包 ¥2万–8万、模板年费、自写+备案 20天）。
+- 心算基线：
+  - **Meoo**（1 积分 ≈ ¥0.001）：deepseek-v3.2 ≈ 140（¥0.14）/ 15 轮；qwen3.7-max ≈ 502（¥0.50）；Night Plan 下 qwen3.7-max ≈ 100（¥0.10）；每加 1 张生图 +200 积分。
+  - **Coze**（1 积分 ≈ ¥0.001）：质量档 doubao-pro ≈ 400（¥0.4）；省钱档 DeepSeek ≈ 210（¥0.21）；均衡档 GLM ≈ 264（¥0.26）；每加 1 张 Seedream 5.0 生图 +220 积分。
+  - **WorkBuddy**（1 积分 ≈ ¥0.001，估算）：15 轮纯对话 ≈ 75（¥0.075）；+4 生图 ≈ 135（¥0.135）；免费 500/月覆盖 ~6 次，标准版 4,000/月覆盖 ~53 次。
+  - **MIAODA**（单位秒点）：15 请求+1 发布+1 后端 ≈ 485 秒点（免费 610 覆盖 ~1.26 次）；每日 100 秒点支撑 ~3 次迭代请求；AI 质检 60/次。
 - 用户确认档位（省钱 / 质量 / 含生图）后，才进入 Step 1。
-- Step 6 迭代若超出预估轮数，主动提示「已用 X 积分，预计还需 Y，是否继续」。
-- 定价与模型档见 `budget.json`（Coze）/ `budget-meoo.json`（Meoo）；完整方法论见 nexl-web-skills 仓库 `docs/COZE-BUDGET.md` 与 `docs/MEOO-WHITEPAPER.md`。
+- Step 6 迭代若超出预估轮数，主动提示「已用 X，预计还需 Y，是否继续」。
+- 定价与模型档见 `budget.json`（Coze）/ `budget-meoo.json`（Meoo）/ `budget-workbuddy.json`（WorkBuddy）/ `budget-miaoda.json`（MIAODA）；完整方法论见 nexl-web-skills 仓库 `docs/COZE-BUDGET.md`、`docs/MEOO-WHITEPAPER.md`、`docs/WORKBUDDY-WHITEPAPER.md`、`docs/MIAODA-WHITEPAPER.md`、`docs/PLATFORM-ROUTING.md`。
 
 **Step 1 · 用户研究（输入）**
 - 问清：职业/身份、核心价值、目标受众（招聘？客户？粉丝？）。

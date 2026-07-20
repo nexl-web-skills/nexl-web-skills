@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四平台识别与路由机制 · nexl-builder 接力文档</title>
+<style>
+  :root{ --bg:#0b0b0f; --card:#16161c; --line:#26262e; --txt:#e8e8ee; --sub:#9a9aae; --acc:#FFD803; --grn:#0D7A5F; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font:15px/1.7 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;padding:40px 20px;max-width:880px;margin:0 auto}
+  h1{font-size:30px;letter-spacing:-.5px;margin-bottom:6px}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:3px solid var(--acc)}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:30px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--acc);font-weight:600}
+  td.r{text-align:right;font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;background:#222;color:var(--acc);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0}
+  .rec{background:linear-gradient(135deg,rgba(13,122,95,.18),rgba(255,216,3,.08));border:1px solid var(--grn)}
+  .warn{border-left:3px solid #e0533d}
+  code{background:#000;padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--acc)}
+  .svgwrap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+  footer{color:var(--sub);font-size:12px;margin-top:40px;text-align:center}
+  .pill{display:inline-block;background:var(--grn);color:#fff;border-radius:20px;padding:3px 12px;font-size:12px;margin:3px 4px}
+</style>
+</head>
+<body>
+<h1>四平台识别与路由机制</h1>
+<div class="meta">nexl-builder 接力文档 · 第 16 棒 · 观涛虾🦐 (TideShell) · 2026-07-20 · 主题：一句激活语 × Coze/Meoo/WorkBuddy/MIAODA 自识别 + 时效校验 + 服务建站</div>
+
+<h2>一、不变式（设计根基）</h2>
+<div class="card rec">
+<p>① 激活语永远固定那一句 · ② builder.md 是唯一真相源（SKILL.md 镜像） · ③ 每次激活现拉 raw GitHub main 最新版 · ④ 四平台预算/规则零耦合。</p>
+</div>
+
+<h2>二、三层平台识别</h2>
+<div class="card">
+<table>
+<tr><th>层</th><th>机制</th><th>用户感知</th></tr>
+<tr><td>1 自省</td><td>Agent 检查自身工具/能力推断宿主</td><td>无感</td></tr>
+<tr><td>2 自声明</td><td>向用户报「已识别：XX 平台」</td><td>透明</td></tr>
+<tr><td>3 兜底</td><td>ambiguous 时直接问用户选哪个</td><td>一句提问</td></tr>
+</table>
+</div>
+
+<div class="svgwrap">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,sans-serif">
+<rect width="640" height="220" rx="12" fill="#16161c" stroke="#26262e"/>
+<text x="20" y="28" fill="#FFD803" font-size="14" font-weight="600">第1层 运行时自省信号</text>
+<rect x="20" y="40" width="290" height="60" rx="10" fill="#0D7A5F" opacity=".2" stroke="#0D7A5F"/>
+<text x="34" y="64" fill="#e8e8ee" font-size="12.5">WorkBuddy：本地文件+bash+140专家</text>
+<text x="34" y="84" fill="#9a9aae" font-size="11.5">微信远程·桌面操控</text>
+<rect x="330" y="40" width="290" height="60" rx="10" fill="#0D7A5F" opacity=".2" stroke="#0D7A5F"/>
+<text x="344" y="64" fill="#e8e8ee" font-size="12.5">MIAODA：App Builder+秒点</text>
+<text x="344" y="84" fill="#9a9aae" font-size="11.5">全栈生成+LGUI</text>
+<rect x="20" y="112" width="290" height="60" rx="10" fill="#0D7A5F" opacity=".2" stroke="#0D7A5F"/>
+<text x="34" y="136" fill="#e8e8ee" font-size="12.5">Meoo：Night Plan+meoo模型</text>
+<text x="34" y="156" fill="#9a9aae" font-size="11.5">积分+自定义域名</text>
+<rect x="330" y="112" width="290" height="60" rx="10" fill="#0D7A5F" opacity=".2" stroke="#0D7A5F"/>
+<text x="344" y="136" fill="#e8e8ee" font-size="12.5">Coze：Chat API v3+doubao</text>
+<text x="344" y="156" fill="#9a9aae" font-size="11.5">workflow+国内外BaseURL</text>
+<rect x="20" y="184" width="600" height="26" rx="8" fill="#FFD803" opacity=".14" stroke="#FFD803"/>
+<text x="34" y="202" fill="#e8e8ee" font-size="12">第2层 自声明 → 第3层 兜底（问用户）：识别失败=问一句，识别错误=高成本</text>
+</svg>
+</div>
+
+<h2>三、规则加载 + 时效校验</h2>
+<div class="card warn">
+<p><b>"校验当下时间更新规则"的实现：</b></p>
+<p style="margin-top:8px">① 各 <code>budget-PLATFORM.json</code> 含 <code>snapshotDate</code> + <code>source</code>(官方URL) → ② 激活时现拉 raw GitHub main 最新档案 → ③ 比较 <code>snapshotDate</code> 与当前时间：≤30天正常；>30天输出⚠️「规则可能已调整，以官方为准」+链接。</p>
+<p style="margin-top:8px;color:var(--sub)">三层分工：仓库=缓存层 · GitHub main=实时镜像层 · 官方文档=事实源层。</p>
+</div>
+
+<h2>四、服务建站闭环</h2>
+<div class="card">
+<table>
+<tr><th>平台</th><th>部署路径</th></tr>
+<tr><td>Coze</td><td>Coze 托管 / Cloudflare</td></tr>
+<tr><td>Meoo</td><td>meoo 部署 + 自定义域名</td></tr>
+<tr><td>MIAODA</td><td>发布（小程序/iOS打包/共享后端）</td></tr>
+<tr><td>WorkBuddy</td><td>本地静态站 → tideshell → Cloudflare</td></tr>
+</table>
+</div>
+
+<h2>五、可扩展性</h2>
+<div class="card rec">
+<p>加第 5 平台只需：<span class="tag">budget-P.json+cjs</span><span class="tag">docs/P-WHITEPAPER.md</span><span class="tag">SKILL 元层加分支</span><b>激活语零改动</b>——这是架构最大红利。</p>
+</div>
+
+<h2>六、四平台档案索引</h2>
+<div class="card">
+<table>
+<tr><th>平台</th><th>白皮书</th><th>估算器</th><th>单位</th></tr>
+<tr><td>Coze</td><td>COZE-BUDGET.md</td><td>budget.json+cjs</td><td>积分</td></tr>
+<tr><td>Meoo</td><td>MEOO-WHITEPAPER.md</td><td>budget-meoo.*</td><td>积分</td></tr>
+<tr><td>WorkBuddy</td><td>WORKBUDDY-WHITEPAPER.md</td><td>budget-workbuddy.*</td><td>积分</td></tr>
+<tr><td>MIAODA</td><td>MIAODA-WHITEPAPER.md</td><td>budget-miaoda.*</td><td>秒点</td></tr>
+</table>
+</div>
+
+<footer>接力文档 · 双生 md/html · 打开即懂、接手即续 · snapshot 2026-07-20</footer>
+</body>
+</html>

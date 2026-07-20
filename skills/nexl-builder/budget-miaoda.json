@@ -1,0 +1,32 @@
+{
+  "version": "2026-07-20",
+  "source": "百度秒哒 MIAODA 官方（miaoda.cn + cloud.baidu.com/doc/MIAODA + aca.bce.baidu.com/doc/MIAODA/s/Pmih6khzs 秒点体系）",
+  "snapshotDate": "2026-07-20",
+  "platform": "miaoda",
+  "unit": {
+    "name": "秒点",
+    "rmb_per_credit": null,
+    "note": "统一消耗额度，无公开¥汇率；会员价以官网为准。新用户约610秒点+每日100。"
+  },
+  "earn": {
+    "new_user": 610,
+    "daily_login": 100,
+    "note": "秒点不可折现/退款/转让；会员到期未用清空；技能调用按实际用量消耗。"
+  },
+  "costs": {
+    "deep_dev_request": 30,
+    "publish_app": 20,
+    "enable_backend": 15,
+    "ai_qc": 60,
+    "use_skill": "按技能规则",
+    "copy_case": "按案例规则",
+    "download_source": "按规则"
+  },
+  "subscriptions": {
+    "note": "免费 + 订阅模式；官方未公开完整定价表，以 miaoda.cn 当前档位为准。实测：新用户610秒点≈4小时产出5个可发布应用。"
+  },
+  "assumptions": {
+    "default_requests_for_6_steps": 15,
+    "note": "六步建站≈15次深度开发请求（生成/迭代/修Bug，30秒点/条）。默认场景=15请求+1发布+1后端。费率均为官方确定值，比 WorkBuddy/Meoo 更透明。"
+  }
+}

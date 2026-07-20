@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>腾讯 WorkBuddy 白皮书档案 · nexl-builder 接力文档</title>
+<style>
+  :root{ --bg:#0b0b0f; --card:#16161c; --line:#26262e; --txt:#e8e8ee; --sub:#9a9aae; --acc:#FFD803; --grn:#0D7A5F; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font:15px/1.7 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;padding:40px 20px;max-width:880px;margin:0 auto}
+  h1{font-size:30px;letter-spacing:-.5px;margin-bottom:6px}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:3px solid var(--acc)}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:30px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--acc);font-weight:600}
+  td.r{text-align:right;font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;background:#222;color:var(--acc);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0}
+  .rec{background:linear-gradient(135deg,rgba(13,122,95,.18),rgba(255,216,3,.08));border:1px solid var(--grn)}
+  .warn{border-left:3px solid #e0533d}
+  code{background:#000;padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--acc)}
+  .svgwrap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+  footer{color:var(--sub);font-size:12px;margin-top:40px;text-align:center}
+  .pill{display:inline-block;background:var(--grn);color:#fff;border-radius:20px;padding:3px 12px;font-size:12px;margin:3px 4px}
+</style>
+</head>
+<body>
+<h1>腾讯 WorkBuddy 白皮书档案</h1>
+<div class="meta">nexl-builder 接力文档 · 第 15 棒 · 观涛虾🦐 (TideShell) · 2026-07-20 · 主题：WorkBuddy 计费/新三档/积分 + nexl-builder 预算落点（注：观涛虾即运行于 WorkBuddy）</div>
+
+<h2>一、平台定位</h2>
+<div class="card">
+<p>腾讯 WorkBuddy = <b>AI 桌面办公智能体</b>（不是聊天框，是能实际操作本地文件的 AI 数字同事）。通过自然语言生成 <b>HTML/CSS/JS 静态网站代码</b>。与 Coze/Meoo/MIAODA 差异：<b>WorkBuddy 是本地桌面 Agent</b>——nexl-builder 在 WorkBuddy 内跑时，由观涛虾直接操作本地文件系统生成静态站，积分走 WorkBuddy/CodeBuddy 共享池。</p>
+<p style="margin-top:8px;color:var(--sub)">官网：<code>https://www.workbuddy.cn/</code></p>
+</div>
+
+<h2>二、套餐与定价（2026-07-01 新三档）</h2>
+<div class="card">
+<p><span class="pill">与 CodeBuddy 共享积分</span><span class="pill">2026-07-01 起生效</span></p>
+<table>
+<tr><th>版本</th><th class="r">月费</th><th class="r">积分/月</th><th>核心权益</th></tr>
+<tr><td>体验版</td><td class="r">¥0</td><td class="r">500</td><td>5000次补全·3自动任务·5项目</td></tr>
+<tr><td>标准版</td><td class="r">¥99（7折¥70）</td><td class="r">4,000</td><td>全模型·无限补全·15任务·50G网盘</td></tr>
+<tr><td>高级版</td><td class="r">¥199（7折¥140）</td><td class="r">9,000</td><td>30任务·15项目·8人协作</td></tr>
+<tr><td>旗舰版</td><td class="r">¥999（7折¥700）</td><td class="r">更高</td><td>全功能</td></tr>
+<tr><td>企业SaaS</td><td class="r">¥198/人</td><td class="r">2,000/人</td><td>共享池·无限制协作</td></tr>
+</table>
+</div>
+
+<h2>三、积分消耗规则</h2>
+<div class="card">
+<table>
+<tr><th>场景</th><th class="r">积分</th></tr>
+<tr><td>轻度使用 / 天</td><td class="r">100 ~ 500</td></tr>
+<tr><td>10 页 PPT / 份</td><td class="r">8 ~ 12</td></tr>
+<tr><td>每次 AI 对话</td><td class="r">均消耗</td></tr>
+<tr><td>社区发教程文章</td><td class="r">最高 +3,000</td></tr>
+</table>
+<p style="margin-top:8px;color:var(--sub)">⚠️ 未公开每 1K token 精确费率；预算估算以官方锚点反推，属估算值。</p>
+</div>
+
+<h2>四、AI 建站能力（优势 + 边界）</h2>
+<div class="card rec">
+<p>✅ 自然语言建静态站 · 桌面级智能体 · 全场景操控 · 多模态 · 微信远程 · 自动化流 · 140+ 专家 · 腾讯生态</p>
+<p style="margin-top:8px" class="warn" style="border:none;padding:0">⚠️ <b>边界</b>：核心定位是 AI 桌面办公智能体，<b>无后端/数据库/一键托管</b>。全栈需求请分流到百度秒哒 / 秒悟 Meoo。静态站产出后部署走 <code>tideshell site deploy</code> → Cloudflare。</p>
+</div>
+
+<h2>五、预算顾问落点（nexl-builder × WorkBuddy）</h2>
+<div class="card warn">
+<p><b>固定激活语：</b></p>
+<code>请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。</code>
+<p style="margin-top:10px">Agent（观涛虾·WorkBuddy 桌面）识别平台 → 加载 <code>budget-workbuddy.json</code> + 跑 <code>budget-workbuddy.cjs</code> → 执行 5 步预算顾问协议。</p>
+<div style="margin-top:8px">
+<span class="tag">① 政策快照</span><span class="tag">② 剩余积分</span><span class="tag">③ 性价比推荐</span><span class="tag">④ 预计准备积分</span><span class="tag">⑤ 成本结构拆分</span>
+</div>
+</div>
+
+<div class="card">
+<h3 style="margin-bottom:8px;color:var(--acc)">实测数值（budget-workbuddy.cjs · 15 轮 · 1积分≈¥0.001）</h3>
+<table>
+<tr><th>场景</th><th class="r">估算积分</th><th class="r">≈人民币</th><th class="r">免费版覆盖</th><th class="r">标准版覆盖</th></tr>
+<tr><td>15 轮纯对话</td><td class="r">75</td><td class="r">¥0.075</td><td class="r">~6 次</td><td class="r">~53 次</td></tr>
+<tr><td>15 轮 + 4 生图</td><td class="r">~135</td><td class="r">¥0.135</td><td class="r">~3 次</td><td class="r">~29 次</td></tr>
+</table>
+<p style="margin-top:8px;color:var(--sub)">对比外包 ¥2万–8万 → 一次建站 ≈ ¥0.075–0.135。免费额度即可多次建站。</p>
+</div>
+
+<h2>六、推荐矩阵</h2>
+<div class="svgwrap">
+<svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,sans-serif">
+<rect width="640" height="160" rx="12" fill="#16161c" stroke="#26262e"/>
+<rect x="20" y="24" width="280" height="64" rx="10" fill="#0D7A5F" opacity=".25" stroke="#0D7A5F"/>
+<text x="34" y="50" fill="#e8e8ee" font-size="14" font-weight="600">最省门槛</text>
+<text x="34" y="72" fill="#9a9aae" font-size="12">体验版 500积分/月 免费</text>
+<text x="34" y="90" fill="#FFD803" font-size="12">覆盖 ~6 次完整建站</text>
+<rect x="340" y="24" width="280" height="64" rx="10" fill="#FFD803" opacity=".18" stroke="#FFD803"/>
+<text x="354" y="50" fill="#e8e8ee" font-size="14" font-weight="600">性价比最高</text>
+<text x="354" y="72" fill="#9a9aae" font-size="12">标准版 4,000积分/月 ¥99</text>
+<text x="354" y="90" fill="#FFD803" font-size="12">覆盖 ~53 次建站</text>
+<rect x="20" y="104" width="600" height="40" rx="10" fill="#0D7A5F" opacity=".15" stroke="#0D7A5F"/>
+<text x="34" y="130" fill="#e8e8ee" font-size="13">边界：仅静态站（无后端）。全栈需求→秒哒/Meoo</text>
+</svg>
+</div>
+
+<h2>七、定位对比</h2>
+<div class="card">
+<table>
+<tr><th>维度</th><th>WorkBuddy</th><th>百度秒哒</th><th>秒悟Meoo</th></tr>
+<tr><td>核心定位</td><td>桌面办公智能体</td><td>无代码应用平台</td><td>云端开发工具</td></tr>
+<tr><td>建站方式</td><td>静态站代码</td><td>全栈应用</td><td>网页应用</td></tr>
+<tr><td>后端支持</td><td>❌</td><td>✅</td><td>✅</td></tr>
+<tr><td>免费额度</td><td>500积分/月</td><td>610+100/天</td><td>1万+2千/天</td></tr>
+</table>
+</div>
+
+<h2>八、官方文档</h2>
+<div class="card">
+<p><code>workbuddy.cn/pricing</code> · <code>cloud.tencent.com/document/product/1749/126592</code> · <code>.../126593</code> · <code>.../129680</code> · <code>cloud.tencent.com/announce/detail/2270</code></p>
+</div>
+
+<footer>接力文档 · 双生 md/html · 打开即懂、接手即续 · snapshot 2026-07-20</footer>
+</body>
+</html>

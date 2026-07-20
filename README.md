@@ -22,15 +22,19 @@ This repository does not ship "yet another website generator". It ships a skill 
 
 ## Activate
 
-A. Paste into any Coze / Claude / Codex agent:
+A. Paste into any Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA / Claude / Codex agent:
 
-> Read https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md and activate the nexl-builder skill.
+> 请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。
 
 B. Or one line in a terminal:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/cli/install.sh | bash
 ```
+
+## Four-platform aware
+
+One fixed activation phrase. The agent self-identifies its host (Coze / Meoo / WorkBuddy / MIAODA) via runtime introspection, loads the matching budget档案, validates rule freshness against `snapshotDate`, then runs the 5-step budget advisor before building. Design: `docs/PLATFORM-ROUTING.md`.
 
 ## What it builds
 
@@ -74,6 +78,14 @@ Engineering logs, kept for relay transparency.
 
 - [GitHub org migration — full workflow](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.md) · [html](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.html)
 - [Linking GitHub — lessons SOP](docs/GITHUB-LINKING-EXPERIENCE.md) · [html](docs/GITHUB-LINKING-EXPERIENCE.html)
+
+## Platform whitepapers (budget transparency)
+
+- [Coze 预算模块](docs/COZE-BUDGET.md) · [html](docs/COZE-BUDGET.html)
+- [秒悟 Meoo 白皮书](docs/MEOO-WHITEPAPER.md) · [html](docs/MEOO-WHITEPAPER.html)
+- [腾讯 WorkBuddy 白皮书](docs/WORKBUDDY-WHITEPAPER.md) · [html](docs/WORKBUDDY-WHITEPAPER.html)
+- [百度秒哒 MIAODA 白皮书](docs/MIAODA-WHITEPAPER.md) · [html](docs/MIAODA-WHITEPAPER.html)
+- [四平台识别与路由机制](docs/PLATFORM-ROUTING.md) · [html](docs/PLATFORM-ROUTING.html)
 
 ## License
 

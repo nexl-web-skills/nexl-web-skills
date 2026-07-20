@@ -1,0 +1,34 @@
+{
+  "version": "2026-07-20",
+  "source": "腾讯 WorkBuddy 官方（workbuddy.cn/pricing + cloud.tencent.com/document/product/1749/126592,126593,129680, announce/detail/2270）",
+  "snapshotDate": "2026-07-20",
+  "platform": "workbuddy",
+  "unit": {
+    "name": "积分",
+    "rmb_per_credit": 0.001,
+    "note": "1 积分 ≈ ¥0.001。与 CodeBuddy 共享积分池（2026-07-01 新三档）。与 Coze/Meoo 同名单位但费率/池独立，切勿混用。"
+  },
+  "subscriptions": {
+    "Free":     { "label": "体验版", "price": 0,    "limited": null, "credits_per_month": 500,   "note": "每月500积分；5000次补全；3自动任务；5项目" },
+    "Standard": { "label": "标准版", "price": 99,   "limited": 70,   "credits_per_month": 4000,  "note": "基础2000+赠送2000；无限补全；15自动任务；10项目；50G网盘" },
+    "Premium":  { "label": "高级版", "price": 199,  "limited": 140,  "credits_per_month": 9000,  "note": "基础4000+赠送5000；30自动任务；15项目" },
+    "Flagship": { "label": "旗舰版", "price": 999,  "limited": 700,  "credits_per_month": null,  "note": "积分额度更高；全功能" },
+    "SaaSEnt":  { "label": "企业SaaS", "price": 198, "per": "人/月", "credits_per_month": 2000,  "note": "2000 Credits/人/月共享池；无限制协作" }
+  },
+  "earn": {
+    "daily_checkin": "每日签到得额外积分",
+    "community_article": "社区发教程文章最高 +3000 积分"
+  },
+  "anchors": {
+    "light_daily": "100~500 积分/天",
+    "ppt_10page": "8~12 积分/份",
+    "note": "每次与 AI 对话交互均消耗积分；可在官网个人主页查看明细。未公开每1K token 精确费率。"
+  },
+  "assumptions": {
+    "per_turn_credit_estimate": 5,
+    "per_turn_range": "3~8",
+    "image_per_credit_estimate": 15,
+    "default_turns_for_6_steps": 15,
+    "note": "WorkBuddy 未公开每1K token 精确积分；本估算以官方锚点（10页PPT≈8~12积分、轻度日耗100~500）反推：每轮建站对话≈5积分（区间3~8），多模态生图≈15积分/张。均为估算值，仅供参考，非官方费率。"
+  }
+}
