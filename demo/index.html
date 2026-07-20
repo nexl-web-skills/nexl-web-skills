@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nexl · 品牌站生成器 Demo</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#16161a; --panel2:#1d1d22; --line:#2a2a31;
+    --txt:#f5f5f7; --sub:#a1a1aa; --accent:#0a84ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .nav{max-width:1100px;margin:0 auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .nav a{color:var(--sub);text-decoration:none;font-size:14px}
+  .wrap{max-width:1100px;margin:0 auto;padding:48px 24px}
+  .hero{text-align:center;margin-bottom:48px}
+  .hero h1{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .hero p{color:var(--sub);font-size:17px;margin-top:14px}
+  .grid{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+  label{display:block;font-size:13px;color:var(--sub);margin:18px 0 8px;font-weight:600}
+  label:first-child{margin-top:0}
+  input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--txt);font-size:15px;outline:none}
+  input[type=text]:focus{border-color:var(--accent)}
+  .colors{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+  .sw{width:32px;height:32px;border-radius:8px;cursor:pointer;border:2px solid transparent}
+  .sw.on{border-color:#fff}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;margin-top:20px}
+  .btn.ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--line)}
+  /* 站点预览 */
+  .site{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;color:#111}
+  .site-hero{padding:54px 36px;background:var(--c,#0a84ff);color:#fff}
+  .site-hero h2{font-size:34px;font-weight:800;letter-spacing:-.02em}
+  .site-hero p{font-size:16px;opacity:.92;margin-top:10px}
+  .site-hero a{display:inline-block;margin-top:18px;background:#fff;color:#111;padding:10px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:14px}
+  .site-about{padding:36px;background:#fff;color:#222}
+  .site-about h3{font-size:20px;margin-bottom:10px}
+  .site-about p{font-size:14px;color:#555;line-height:1.7}
+  .site-foot{padding:20px 36px;background:#f5f5f7;color:#888;font-size:13px;border-top:1px solid #eee}
+  .section-title{font-size:13px;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:36px 0 12px;font-weight:700}
+  .card-preview{border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:560px}
+  .card-preview svg{display:block;width:100%;height:auto}
+  textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--txt);font-size:14px;resize:vertical;min-height:80px;outline:none;font-family:inherit}
+  .code{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--green);word-break:break-all}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
+  .toast.show{opacity:1}
+  footer{max-width:1100px;margin:40px auto 0;padding:28px 24px;border-top:1px solid var(--line);color:var(--sub);font-size:13px;text-align:center}
+  footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="logo">nex<span>l</span> · 品牌站生成器</div>
+  <a href="https://github.com/nexl-web-skills/nexl-web-skills" target="_blank">GitHub ↗</a>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>输入品牌，秒出站点</h1>
+    <p>这是 nexl 的零安装体验入口。真实建站由你的 Agent 用激活语完成 —— 这里先让你"哇"一下。</p>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <label>品牌名</label>
+      <input type="text" id="name" value="NovaVia" oninput="render()">
+      <label>一句话定位</label>
+      <input type="text" id="tagline" value="独立社交新物种" oninput="render()">
+      <label>主色</label>
+      <div class="colors" id="colors"></div>
+      <input type="text" id="color" value="#0A84FF" oninput="render()">
+    </div>
+
+    <div>
+      <div class="section-title">实时站点预览</div>
+      <div class="site">
+        <div class="site-hero" id="siteHero">
+          <h2 id="pHero">NovaVia</h2>
+          <p id="pTag">独立社交新物种</p>
+          <a href="#" onclick="return false">了解更多 →</a>
+        </div>
+        <div class="site-about">
+          <h3>关于我们</h3>
+          <p>由 nexl 经纪人操盘，从一次对话到上线。品牌叙事优先，情绪化微交互，极致克制的视觉。这不是模板，是一个懂你品牌的 AI。</p>
+        </div>
+        <div class="site-foot">由 nexl 驱动 · nexl-web-skills</div>
+      </div>
+
+      <div class="section-title">分享卡（发出去即为 nexl 代言）</div>
+      <div class="card-preview" id="cardPrev"></div>
+      <div class="row">
+        <button class="btn" onclick="downloadCard()">下载分享卡 SVG</button>
+      </div>
+
+      <div class="section-title">社交文案</div>
+      <textarea id="copy" readonly></textarea>
+      <div class="row">
+        <button class="btn ghost" onclick="copyText('copy')">复制文案</button>
+      </div>
+
+      <div class="section-title">激活语（发给你的 Agent 即可真建站）</div>
+      <div class="code" id="activate"></div>
+      <div class="row">
+        <button class="btn ghost" onclick="copyActivate()">复制激活语</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  nexl · 让你的品牌拥有永远在线的经纪人 · <a href="https://github.com/nexl-web-skills/nexl-web-skills" target="_blank">github.com/nexl-web-skills/nexl-web-skills</a>
+</footer>
+
+<div class="toast" id="toast">已复制 ✓</div>
+
+<script>
+const PRESETS = ['#0A84FF','#0D7A5F','#FF9F0A','#FF453A','#BF5AF2','#30D158','#FF2D92'];
+const ACTIVATE = '请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。';
+const REPO = 'https://github.com/nexl-web-skills/nexl-web-skills';
+
+const $ = id => document.getElementById(id);
+
+function buildColors(){
+  const box = $('colors');
+  PRESETS.forEach(c=>{
+    const d=document.createElement('div');
+    d.className='sw'+(c.toLowerCase()===($('color').value||'').toLowerCase()?' on':'');
+    d.style.background=c;
+    d.onclick=()=>{ $('color').value=c; render(); };
+    box.appendChild(d);
+  });
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function clip(s,n){return s.length>n?s.slice(0,n-1)+'…':s;}
+
+function cardSVG(name,tag,color){
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0a0c"/><stop offset="1" stop-color="#16161a"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="12" height="630" fill="${color}"/>
+  <text x="80" y="148" fill="${color}" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="32" font-weight="700" letter-spacing="3">BUILT WITH NEXL</text>
+  <text x="78" y="300" fill="#f5f5f7" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="90" font-weight="800">${esc(clip(name,22))}</text>
+  <text x="80" y="378" fill="#a1a1aa" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="38">${esc(clip(tag,28))}</text>
+  <line x1="80" y1="468" x2="1120" y2="468" stroke="#2a2a31" stroke-width="2"/>
+  <text x="80" y="538" fill="#f5f5f7" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="28">你的品牌值得一个永远在线的经纪人</text>
+  <text x="80" y="582" fill="${color}" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="26" font-weight="600">${REPO}</text>
+</svg>`;
+}
+
+function render(){
+  const name=$('name').value||'Your Brand';
+  const tag=$('tagline').value||'一句话定位你的品牌';
+  let color=$('color').value.trim()||'#0A84FF';
+  if(!color.startsWith('#'))color='#'+color;
+  $('pHero').textContent=name;
+  $('pTag').textContent=tag;
+  $('siteHero').style.setProperty('--c',color);
+  $('siteHero').style.background=color;
+  const svg=cardSVG(name,tag,color);
+  $('cardPrev').innerHTML=svg;
+  $('copy').value=`🚀 刚用 @nexl 把「${name}」建成了独立站：「${tag}」\n\n不是模板，是一个懂我品牌的 AI 经纪人全程操盘。\n${REPO} #独立站 #AI建站 #品牌出海`;
+  $('activate').textContent=ACTIVATE;
+  document.querySelectorAll('.sw').forEach(s=>s.classList.toggle('on', s.style.background.replace(/\s/g,'').toLowerCase()===color.toLowerCase()));
+}
+
+function downloadCard(){
+  const name=$('name').value||'brand';
+  const svg=$('cardPrev').querySelector('svg').outerHTML;
+  const blob=new Blob([svg],{type:'image/svg+xml'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(name.replace(/\s+/g,'-')+'-nexl-card.svg');
+  a.click();
+  showToast('分享卡已下载 ✓');
+}
+function copyText(id){const t=$(id);t.select();document.execCommand('copy');showToast('已复制 ✓');}
+function copyActivate(){navigator.clipboard.writeText(ACTIVATE);showToast('激活语已复制 ✓');}
+function showToast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600);}
+
+buildColors();
+render();
+</script>
+</body>
+</html>

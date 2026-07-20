@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nexl 病毒式裂变战略 · Viral Playbook</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#16161a; --panel2:#1d1d22; --line:#2a2a31;
+    --txt:#f5f5f7; --sub:#a1a1aa; --accent:#0a84ff; --green:#30d158; --amber:#ff9f0a; --red:#ff453a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;padding:64px 24px}
+  .wrap{max-width:840px;margin:0 auto}
+  header{margin-bottom:48px}
+  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.12}
+  .meta{color:var(--sub);font-size:14px;margin-top:16px}
+  h2{font-size:25px;font-weight:650;margin:54px 0 18px;letter-spacing:-.01em}
+  h3{font-size:17px;font-weight:600;margin:26px 0 10px}
+  p{color:var(--sub);margin:11px 0;font-size:15.5px}
+  strong{color:var(--txt);font-weight:600}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin:16px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--sub);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  td{color:var(--txt)}
+  code{background:var(--panel2);padding:2px 7px;border-radius:6px;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--green)}
+  .pill{display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(10,132,255,.15);color:var(--accent);margin-right:6px}
+  .big{font-size:30px;font-weight:700;color:var(--green);letter-spacing:-.02em}
+  ul{margin:10px 0 10px 20px;color:var(--sub);font-size:15px}
+  li{margin:7px 0}
+  .quote{font-size:19px;font-weight:600;color:var(--txt);border-left:3px solid var(--accent);padding:14px 0 14px 20px;margin:24px 0;line-height:1.5}
+  .fly{background:linear-gradient(135deg,#16161a,#1a1d2b);border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin:18px 0;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13.5px;color:var(--sub);line-height:1.9}
+  .fly b{color:var(--green)}
+  .note{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:15px 20px;margin:20px 0;color:var(--sub);font-size:14.5px}
+  footer{margin-top:60px;color:var(--sub);font-size:13px;text-align:center;border-top:1px solid var(--line);padding-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Nexl / TideShell · 裂变战略</div>
+    <h1>nexl 病毒式裂变战略<br>Viral Playbook</h1>
+    <div class="meta">日期 2026-07-20 · 接力者 观涛虾🦐 (TideShell) · 对标 nuwa-skill（仅范式研究）</div>
+  </header>
+
+  <div class="quote">nuwa 让人"哇"一下就走；nexl 让每个品牌"建完即代言、用久即沉淀"。</div>
+
+  <h2>一、nuwa-skill 的 star 进程（实证）</h2>
+  <div class="card">
+    <table>
+      <tr><th>时间 (UTC)</th><th>关键事件</th><th>累计 star</th><th>日增</th></tr>
+      <tr><td>2026-04-05</td><td>仓库创建（踩 colleague-skill 势能）</td><td>0</td><td>—</td></tr>
+      <tr><td>2026-05-26</td><td>同步 14 person skill；banner 13,248</td><td>13,248</td><td>—</td></tr>
+      <tr><td>2026-05-28</td><td><strong>病毒拐点</strong>：13,248 → 21,670</td><td>21,670</td><td><span class="big">+4,211</span></td></tr>
+      <tr><td>2026-06-06~14</td><td>promo/hero/FanBox 营销加码</td><td>~23,000</td><td>—</td></tr>
+      <tr><td>2026-07-02</td><td>生态固化：评分卡+社区+PR检查（单日11提交）</td><td>~27,000</td><td>—</td></tr>
+      <tr><td>2026-07-20</td><td>当前</td><td><strong>28,360</strong></td><td>~126（放缓）</td></tr>
+    </table>
+    <p>曲线解读：冷启动吃品类红利 → 5月底上榜病毒拐点 → 6月内容营销 → 7月生态固化但增速回落（S 曲线后半段）。</p>
+  </div>
+
+  <h2>二、nuwa 做对的 8 件事</h2>
+  <ul>
+    <li><strong>品类卡位</strong>：在"蒸馏人可行"窗口抢占更强叙事心智。</li>
+    <li><strong>低摩擦激活</strong>：<code>npx skills add</code> 一行装，跨 55+ runtime。</li>
+    <li><strong>效果可见即可传播</strong>：名人对话示例天然截图裂变。</li>
+    <li><strong>质量背书</strong>：保真度评分卡（盲测 A 级）解决信任。</li>
+    <li><strong>UGC 飞轮</strong>：COMMUNITY 索引让用户提交 skill。</li>
+    <li><strong>多语言</strong>：中/英/日/韩/西吃全球。</li>
+    <li><strong>内容引擎</strong>：promo/hero/quote cards 持续供给。</li>
+    <li><strong>AI 高频迭代</strong>：单日 11 提交打磨 SKILL.md。</li>
+  </ul>
+
+  <h2>三、nuwa 的 6 个可被超越的弱点</h2>
+  <div class="card">
+    <table>
+      <tr><th>#</th><th>弱点</th><th>我们的机会</th></tr>
+      <tr><td>1</td><td>用完即走，无留存钩子</td><td>nexl-broker 品牌经纪人，brand-profile 持续沉淀</td></tr>
+      <tr><td>2</td><td>传播素材静态（作者写）</td><td>建站产出即带回流水印分享卡</td></tr>
+      <tr><td>3</td><td>无在线漏斗（必装才能试）</td><td>EdgeOne 在线 demo，零安装即体验</td></tr>
+      <tr><td>4</td><td>品类天花板（名人有限+伦理）</td><td>品牌资产化，市场大数量级</td></tr>
+      <tr><td>5</td><td>裂变无结构化激励</td><td>邀请得四平台积分/模板</td></tr>
+      <tr><td>6</td><td>地域集中（中文圈）</td><td>四平台+出海叙事，天然全球化</td></tr>
+    </table>
+  </div>
+
+  <h2>四、nexl 病毒引擎：8 杠杆 + 1 飞轮</h2>
+  <h3>8 根增长杠杆</h3>
+  <ul>
+    <li><span class="pill">L1</span><strong>零安装漏斗</strong>：EdgeOne demo 页，输入品牌即生成预览+分享卡+激活语。</li>
+    <li><span class="pill">L2</span><strong>低摩擦激活</strong>：双激活语（安装型短句 + 即载型固定句）。</li>
+    <li><span class="pill">L3</span><strong>产出即传播</strong>：<code>gen-brand-card.cjs</code> 自动生成带回流链接分享卡+文案。</li>
+    <li><span class="pill">L4</span><strong>UGC 案例飞轮</strong>：<code>showcase/</code> + CONTRIBUTING，用户案例即活广告。</li>
+    <li><span class="pill">L5</span><strong>品牌经纪人留存飞轮</strong>：brand-profile 越用越厚，切换成本递增。</li>
+    <li><span class="pill">L6</span><strong>多语言 × 多平台</strong>：中/英 README + 四平台原生。</li>
+    <li><span class="pill">L7</span><strong>结构化裂变激励</strong>：邀请得积分/模板。</li>
+    <li><span class="pill">L8</span><strong>内容引擎 + KOL</strong>：真实案例即内容，种子 KOL 首发。</li>
+  </ul>
+
+  <h3>差异化飞轮</h3>
+  <div class="fly">
+    用户建站 → 产出分享卡<b>(裂变)</b> → 案例进 showcase<b>(社会证明)</b><br>
+    　→ brand-profile 沉淀<b>(留存)</b> → 下次更懂品牌<b>(复利)</b><br>
+    　→ 更愿意邀请<b>(激励)</b> → 新用户进漏斗 → <b>循环加速</b>
+  </div>
+  <p>nuwa 只有前半段（建完即走）；我们有完整闭环。</p>
+
+  <h2>五、落地清单（本 Playbook 已落地）</h2>
+  <div class="card">
+    <ul>
+      <li>✅ <code>docs/VIRAL-PLAYBOOK.md+.html</code> — 战略文档</li>
+      <li>✅ <code>README.md</code> 病毒化 — shields + slogan + 安装短句 + demo CTA</li>
+      <li>✅ <code>scripts/gen-brand-card.cjs</code> — 分享卡生成器</li>
+      <li>✅ <code>CONTRIBUTING.md</code> + <code>showcase/</code> — UGC 飞轮</li>
+      <li>✅ <code>.github/workflows/</code> — welcome + community-check</li>
+      <li>✅ <code>demo/</code> — EdgeOne 在线体验页</li>
+    </ul>
+  </div>
+
+  <h2>六、KPI 与里程碑</h2>
+  <div class="card">
+    <table>
+      <tr><th>阶段</th><th>目标</th><th>信号</th></tr>
+      <tr><td>冷启动 0-30天</td><td>四平台用户+KOL首发</td><td>500 star + 10 案例</td></tr>
+      <tr><td>病毒拐点 30-60天</td><td>深度内容/榜单+demo裂变</td><td>单日 +1,000</td></tr>
+      <tr><td>生态固化 60-90天</td><td>案例库 100+</td><td>留存 > 40%</td></tr>
+      <tr><td>超越 90天+</td><td>超 nuwa 同期曲线</td><td>28k+ 且增速更高</td></tr>
+    </table>
+  </div>
+
+  <div class="note"><strong>下一步</strong>：① 部署 demo 到 EdgeOne 拿主漏斗链接；② 四平台实测激活语+分享卡；③ 打磨 brand-profile 模板强化留存；④ 多语言+海外 KOL 扩张。</div>
+
+  <footer>观涛虾🦐 (TideShell) · 裂变战略 · 2026-07-20 · 对标研究，非抄袭</footer>
+</div>
+</body>
+</html>

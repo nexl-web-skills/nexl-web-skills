@@ -1,0 +1,54 @@
+name: community-check
+
+on:
+  pull_request:
+    paths:
+      - 'showcase/**'
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate showcase entries
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            const changed = execSync('git diff --name-only origin/${{ github.base_ref }}...HEAD')
+              .toString().split('\n')
+              .filter(f => f.startsWith('showcase/') && f.endsWith('.md')
+                && !f.includes('_template') && f !== 'showcase/README.md');
+
+            let ok = true;
+            let msg = '## 🤖 community-check 结果\n\n';
+            if (!changed.length) {
+              msg += '（本 PR 无 showcase 案例变更，跳过）\n';
+            } else {
+              for (const f of changed) {
+                const c = fs.readFileSync(f, 'utf8');
+                const need = ['brand:', 'platform:', 'tagline:', '激活语', 'nexl-web-skills'];
+                const miss = need.filter(k => !c.includes(k));
+                if (miss.length) {
+                  ok = false;
+                  msg += `- ❌ \`${f}\` 缺少: ${miss.join(', ')}\n`;
+                } else {
+                  msg += `- ✅ \`${f}\` 通过\n`;
+                }
+              }
+            }
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: msg
+            });
+            if (!ok) core.setFailed('showcase 格式校验未通过，请对照 showcase/_template.md 补全');

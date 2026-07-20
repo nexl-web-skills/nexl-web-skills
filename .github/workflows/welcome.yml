@@ -1,0 +1,30 @@
+name: Welcome
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment welcome
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const isPR = !!context.payload.pull_request;
+            const body = isPR
+              ? `👋 感谢提交 PR！\n\n如果是 \`showcase/\` 案例，community-check 会自动校验格式（需含 brand / platform / tagline / 激活语 / nexl 署名）。\n\n🚀 先体验在线 demo：见仓库 README 的 **Demo** 段\n🔑 激活语：请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。`
+              : `👋 欢迎来到 nexl！\n\n🚀 在线体验 demo：见仓库 README 的 **Demo** 段\n🔑 激活语：请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。\n\n想建站？把上面激活语发给你的 Agent（Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒）即可。建完用 \`scripts/gen-brand-card.cjs\` 生成分享卡，发出去就是代言 🔥`;
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });

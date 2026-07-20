@@ -20,7 +20,23 @@ This repository does not ship "yet another website generator". It ships a skill 
 | Growth loop past deploy — forum, reports, agent collab | yes | no | no |
 | Awwwards taste, hard-coded not bolted-on | yes | no | partial |
 
+## Demo · 零安装体验
+
+不想装？[在线体验品牌站生成器](https://6140996bed0e462abe6f0d61ce06628f.app.codebuddy.work) —— 输入品牌名，秒出站点预览 + 分享卡。这是 nuwa 没有的入口。
+
+> 你的品牌值得一个永远在线的经纪人。nexl = 建站引擎（nexl-builder）+ 品牌经纪人（nexl-broker）。
+
 ## Activate
+
+**安装型（支持 Agent Skills 协议的本地 runtime，推荐，更短）：**
+
+```bash
+npx skills add nexl-web-skills/nexl-web-skills
+```
+
+或告诉你的 agent：`帮我安装这个 skill：https://github.com/nexl-web-skills/nexl-web-skills`
+
+**即载型（Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA 等无 skills 目录平台，铁律固定句）：**
 
 A. Paste into any Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA / Claude / Codex agent:
 
@@ -31,6 +47,8 @@ B. Or one line in a terminal:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/cli/install.sh | bash
 ```
+
+**建完即代言**：`node scripts/gen-brand-card.cjs --name "你的品牌" --tagline "一句话定位"` 生成带回流链接的分享卡，发出去就是 nexl 代言 🔥
 
 ## Four-platform aware
 
@@ -86,6 +104,8 @@ Engineering logs, kept for relay transparency.
 - [腾讯 WorkBuddy 白皮书](docs/WORKBUDDY-WHITEPAPER.md) · [html](docs/WORKBUDDY-WHITEPAPER.html)
 - [百度秒哒 MIAODA 白皮书](docs/MIAODA-WHITEPAPER.md) · [html](docs/MIAODA-WHITEPAPER.html)
 - [四平台识别与路由机制](docs/PLATFORM-ROUTING.md) · [html](docs/PLATFORM-ROUTING.html)
+- [双核机制设计（建站 + 品牌经纪人）](docs/NEXL-DUAL-SKILL-DESIGN.md) · [html](docs/NEXL-DUAL-SKILL-DESIGN.html)
+- [病毒式裂变战略 · Viral Playbook](docs/VIRAL-PLAYBOOK.md) · [html](docs/VIRAL-PLAYBOOK.html)
 
 ## License
 
