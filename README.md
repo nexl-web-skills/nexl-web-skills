@@ -22,7 +22,7 @@ This repository does not ship "yet another website generator". It ships a skill 
 
 ## Demo · 零安装体验
 
-不想装？[在线体验品牌站生成器](https://6140996bed0e462abe6f0d61ce06628f.app.codebuddy.work) —— 输入品牌名，秒出站点预览 + 分享卡。这是 nuwa 没有的入口。
+不想装？[在线体验品牌站生成器](https://vip1688nfc-4g9uzi1ucb6ff8d3-1415196972.tcloudbaseapp.com/) —— 输入品牌名，秒出站点预览 + 分享卡。这是 nuwa 没有的入口（CloudBase 静态托管稳定版）。
 
 > 你的品牌值得一个永远在线的经纪人。nexl = 建站引擎（nexl-builder）+ 品牌经纪人（nexl-broker）。
 
