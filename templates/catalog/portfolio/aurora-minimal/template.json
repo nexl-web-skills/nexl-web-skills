@@ -1,0 +1,27 @@
+{
+  "id": "aurora-minimal",
+  "name": "Aurora · 极简作品集",
+  "author": "nexl-web-skills",
+  "category": "portfolio",
+  "platforms": ["coze", "meoo", "workbuddy", "miaoda"],
+  "tags": ["minimal", "dark", "typography", "portfolio"],
+  "ratings": {
+    "quality": 5,
+    "cost_efficiency": 4,
+    "stability": 5
+  },
+  "cost_estimate": {
+    "coze_credits": 300,
+    "meoo_credits": 80,
+    "workbuddy_credits": 50,
+    "miaoda_seconds": 420
+  },
+  "design_language": "暗黑极简 · 强排版 · 无渐变 · 单一强调色",
+  "first_screen_pitch": "5 秒内说清你是谁：超大字姓名 + 一句定位",
+  "files": ["site/index.html"],
+  "preview": "https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/templates/catalog/portfolio/aurora-minimal/site/index.html",
+  "license": "MIT",
+  "createdAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "commit": ""
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora — 极简作品集</title>
+<style>
+  :root{
+    --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803;
+    --line:rgba(245,245,245,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:10;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 28px;background:rgba(10,10,10,.72);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  nav a{color:var(--fg);text-decoration:none;font-size:13px;letter-spacing:.04em;margin-left:22px}
+  nav a:hover{color:var(--accent)}
+  nav .brand{font-weight:600;letter-spacing:.02em}
+  /* HERO — 视觉锤 */
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px}
+  h1{font-size:clamp(56px,11vw,140px);font-weight:700;line-height:.94;letter-spacing:-.03em}
+  .lede{margin-top:26px;font-size:clamp(18px,2.4vw,26px);color:var(--muted);max-width:30ch}
+  .lede b{color:var(--fg);font-weight:500}
+  /* SECTION */
+  section{padding:120px 0;border-top:1px solid var(--line)}
+  h2{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:48px}
+  /* WORK GRID */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card{aspect-ratio:4/3;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;transition:border-color .25s,transform .25s}
+  .card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .card .k{color:var(--accent);font-size:12px;letter-spacing:.16em}
+  .card .t{font-size:22px;font-weight:600;margin-top:8px}
+  .card .d{color:var(--muted);font-size:14px;margin-top:6px}
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .about p{font-size:17px;color:var(--muted)}
+  .about p + p{margin-top:18px}
+  /* CONTACT */
+  .contact h3{font-size:clamp(32px,6vw,64px);font-weight:700;letter-spacing:-.02em;line-height:1.05}
+  .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  /* FOOTER */
+  footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--fg)}
+  @media(max-width:720px){
+    .grid,.about{grid-template-columns:1fr}
+    nav a{margin-left:14px}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">AURORA</span>
+  <span><a href="#work">作品</a><a href="#about">关于</a><a href="#contact">联系</a></span>
+</nav>
+
+<header class="wrap">
+  <div class="eyebrow">Independent Designer · 独立设计师</div>
+  <h1>林奥<br> Aurora Lin</h1>
+  <p class="lede">我用<b>最少的形</b>，讲<b>最清楚的事</b>。视觉系统、品牌与界面，一处生长。</p>
+</header>
+
+<section id="work" class="wrap">
+  <h2>精选作品 / Selected Work</h2>
+  <div class="grid">
+    <div class="card"><div class="k">2026 · 品牌</div><div class="t">NOVA 视觉系统</div><div class="d">为新能源品牌建立的暗黑极简识别</div></div>
+    <div class="card"><div class="k">2025 · 产品</div><div class="t">Pulse 仪表盘</div><div class="d">零装饰的数据界面，信息即美学</div></div>
+    <div class="card"><div class="k">2025 · 出版</div><div class="t">《留白》画册</div><div class="d">强排版编辑设计，单色克制</div></div>
+    <div class="card"><div class="k">2024 · 空间</div><div class="t">Atelier 展陈</div><div class="d">线下展览的视觉与导视系统</div></div>
+  </div>
+</section>
+
+<section id="about" class="wrap about">
+  <h2 style="grid-column:1/-1">关于 / About</h2>
+  <div>
+    <p>我相信好设计是「被相信」，不是「被浏览」。多数网站死在第一屏——拼命展示业务，却没回答你是谁。</p>
+    <p>我的顺序永远是反的：先钉死视觉锤，再让它长成系统。</p>
+  </div>
+  <div>
+    <p>十年间服务艺术家、消费品牌与独立产品。不堆砌，只做减法。</p>
+    <p>本模板由 nexl 驱动，可携品牌底稿复用，换品牌不换骨架。</p>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <h2>联系 / Contact</h2>
+  <h3>说清你是谁，<br>剩下的交给我。</h3>
+  <p style="margin-top:28px;color:var(--muted)">邮件 <a href="mailto:hello@aurora.studio">hello@aurora.studio</a></p>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Aurora Lin · 模板 MIT 授权</span>
+  <span>由 <a href="https://github.com/nexl-web-skills/nexl-web-skills" target="_blank" rel="noopener">nexl</a> 驱动 · 独立站数字资产</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXL · 四平台满血调用战略 · 世界级独立站数字资产标准</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#141417; --panel2:#1b1b20; --line:#2a2a31;
+    --ink:#f2f2f5; --mut:#9a9aa5; --acc:#FFD803; --acc2:#0D7A5F; --red:#ff5a5f; --grn:#3ddc84;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;padding:0 0 80px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  header{padding:72px 22px 40px;text-align:center;border-bottom:1px solid var(--line)}
+  header h1{font-size:30px;font-weight:700;letter-spacing:-.5px}
+  header .sub{color:var(--mut);margin-top:12px;font-size:14px}
+  .tag{display:inline-block;margin-top:18px;font-size:12px;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:4px 14px}
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:21px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  h2 .n{color:var(--acc);font-variant-numeric:tabular-nums}
+  h3{font-size:15px;color:var(--mut);font-weight:600;margin:22px 0 10px;letter-spacing:.3px}
+  p{color:#d9d9e0;font-size:15px;margin:10px 0}
+  .lead{color:var(--mut);font-size:14px}
+  .quote{background:var(--panel);border-left:3px solid var(--acc);padding:18px 22px;border-radius:0 12px 12px 0;margin:18px 0;font-size:15px}
+  .quote b{color:var(--acc)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--ink);font-weight:600}
+  td{color:#cfcfd6}
+  .pill{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:600}
+  .pill.no{background:rgba(255,90,95,.14);color:var(--red)}
+  .pill.yes{background:rgba(61,220,132,.14);color:var(--grn)}
+  .pill.acc{background:rgba(255,216,3,.14);color:var(--acc)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .card .k{color:var(--acc);font-size:13px;font-weight:700;margin-bottom:6px}
+  .card .v{color:#cfcfd6;font-size:13.5px}
+  .lev{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px dashed var(--line)}
+  .lev .num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+  .lev .t{font-weight:600;font-size:15px}
+  .lev .d{color:var(--mut);font-size:13.5px;margin-top:3px}
+  .std{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:18px 0}
+  .std .item{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .std .item .h{color:var(--acc);font-weight:700;font-size:14px}
+  .std .item .b{color:#cfcfd6;font-size:13px;margin-top:5px}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0;font-size:13px}
+  .flow .step{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:#d9d9e0}
+  .flow .arr{color:var(--mut)}
+  .loop{background:linear-gradient(135deg,rgba(13,122,95,.18),rgba(255,216,3,.08));border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0}
+  .loop .t{color:var(--acc);font-weight:700;font-size:15px;margin-bottom:8px}
+  .red{color:var(--red)} .grn{color:var(--grn)} .yl{color:var(--acc)}
+  .foot{color:var(--mut);font-size:12.5px;text-align:center;padding:30px 22px 0}
+  code{background:var(--panel2);padding:2px 7px;border-radius:6px;font-size:12.5px;color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>四平台内嵌 Agent 满血调用战略</h1>
+    <div class="sub">世界级独立站数字资产标准 · nexl-web-skill 第 20 棒</div>
+    <span class="tag">Activate → Agent 接管 → 复利资产</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="quote">
+      <b>普通用户</b>：登录 → 点官方「建站」入口 → 选模板 → 一次性产出 → 上线即过时。<br>
+      <b>NEXL 用户</b>：发激活语 → 调起内嵌 Agent 加载 nexl-builder → 双核（品牌灵魂底稿 + 建站）→ 8 维守门 → 复利资产。<br>
+      <span style="color:var(--mut)">差距不在工具，在「是否让 Agent 满血跑了我们的 SOP」。</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">01</span>四平台内嵌 Agent 怎么调起来</h2>
+    <p class="lead">每个平台都有两个入口：官方「模板 / 快速建站」UI（降维）与我们激活语调起的「对话 / Agent 通道」（满血）。内嵌 Agent 只在对话通道里能被我们的 SOP 接管。</p>
+    <table>
+      <thead><tr><th>平台</th><th>官方入口（降维·别走）</th><th>NEXL 满血调起方式</th><th>内嵌 Agent 调用机制</th><th>计费锚点（实测）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Coze</b><br>扣子</td>
+          <td>「网页生成」模板插件 / 模板画廊</td>
+          <td>创建 <b>Bot</b> → 知识库<b>预置 builder.md</b>（方案 A 最稳）→ 人设写入双核 + 六步；或「工作流」串预算节点</td>
+          <td>Chat API v3 + doubao；无终端，curl 无效</td>
+          <td>15 轮≈<b>400 积分（¥0.4）</b><br>含 4 图≈1280（¥1.3）</td>
+        </tr>
+        <tr>
+          <td><b>秒悟 Meoo</b></td>
+          <td>模板市场 / 快速建应用</td>
+          <td>对话首句<b>粘贴激活语</b> → 读 builder.md 激活</td>
+          <td>对话通道 + qwen/kimi/glm/deepseek<br><span class="red">仅境内合规模型</span></td>
+          <td>15 轮 ¥0.14–2.3<br><b>Night Plan</b> qwen3.7-max <b>2 折≈¥0.10</b></td>
+        </tr>
+        <tr>
+          <td><b>WorkBuddy</b><br>腾讯</td>
+          <td>「AI 生成网站」一句话</td>
+          <td><b>技能激活 nexl-builder</b><br>（观涛虾本地执行）</td>
+          <td>桌面 Agent + 文件系统 + bash</td>
+          <td>免费 500 积分/月 ≈ <b>6 次</b><br>15 轮≈75（¥0.075）</td>
+        </tr>
+        <tr>
+          <td><b>MIAODA</b><br>百度秒哒</td>
+          <td>「做一个网页」快速动作</td>
+          <td>对话<b>粘贴激活语</b> / 装 <b>App Builder Skill</b></td>
+          <td>全栈原生：前后端+DB+小程序+APP</td>
+          <td>免费 <b>610 秒点</b> = <b>1.26 次</b>全栈</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="lead">关键洞察：官方入口是「模板引擎」，内嵌 Agent 是「可被 SOP 接管的推理体」。永远走 Agent 通道，且第一句话就把 <code>builder.md</code> 注入它的运行时——这就是「调起」的全部秘密。</p>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>满血激活的 7 根杠杆</h2>
+    <p class="lead">「PUA 成功内嵌 Agent」= 用 7 根杠杆把 Agent 从「模板生成器」拉成「品牌操盘手」。</p>
+    <div class="lev"><div class="num">1</div><div><div class="t">通道选择</div><div class="d">永远走「对话 / Agent 通道」，绝不点「模板 UI」。模板=降维（千站一面）；Agent=满血（可注入 SOP）。</div></div></div>
+    <div class="lev"><div class="num">2</div><div><div class="t">技能注入</div><div class="d">把 nexl-builder SKILL（双核+视觉锤+8 维守门+底稿复利）写进 Agent 的系统提示 / 知识库。Coze 用知识库预置（方案 A）更稳更省。</div></div></div>
+    <div class="lev"><div class="num">3</div><div><div class="t">预算透明前置</div><div class="d">Step 0 先报预算卡，把算力花在「质量」不花「浪费」。Coze 预置砍后台 22%+中断 13%；Meoo Night Plan 砍旗舰 80%。</div></div></div>
+    <div class="lev"><div class="num">4</div><div><div class="t">六步 ask 框架</div><div class="d">每步先问后做（用户研究→信息架构→视觉系统→页面交互→内容→迭代）。普通入口一锤子，我们逐步确认，垃圾源头被毙。</div></div></div>
+    <div class="lev"><div class="num">5</div><div><div class="t">视觉锤钉死</div><div class="d">第一屏 5 秒说清「你是谁 + 独特价值」；色彩 / 排版 / 动效 / 语气统一成一门设计语言（有 token 表）。</div></div></div>
+    <div class="lev"><div class="num">6</div><div><div class="t">8 维一致性守门</div><div class="d">每版产出过 8 维校验，把返工挡在交付前。普通站点贵在「调性漂移」，上线即过时。</div></div></div>
+    <div class="lev"><div class="num">7</div><div><div class="t">底稿复利</div><div class="d">brand-profile 可复用可导出；第 N 次迭代边际成本→0，资产随时间增值——模板永远给不了。</div></div></div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>为什么远超普通入口人群</h2>
+    <p class="lead">机制差，非运气。</p>
+    <table>
+      <thead><tr><th>维度</th><th>普通入口人群</th><th>NEXL 满血用户</th></tr></thead>
+      <tbody>
+        <tr><td>起点</td><td>套模板</td><td class="grn">品牌灵魂底稿（brand-profile）</td></tr>
+        <tr><td>第一屏</td><td>业务罗列、千站一面</td><td class="grn">视觉锤 5 秒说清「你是谁」</td></tr>
+        <tr><td>设计语言</td><td>平台默认主题</td><td class="grn">一门统一语言（色/排/动/语）</td></tr>
+        <tr><td>过程</td><td>一次性产出</td><td class="grn">六步 ask 逐步确认</td></tr>
+        <tr><td>质量阀</td><td><span class="red">无</span></td><td class="grn">8 维一致性守门</td></tr>
+        <tr><td>资产形态</td><td>会过时的页面</td><td class="grn">复利底稿（可携带、可迭代）</td></tr>
+        <tr><td>单次成本</td><td>外包 ¥2万–8万 / 模板年费</td><td class="grn"><b>¥0.1–1.3 / 次</b></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>世界级独立站数字资产 · 8 条标准</h2>
+    <p class="lead">逐条打到才算「世界级」。</p>
+    <div class="std">
+      <div class="item"><div class="h">① 灵魂可携带</div><div class="b">存在 brand-profile 且可导出 Markdown，不锁死任一平台。</div></div>
+      <div class="item"><div class="h">② 视觉锤 &lt; 5 秒</div><div class="b">首屏 5 秒内传达「你是谁 + 独特价值」，不靠滚动猜。</div></div>
+      <div class="item"><div class="h">③ 一门设计语言</div><div class="b">色彩/排版/动效/语气 4 维统一，有可机读 token 表。</div></div>
+      <div class="item"><div class="h">④ 零调性漂移</div><div class="b">跨所有页面通过 8 维一致性校验，无风格打架。</div></div>
+      <div class="item"><div class="h">⑤ 主权独立</div><div class="b">自有域名（合规备案）、无平台水印、可导出源码——是橱窗不是租摊。</div></div>
+      <div class="item"><div class="h">⑥ 增长闭环</div><div class="b">已部署 + SEO 友好 + 数据埋点 + 迭代回路，不是死页。</div></div>
+      <div class="item"><div class="h">⑦ 复利曲线</div><div class="b">第 N 次迭代边际成本趋零，资产随版本单调增值。</div></div>
+      <div class="item"><div class="h">⑧ Awwwards 级工艺</div><div class="b">叙事+微交互+动效有「被相信」而非「被浏览」的质感。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>达成路径 · 四平台满血口诀</h2>
+    <div class="loop">
+      <div class="t">主闭环</div>
+      <div class="flow">
+        <span class="step">激活语</span><span class="arr">→</span>
+        <span class="step">平台识别</span><span class="arr">→</span>
+        <span class="step">预算透明</span><span class="arr">→</span>
+        <span class="step">六步 ask</span><span class="arr">→</span>
+        <span class="step">8 维守门</span><span class="arr">→</span>
+        <span class="step">部署</span><span class="arr">→</span>
+        <span class="step">中台登记</span><span class="arr">→</span>
+        <span class="step">底稿复利</span>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="k">Coze</div><div class="v">知识库预置 builder.md，预算节点前置；<span class="red">别用模板插件</span>。</div></div>
+      <div class="card"><div class="k">Meoo</div><div class="v">22:00–08:00 + Pro/Max + qwen3.7-max → 旗舰近免费（¥0.10）；Max 拿自定义域名。</div></div>
+      <div class="card"><div class="k">WorkBuddy</div><div class="v">本地生成 + 本地预览 + Cloudflare 部署，免费额度零成本试错。</div></div>
+      <div class="card"><div class="k">MIAODA</div><div class="v">全栈原生一把出「网站+后端+DB+小程序」，免费 610 秒点 = 1 次全栈。</div></div>
+    </div>
+    <p class="lead">增长飞轮：部署 → 中台登记 → showcase 展示 → 分享卡裂变 → UGC 飞轮 → 下一个用户被「满血样本」吸引入局。</p>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span>铁律</h2>
+    <div class="lev"><div class="num">!</div><div><div class="t">激活语永远固定那一句</div><div class="d">不为任何平台改文案、不加后缀。可移植性 = 一切。</div></div></div>
+    <div class="lev"><div class="num">!</div><div><div class="t">永不走官方模板入口</div><div class="d">那是降维通道，产出永远千站一面。</div></div></div>
+    <div class="lev"><div class="num">!</div><div><div class="t">不报预算不许开工</div><div class="d">Step 0 硬前置，这是与黑盒工具的分界线。</div></div></div>
+    <div class="lev"><div class="num">!</div><div><div class="t">8 维守门每版必过</div><div class="d">返工挡在交付前，杜绝调性漂移。</div></div></div>
+    <div class="lev"><div class="num">!</div><div><div class="t">底稿必导出可复制文本块</div><div class="d">供用户自存，资产不锁平台。</div></div></div>
+    <div class="lev"><div class="num">!</div><div><div class="t">合规红线</div><div class="d">Meoo 不接境外模型；域名必合规备案；不生成违规内容。</div></div></div>
+  </section>
+
+  <div class="foot">
+    来源：tideshellbase · docs/PLATFORM-AGENT-MAXIMIZER.md（第 20 棒）<br>
+    四平台白皮书：COZE-BUDGET / MEOO-WHITEPAPER / WORKBUDDY-WHITEPAPER / MIAODA-WHITEPAPER · 路由：PLATFORM-ROUTING
+  </div>
+
+</div>
+</body>
+</html>

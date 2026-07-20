@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集体独立站数字资产 · 模板共建与案例调用体系</title>
+<style>
+  :root{
+    --bg:#0B0B0D; --panel:#141417; --fg:#F5F5F7; --muted:#9A9AA2;
+    --line:rgba(245,245,247,.10); --accent:#FFD803; --accent2:#0D7A5F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:80px 28px 120px}
+  .hero{margin-bottom:72px}
+  .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:20px}
+  h1{font-size:clamp(34px,6vw,58px);font-weight:700;line-height:1.05;letter-spacing:-.02em}
+  .sub{margin-top:18px;color:var(--muted);font-size:17px;max-width:62ch}
+  section{margin:64px 0;padding-top:48px;border-top:1px solid var(--line)}
+  h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+  h3{font-size:22px;font-weight:600;margin:28px 0 12px;letter-spacing:-.01em}
+  p{color:#D8D8DC;margin:12px 0}
+  .lead{font-size:18px;color:var(--fg);font-weight:500}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .card .k{color:var(--accent);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .pill{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .pill b{color:var(--accent);display:block;font-size:15px;margin-bottom:6px}
+  .pill span{color:var(--muted);font-size:13px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  td b{color:var(--fg)}
+  code{background:rgba(255,216,3,.10);color:var(--accent);padding:2px 6px;border-radius:5px;font-size:13px;font-family:"SF Mono",Menlo,monospace}
+  pre{background:#0E0E10;border:1px solid var(--line);border-radius:10px;padding:18px;overflow-x:auto;font-size:12.5px;line-height:1.5;color:#C8C8CE;font-family:"SF Mono",Menlo,monospace;margin:14px 0}
+  .quote{border-left:3px solid var(--accent);padding:4px 0 4px 20px;color:var(--muted);font-style:italic;margin:20px 0}
+  .tree{font-family:"SF Mono",Menlo,monospace;font-size:12.5px;color:#B8B8BE;background:#0E0E10;border:1px solid var(--line);border-radius:10px;padding:18px;line-height:1.6;white-space:pre}
+  .ok{color:var(--accent2);font-weight:600}
+  .filelist{font-size:13px;color:var(--muted);margin:8px 0}
+  .filelist span{color:var(--fg)}
+  @media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">NEXL · Community Asset · Handoff 21</div>
+    <h1>集体独立站数字资产<br>模板共建与案例调用体系</h1>
+    <p class="sub">一份能被所有开发者贡献、被所有平台 agent 调用的独立站数字资产。A shared digital asset — contributed by every developer, callable by every platform agent.</p>
+  </div>
+
+  <!-- 0 -->
+  <section>
+    <h2>〇 · 为什么是现在 / Why now</h2>
+    <p class="lead">用户被激活后，最自然的一句话是：「给我看看你们做得最好的站长什么样。」</p>
+    <p>nexl 今天只有 <code>showcase/</code>——那是<strong>成品案例</strong>（别人建完的站，活广告）。但缺 <code>templates/</code>——那是<strong>可复用的起点资产</strong>（代码/配置，拿来即建）。</p>
+    <div class="grid2">
+      <div class="pill"><b>showcase/</b><span>解决「信不信」——social proof 活广告</span></div>
+      <div class="pill"><b>templates/</b><span>解决「快不快」——asset reuse 集体资产</span></div>
+    </div>
+  </section>
+
+  <!-- 1 -->
+  <section>
+    <h2>一 · GitHub 创始人的眼睛 / Through the founder's eyes</h2>
+    <p>Tom Preston-Werner 把 GitHub 做成「社交编程（Social Coding）」而非代码托管。三条刻进骨子里的原则，是本体系的设计地基：</p>
+    <div class="grid3">
+      <div class="pill"><b>PR 是协作单元</b><span>不要求先成朋友，只要求合规 PR。低摩擦 &gt; 高门槛。</span></div>
+      <div class="pill"><b>文档是项目的一半</b><span>README / CONTRIBUTING 是门面，三分钟上手决定生死。</span></div>
+      <div class="pill"><b>贡献者=维护者</b><span>署名即归属，star 归贡献者，资产属于集体。</span></div>
+    </div>
+    <div class="quote">资产化思维：模板不是代码，是集体独立站数字资产。一个人写的极简作品集，下一千人拿去长出自己的品牌。</div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2>二 · 目录结构 / Repository layout</h2>
+    <div class="tree">nexl-web-skills/
+├── showcase/            # 成品案例（活广告，已存在）
+├── templates/           # ★ 新增：可复用模板库（集体资产）
+│   ├── INDEX.json       # 机器可读总索引（agent 激活后加载）
+│   ├── _template/       # 贡献者复制此骨架
+│   │   ├── template.json   # 元数据 schema（必填）
+│   │   ├── README.md       # 人类说明（中英）
+│   │   └── site/           # 可运行站点（index.html 起）
+│   └── catalog/         # 按用途分类（人类浏览）
+│       ├── personal-ip/  brand-site/  portfolio/
+│       └── landing/      shop/
+├── skills/  docs/  CONTRIBUTING.md</div>
+    <p class="filelist">分类用 <span>metadata</span> 不靠软链：物理目录按 <code>category</code> 分，平台适配写在 <code>template.json</code> 的 <code>platforms</code>，INDEX 据此多维检索。</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2>三 · 模板元数据 schema / The template.json contract</h2>
+    <p>每个模板必须有一份 <code>template.json</code>——这是 agent 调用时的唯一真相源：</p>
+    <pre>{
+  "id": "aurora-minimal",
+  "name": "Aurora · 极简作品集",
+  "author": "github-handle",
+  "category": "portfolio",
+  "platforms": ["coze","meoo","workbuddy","miaoda"],
+  "tags": ["minimal","dark","typography"],
+  "ratings": { "quality": 5, "cost_efficiency": 4, "stability": 5 },
+  "cost_estimate": { "coze_credits":300, "meoo_credits":80,
+                     "workbuddy_credits":50, "miaoda_seconds":420 },
+  "design_language": "暗黑极简 · 强排版 · 无渐变",
+  "first_screen_pitch": "5 秒内说清你是谁",
+  "files": ["site/index.html"], "preview":"https://...",
+  "license":"MIT", "createdAt":"2026-07-21", "updatedAt":"2026-07-21"
+}</pre>
+    <p class="filelist"><code>ratings</code> 三维对应「最优秀 / 性价比最高 / 代码最稳定」；<code>cost_estimate</code> 让 agent 直接报预算；<code>platforms</code> 让四平台只调自己能跑的。</p>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2>四 · 三维评级标准 / The three-axis rating</h2>
+    <table>
+      <tr><th>维度</th><th>含义</th><th>评审看什么</th><th>高分信号</th></tr>
+      <tr><td><b>quality</b> 优秀</td><td>视觉/工艺</td><td>第一屏 5 秒说清「你是谁」+独特价值；设计语言统一；Awwwards 级</td><td>视觉锤清晰、零廉价感</td></tr>
+      <tr><td><b>cost_efficiency</b> 性价比</td><td>对应平台成本</td><td>cost_estimate vs 同类；低消耗达高质感</td><td>更少积分/秒点产更高质感</td></tr>
+      <tr><td><b>stability</b> 稳定</td><td>代码质量</td><td>零/最小依赖；响应式；跨平台一致；无 console 报错</td><td>即拷即用、无破绽</td></tr>
+    </table>
+    <div class="quote">agent 调用规则：问「最优秀」→ quality 降序；「性价比最高」→ cost_efficiency 降序且 cost_estimate 最低；「代码最稳定」→ stability 降序。三问三答，无需人工挑。</div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2>五 · 案例调用索引 / Case-recall for agents</h2>
+    <p class="lead">被激活的 agent 如何在四平台内调出最优模板——这是 NEXL 用户远超普通入口人群的关键杠杆。</p>
+    <h3>5.1 SOP 新增「①.6 案例锚定」</h3>
+    <p>平台识别（①）之后、预算顾问（③）之前：加载 <code>templates/INDEX.json</code>，按当前平台 + 用户行业/风格过滤，取 quality 前三作参照锚点展示；用户可指定「以某模板为基底」，从底稿 + 模板双源生长。</p>
+    <h3>5.2 四平台调用方式</h3>
+    <table>
+      <tr><th>平台</th><th>agent 如何加载 INDEX 并推荐</th></tr>
+      <tr><td><b>Coze</b></td><td>知识库预置 INDEX.json 文本；Bot 对话第二步 read 并推荐 quality 前三</td></tr>
+      <tr><td><b>秒悟 Meoo</b></td><td>激活语后本地读 INDEX（或 MCP）；Night Plan 零成本检索</td></tr>
+      <tr><td><b>WorkBuddy</b></td><td>技能激活即加载 INDEX 到上下文；免费额度内无限检索</td></tr>
+      <tr><td><b>MIAODA</b></td><td>App Builder Skill 内嵌 INDEX；全栈原生 clone scaffold 起步</td></tr>
+    </table>
+    <h3>5.3 机器可读索引</h3>
+    <p><code>templates/INDEX.json</code> 汇总所有模板的 id/name/category/platforms/ratings/cost_estimate/preview，agent 一次加载、多维过滤；CI 在模板 PR 合入时自动重建。</p>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2>六 · 共建规则 / Contribution rules</h2>
+    <p>贡献路径从两套扩为<strong>三套</strong>（CONTRIBUTING.md）：</p>
+    <div class="grid3">
+      <div class="pill"><b>① showcase</b><span>成品案例，star 归你（已存在）</span></div>
+      <div class="pill"><b>② templates ★</b><span>模板资产，署名归你，上 INDEX（新增）</span></div>
+      <div class="pill"><b>③ 核心 skill</b><span>issue 讨论，维护者实现，守单一真相源</span></div>
+    </div>
+    <h3>模板贡献流程</h3>
+    <p>复制 <code>_template/</code> → 填 <code>template.json</code> → 放可运行 <code>site/</code> → 写 <code>README.md</code> → 提 PR → CI 校验 → 维护者+社区三维评级 → 合入重建 INDEX。</p>
+    <h3>伦理红线</h3>
+    <p>不蒸馏真人冒充其观点（我们是 brand-profile，非名人蒸馏）；模板不含侵权素材；<code>brand-profile</code> 商业机密绝不进公开仓。</p>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2>七 · 执行清单 / Execution — 本次落地</h2>
+    <table>
+      <tr><th>动作</th><th>文件</th><th>状态</th></tr>
+      <tr><td>建模板库骨架</td><td><span>templates/_template/</span> (json + README)</td><td class="ok">✅</td></tr>
+      <tr><td>种子模板</td><td><span>templates/catalog/portfolio/aurora-minimal/</span> 真实可运行</td><td class="ok">✅</td></tr>
+      <tr><td>机器可读索引</td><td><span>templates/INDEX.json</span></td><td class="ok">✅</td></tr>
+      <tr><td>扩贡献指南</td><td><span>CONTRIBUTING.md</span> 增加模板路径</td><td class="ok">✅</td></tr>
+      <tr><td>扩 CI 校验</td><td><span>.github/workflows/community-check.yml</span></td><td class="ok">✅</td></tr>
+      <tr><td>扩欢迎语</td><td><span>.github/workflows/welcome.yml</span></td><td class="ok">✅</td></tr>
+      <tr><td>SOP 锚定步</td><td><span>builder.md</span> ①.6 案例锚定</td><td class="ok">✅</td></tr>
+      <tr><td>路由索引章</td><td><span>docs/PLATFORM-ROUTING.md</span> 案例调用</td><td class="ok">✅</td></tr>
+    </table>
+    <p class="filelist">待确认：四平台白皮书各补「案例调用」小节；征集 5 个种子模板覆盖五类目。</p>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2>八 · 世界级资产标准 / What "world-class" means</h2>
+    <div class="grid2">
+      <div class="pill"><b>灵魂可携带</b><span>配 brand-profile，换品牌不换骨架</span></div>
+      <div class="pill"><b>视觉锤 &lt; 5秒</b><span>第一屏说清你是谁</span></div>
+      <div class="pill"><b>一门设计语言</b><span>色彩/排版/动效/语气统一</span></div>
+      <div class="pill"><b>零调性漂移</b><span>8 维守门，合入即达标</span></div>
+      <div class="pill"><b>主权独立</b><span>零平台锁定，可导出自托管</span></div>
+      <div class="pill"><b>即拷即用</b><span>stability=5，无破绽</span></div>
+      <div class="pill"><b>复利</b><span>被千人复用，边际成本趋零</span></div>
+      <div class="pill"><b>工艺</b><span>Awwwards 级精度</span></div>
+    </div>
+    <div class="quote">当 templates/ 有一百个这样的模板，nexl 就不只是一个建站 skill——它是全球开发者的独立站数字资产交易所。</div>
+  </section>
+
+  <section>
+    <h2>九 · 下一步 / Next</h2>
+    <p>① 双仓推送本体系（公开 + 私有）。② 四平台白皮书补案例调用小节。③ 发起社区「Template Marathon」征集 5 种子。④ 内部复盘文档 nuwa 对比句按指令清零。</p>
+  </section>
+
+</div>
+</body>
+</html>

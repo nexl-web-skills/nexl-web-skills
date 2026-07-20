@@ -1,0 +1,27 @@
+{
+  "id": "your-template-id",
+  "name": "模板展示名 · 中英",
+  "author": "your-github-handle",
+  "category": "portfolio",
+  "platforms": ["coze", "meoo", "workbuddy", "miaoda"],
+  "tags": ["minimal", "dark"],
+  "ratings": {
+    "quality": 5,
+    "cost_efficiency": 4,
+    "stability": 5
+  },
+  "cost_estimate": {
+    "coze_credits": 300,
+    "meoo_credits": 80,
+    "workbuddy_credits": 50,
+    "miaoda_seconds": 420
+  },
+  "design_language": "暗黑极简 · 强排版 · 无渐变",
+  "first_screen_pitch": "5 秒内说清你是谁",
+  "files": ["site/index.html"],
+  "preview": "https://...",
+  "license": "MIT",
+  "createdAt": "2026-07-21",
+  "updatedAt": "2026-07-21",
+  "commit": ""
+}

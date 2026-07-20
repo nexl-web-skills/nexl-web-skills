@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "description": "nexl 模板库机器可读索引。被激活的 agent 加载本文件，按 platform + category + ratings 多维检索最优模板。",
+    "version": "1.0",
+    "updatedAt": "2026-07-21",
+    "schema": {
+      "id": "模板唯一 ID",
+      "name": "展示名（中英）",
+      "author": "GitHub handle",
+      "category": "personal-ip | brand-site | portfolio | landing | event | shop",
+      "platforms": ["coze","meoo","workbuddy","miaoda"],
+      "tags": ["风格标签"],
+      "ratings": {"quality":1-5,"cost_efficiency":1-5,"stability":1-5},
+      "cost_estimate": {"coze_credits":int,"meoo_credits":int,"workbuddy_credits":int,"miaoda_seconds":int},
+      "design_language": "设计语言一句话",
+      "first_screen_pitch": "视觉锤描述",
+      "preview": "预览链接",
+      "license": "MIT"
+    },
+    "agent_recall": {
+      "最优秀": "按 quality 降序取前 3",
+      "性价比最高": "按 cost_efficiency 降序且 cost_estimate 最低",
+      "代码最稳定": "按 stability 降序"
+    }
+  },
+  "templates": [
+    {
+      "id": "aurora-minimal",
+      "name": "Aurora · 极简作品集",
+      "author": "nexl-web-skills",
+      "category": "portfolio",
+      "platforms": ["coze", "meoo", "workbuddy", "miaoda"],
+      "tags": ["minimal", "dark", "typography", "portfolio"],
+      "ratings": {"quality": 5, "cost_efficiency": 4, "stability": 5},
+      "cost_estimate": {"coze_credits": 300, "meoo_credits": 80, "workbuddy_credits": 50, "miaoda_seconds": 420},
+      "design_language": "暗黑极简 · 强排版 · 无渐变 · 单一强调色",
+      "first_screen_pitch": "5 秒内说清你是谁：超大字姓名 + 一句定位",
+      "preview": "https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/templates/catalog/portfolio/aurora-minimal/site/index.html",
+      "license": "MIT"
+    }
+  ]
+}

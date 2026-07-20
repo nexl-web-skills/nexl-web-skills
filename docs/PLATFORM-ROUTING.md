@@ -117,4 +117,28 @@ Agent 把推断结果告知用户：「✅ 已识别：当前运行于 **腾讯 
 
 ---
 
-**一句话给接力者**：一句激活语、四个平台、零改动的秘密 = 「运行时自省识别 + GitHub 实时镜像 + 快照时效校验 + 独立预算档案」。Agent 永远先报平台、再报预算、最后建站——透明、可校验、可扩展。
+## 六、案例调用索引（Case Recall Index）
+
+被激活的 agent 在四平台内调出「最优秀 / 性价比最高 / 代码最稳定」模板的统一机制。
+
+**索引真相源**：`templates/INDEX.json`（机器可读，含 `_meta.schema` 与 `_meta.agent_recall` 三维口径）。SOP 见 `builder.md` 1.6 案例锚定。
+
+**四平台调用方式**：
+
+| 平台 | agent 如何加载 INDEX 并推荐 |
+|------|---------------------------|
+| **Coze** | 知识库预置 `INDEX.json` 文本（方案 A 最稳）；Bot 在对话第二步 `read` 并推荐 quality 前三 |
+| **秒悟 Meoo** | 对话首句粘激活语后，agent 本地读 INDEX（或经 MCP 拉取）；Night Plan 下零成本检索 |
+| **腾讯 WorkBuddy** | 技能（nexl-builder）激活即加载 INDEX 到上下文；免费额度内无限检索 |
+| **百度秒哒 MIAODA** | App Builder Skill 内嵌 INDEX；全栈原生直接 clone 模板 scaffold 起步 |
+
+**三维检索口径**（对应 `ratings`）：
+- 「最优秀」→ `quality` 降序
+- 「性价比最高」→ `cost_efficiency` 降序且 `cost_estimate` 最低
+- 「代码最稳定」→ `stability` 降序
+
+> 普通入口建站者从空白模板起步；NEXL 用户从「集体验证过的最优骨架」起步——这是机制差，非运气。
+
+---
+
+**一句话给接力者**：一句激活语、四个平台、零改动的秘密 = 「运行时自省识别 + GitHub 实时镜像 + 快照时效校验 + 独立预算档案 + 案例索引锚定」。Agent 永远先报平台、再锚案例、再报预算、最后建站——透明、可校验、可扩展。

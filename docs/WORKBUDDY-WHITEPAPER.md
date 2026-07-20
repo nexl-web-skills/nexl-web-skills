@@ -130,7 +130,19 @@ Agent（即观涛虾，运行于 WorkBuddy 桌面智能体）读到 `builder.md`
 
 ---
 
-## 八、给下一棒的行动清单
+## 八、案例调用（Case Recall on WorkBuddy）
+
+> 本节点是 `docs/PLATFORM-ROUTING.md` 第六章与 `builder.md` 1.6 在 WorkBuddy 上的具体落地。
+
+**1. 调取代言（Recall）**：`nexl-builder` 技能已内嵌 `templates/INDEX.json` 镜像，技能激活即可本地读取，离线零成本调取。
+
+**2. 三维筛选口径**：`quality` / `cost_efficiency` / `stability`，口径见 `templates/INDEX.json` 的 `_meta.agent_recall`。
+
+**3. 展示话术模板**：「我从 WorkBuddy 平台的集体模板库为你挑了 3 个参照：① 最优秀 <name> ② 性价比最高 <name> ③ 代码最稳定 <name>」——各附预览链接、设计语言、WorkBuddy 成本（免费 500 积分≈6 次）。
+
+**4. 平台注意点**：本地生成、无后端，案例优先选纯静态/前端模板；全栈需求请分流到 MIAODA/Meoo。
+
+## 九、给下一棒的行动清单
 
 - [ ] 实现「四平台识别」：Agent 激活后自报 Coze / Meoo / WorkBuddy / MIAODA，加载对应预算档案（见 `docs/PLATFORM-ROUTING.md`）。
 - [ ] 在 WorkBuddy 实测：激活语发给我（观涛虾）后，能否自识别为 WorkBuddy 并跑 `budget-workbuddy.cjs`。
