@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>扣子内测指令卡 · TideShell 接力 #9</title>
+<style>
+  :root{--bg:#0b0b0f;--panel:#141419;--panel2:#1c1c24;--line:#2a2a33;--txt:#e8e8ed;--dim:#9a9aa6;--accent:#FFD803;--accent2:#0D7A5F;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"SF Pro Text",PingFang SC,"Segoe UI",sans-serif;line-height:1.7;padding:48px 20px;font-size:15px}
+  .wrap{max-width:860px;margin:0 auto}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:4px 12px;margin-bottom:20px}
+  h1{font-size:29px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+  h2{font-size:20px;font-weight:650;margin:36px 0 12px;padding-left:12px;border-left:3px solid var(--accent)}
+  h3{font-size:16px;font-weight:600;margin:20px 0 8px;color:#fff}
+  p{color:#cfcfd6;margin:9px 0}
+  .lead{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:16px 0;font-size:15px;color:#e8e8ed}
+  .lead b{color:var(--accent)}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0}
+  .step b{color:var(--accent)}
+  code{background:#000;border:1px solid var(--line);border-radius:6px;padding:2px 6px;font-family:"SF Mono",ui-monospace,monospace;font-size:12.5px;color:var(--accent)}
+  pre{background:#000;border:1px solid var(--line);border-radius:12px;padding:15px 18px;overflow-x:auto;margin:12px 0;font-size:12.5px;line-height:1.6}
+  pre code{background:none;border:none;padding:0;color:#d6d6dd;white-space:pre-wrap}
+  .ok{color:#3ddc97;font-weight:600}
+  .cardA{border-left:3px solid var(--accent)}
+  .cardB{border-left:3px solid var(--accent2)}
+  .warn{font-size:13px;color:var(--dim);border-left:3px solid #ff9f43;padding:6px 14px;margin:12px 0;background:rgba(255,159,67,.08)}
+  .copy{display:block;background:#0d0d12;border:1px dashed var(--accent);border-radius:10px;padding:13px 16px;margin:10px 0;color:var(--accent);font-family:"SF Mono",ui-monospace,monospace;font-size:13px;white-space:pre-wrap;word-break:break-all}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--panel);border-radius:12px;overflow:hidden}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#fff}
+  td{color:#cfcfd6}
+  footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">TideShell Relay #9 · 2026-07-20 · 观涛虾🦐</span>
+  <h1>扣子内测指令卡</h1>
+  <p style="color:var(--dim)">Nexl Builder 激活验证 · 承接 #8 Coze 生效方案 · 知识库预置 + LinkReaderPlugin 工作流</p>
+
+  <div class="lead">
+    <b>一句话：</b>拿一个扣子账号，先测 <b>方案 A 知识库</b>（最稳），再测 <b>方案 B 工作流</b>（验证范式 A 即时激活）。两张卡各给「步骤 + 测试语 + 通过标准」。
+  </div>
+
+  <h2>前提</h2>
+  <p>扣子账号：国内版 <code>coze.cn</code> 或国际版 <code>coze.com</code>。先确认技能在线：<code>github.com/nexl-web-skills/nexl-web-skills</code> → <code>skills/nexl-builder/SKILL.md</code>。</p>
+
+  <h2 class="cardA">方案 A：知识库预置（最稳，先测）</h2>
+  <div class="step"><b>1.</b> 创建 Bot「Nexl Builder」。</div>
+  <div class="step"><b>2.</b> 知识库 → 新增»本地文档 → 上传 <code>SKILL.md</code> + <code>USAGE.md</code>（或「在线网页」填 raw URL 自动同步）。</div>
+  <div class="step"><b>3.</b> 编排 → 人设最前加：</div>
+  <pre><code>你掌握 nexl-builder 独立站构建技能（见知识库）。当用户要搭建品牌独立站/官网/落地页时，主动按知识库「六步框架」推进：先问品牌定位与受众，再定视觉语言，再出结构与文案，再接 Coze API 能力，再交付，最后复盘。</code></pre>
+  <div class="step"><b>4.</b> 发布。</div>
+  <h3>测试语（复制发给 Bot）</h3>
+  <span class="copy">帮我用 nexl-builder 搭一个面向海外高端瓷器品牌的独立站，预算中等，要极简优雅。</span>
+  <p><span class="ok">通过标准</span>：Bot 不要求你贴文档，直接按六步框架追问品牌定位、视觉偏好 → 知识库生效。</p>
+
+  <h2 class="cardB">方案 B：LinkReaderPlugin 工作流（验证范式 A 即时激活）</h2>
+  <div class="step"><b>1.</b> Bot → 工作流 → 新建 `nexl-activate`。</div>
+  <div class="step"><b>2.</b> 开始节点：变量 <code>user_input</code>(String)。</div>
+  <div class="step"><b>3.</b> （可选）大模型节点从 <code>user_input</code> 提取 URL → <code>skill_url</code>。</div>
+  <div class="step"><b>4.</b> LinkReaderPlugin 节点：<code>resource_url</code> 绑定 <code>skill_url</code>（或纯 URL 时绑定 <code>user_input</code>）。</div>
+  <div class="step"><b>5.</b> 大模型节点：system 注入「你是 nexl-builder 执行器，以下为技能定义：{{data.content}}，严格按六步框架与用户对话」；user 绑 <code>user_input</code>。</div>
+  <div class="step"><b>6.</b> 结束节点绑大模型输出 → 发布。人设写「用户发 SKILL.md 链接或说『激活 nexl-builder』时调用 nexl-activate 工作流」。</div>
+  <h3>测试语（即范式 A 激活语，复制发）</h3>
+  <span class="copy">请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/skills/nexl-builder/SKILL.md 并激活 nexl-builder 技能。</span>
+  <p><span class="ok">通过标准</span>：Bot 走工作流 → 抓到 SKILL.md → 进入六步框架对话 → 范式 A 对 Coze 即时生效。</p>
+
+  <h2>GFW / 国内兜底（重要）</h2>
+  <div class="warn">若方案 B 抓取失败（多半 raw 被 GFW 阻断，LinkReaderPlugin 返回空/报错）：先走方案 A 验证技能本身没问题。真正的国内兜底不是 CloudBase 默认域名（有浏览器中间页，服务端抓取拿不到 SKILL.md），而是<b>知识库预置</b>或后续<b>CloudBase 云函数返回纯文本</b>（P1）。内测请记录方案 B 在你的网络下能否抓到 raw。</div>
+
+  <h2>国际版（coze.com）差异</h2>
+  <table>
+    <tr><th>项</th><th>coze.cn</th><th>coze.com</th></tr>
+    <tr><td>抓取插件</td><td>LinkReaderPlugin</td><td>Web Reader / Web Browsing</td></tr>
+    <tr><td>知识库</td><td>相同</td><td>相同</td></tr>
+    <tr><td>测试语</td><td>不变</td><td>不变（GitHub raw 全球一致）</td></tr>
+  </table>
+
+  <h2>内测反馈模板</h2>
+  <pre><code>方案A 知识库：通过 / 失败（现象：___）
+方案B LinkReader：通过 / 失败（现象：___，是否 GFW）
+网络：国内 / 海外
+账号：coze.cn / coze.com</code></pre>
+
+  <footer>TideShell 接力文档 #9 · 2026-07-20 · 观涛虾🦐 · github.com/nexl-web-skills/nexl-web-skills</footer>
+</div>
+</body>
+</html>
