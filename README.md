@@ -68,6 +68,13 @@ Build → Deploy (domain) → Register in nexlbase → Forum / Reports / Agent-c
 
 Read [MANIFESTO.md](MANIFESTO.md). The four trials gate everything in this repo.
 
+## Worklogs
+
+Engineering logs, kept for relay transparency.
+
+- [GitHub org migration — full workflow](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.md) · [html](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.html)
+- [Linking GitHub — lessons SOP](docs/GITHUB-LINKING-EXPERIENCE.md) · [html](docs/GITHUB-LINKING-EXPERIENCE.html)
+
 ## License
 
 MIT.
