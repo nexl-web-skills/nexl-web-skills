@@ -1,0 +1,32 @@
+name: rebuild-index
+
+# 模板合入 main 后，自动重建机器可读索引 templates/INDEX.json
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'templates/catalog/**'
+      - 'templates/_template/**'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Rebuild INDEX.json
+        run: node scripts/rebuild-index.cjs
+      - name: Commit rebuilt index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add templates/INDEX.json
+          git diff --cached --quiet || git commit -m "chore: auto-rebuild templates/INDEX.json"
+          git push

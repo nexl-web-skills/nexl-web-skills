@@ -63,3 +63,33 @@
 - 内部复盘文档（NEXL-DUAL-SKILL-DESIGN / VIRAL-PLAYBOOK）的 nuwa 对比句按主人指令清零。
 
 **铁律（新增）**：模板零/最小外部依赖（即拷即用）· 含侵权素材一律拒 · brand-profile 商业机密绝不进公开仓 · 模板合入必须过 CI 字段校验 + 三维评级 · INDEX 由 CI 自动重建（不手改）。
+
+---
+
+## 第 22 棒 · 2026-07-21 · 观涛虾🦐 (TideShell)
+
+**主题**：贡献路径审计——用事实核验 nexl 能否接受全球用户贡献（不靠推测）
+
+**方法（事实来源）**：
+- GitHub 官方文档（docs.github.com → Setting up your project for healthy contributions / PR & Issue templates / GitHub Pages）
+- 同类项目真实做法：Hugo Themes（gohugoio/hugoThemesSiteBuilder）、learning-zone/website-templates（DeepWiki）、Ant Design Landing
+- 本仓库真实文件清单（`ls`/`find` 核查：已确证缺 PULL_REQUEST_TEMPLATE / ISSUE_TEMPLATE / CODE_OF_CONDUCT / CODEOWNERS / gallery）
+
+**交付物**：
+- `docs/CONTRIBUTION-AUDIT.md` —— 事实对照审计全文（md）
+- `docs/CONTRIBUTION-AUDIT.html` —— Apple 极简深色可视化版（预览已开）
+
+**审计结论**：
+1. **能接受全球贡献**，基础通道已通（Fork+PR / CI 字段校验 / 中英文档 / MIT LICENSE 文件已存在）。
+2. **7 项缺口**，其中 2 项致命：
+   - 🔴 G1 无自动画廊页（gallery）——与「独立站数字资产橱窗」定位矛盾；GitHub Pages 官方支持从 /docs 发布，Hugo 有 themes.gohugo.io 橱窗。
+   - 🔴 G2 INDEX.json 靠维护者手动重建——单点瓶颈；Hugo 用每天 UTC 00:00 定时自动重建。
+   - G3 无 PR 模板 / G4 无 Issue 模板 / G5 无 CODE_OF_CONDUCT / G6 无 CODEOWNERS（CONTRIBUTING 写「不收 SKILL.md PR」但无机制强制）/ G7 无截图规范（Hugo 强制 1500×1000+900×600 3:2）。
+3. **做对的（保留）**：monorepo 式（同 website-templates）、template.json+总 INDEX.json（比 Hugo theme.toml 更机器可读）、CI 直校验（优于 Hugo 仅靠 preview）、中英双语 README、author=GitHub handle 署名。
+4. **架构选型**：保持 monorepo 式，不改 Hugo 索引式；补「看得见（gallery）+ 自动跑（CI 重建 INDEX）+ 守得住（CODEOWNERS/PR 模板）」。
+
+**下一棒预期（待拍板，未执行）**：
+- P0：补 `.github/PULL_REQUEST_TEMPLATE.md`(拆模板/案例两模板) + `.github/ISSUE_TEMPLATE/`(bug/template_request/doc) + `CODE_OF_CONDUCT.md`(Contributor Covenant 2.1) + `.github/CODEOWNERS`(skills/、builder.md、INDEX.json 需核心审核)。
+- P1：加 `scripts/build-gallery.cjs`(INDEX→docs/gallery/index.html) 配 GitHub Pages；改 community-check.yml 或新 rebuild-index.yml 在 PR 合入 main 时自动重建 INDEX；template.json 加 preview_image 字段 + 截图规范。
+
+**铁律（新增）**：审计须引用事实（GitHub 官方文档 + 同类项目真实做法），禁凭推测下结论；贡献路径达标标准 = 达 Hugo Themes 级健康共建（画廊+自动重建+CODEOWNERS+PR/Issue 模板+行为准则）。

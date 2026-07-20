@@ -1,0 +1,12 @@
+{
+  "name": "nexl-web-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "nexl 集体独立站数字资产 — 模板库、案例飞轮、agent 共建工具",
+  "scripts": {
+    "check": "node scripts/build-gallery.cjs --validate",
+    "gallery": "node scripts/build-gallery.cjs",
+    "index": "node scripts/rebuild-index.cjs"
+  },
+  "license": "MIT"
+}

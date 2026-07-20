@@ -1,0 +1,6 @@
+# 关键真相源与集体资产入口保护
+# 改这些路径的 PR 需对应 owner（核心团队）审核，避免单一真相源分叉
+builder.md                              @nexl-web-skills
+skills/                                 @nexl-web-skills
+templates/INDEX.json                    @nexl-web-skills
+docs/PLATFORM-ROUTING.md                @nexl-web-skills
