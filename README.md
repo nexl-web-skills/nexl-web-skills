@@ -1,85 +1,73 @@
 # nexl-web-skills
 
-> The open skill spec that turns any AI agent into an Awwwards-level brand-site architect for super-IPs. **One conversation. Zero code. Live domain.**
+Most website generators are bloated toys. This is how a brand site should be built — by an agent, for a super-IP, from a single conversation.
+
+中文：多数建站工具是臃肿的玩具。这才是一个品牌独立站应有的建法——由 Agent 完成，为超级 IP 而生，始于一次对话。
 
 [![Stars](https://img.shields.io/github/stars/richard702ayu/nexl-web-skills?style=social)](https://github.com/richard702ayu/nexl-web-skills)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Star History](https://img.shields.io/badge/star--history-click-blue)](https://star-history.com/#richard702ayu/nexl-web-skills)
 
-**中文**：为全世界超级IP，一句话生成 Awwwards 级品牌独立站。不写一行代码，一个对话，上线域名。
+This repository does not ship "yet another website generator". It ships a skill spec that turns any AI agent into an Awwwards-grade brand architect.
 
----
-
-## ✨ Why nexl-web-skills
+## The gap
 
 | | nexl-web-skills | bolt.diy | astro-builder-skill |
 |---|---|---|---|
-| Super-IP brand storytelling | ✅ | ❌ | ❌ |
-| Coze-native + ask mode | ✅ | ❌ | ❌ |
-| MCP / CLI / Skills 3-layer architecture | ✅ | ❌ | ⚠️ |
-| nexlbase growth loop (forum / reports / agent collab) | ✅ | ❌ | ❌ |
-| Awwwards-level taste hard-coded | ✅ | ❌ | ⚠️ |
+| Brand narrative for super-IPs | yes | no | no |
+| Coze-native, ask-mode | yes | no | no |
+| MCP / CLI / Skills, three layers, zero overlap | yes | no | partial |
+| Growth loop past deploy — forum, reports, agent collab | yes | no | no |
+| Awwwards taste, hard-coded not bolted-on | yes | no | partial |
 
-We don't build "yet another website generator". We turn any AI agent into a **brand architect** for super-IPs — with narrative-first design, emotional micro-interactions, and a growth loop that doesn't stop at "deploy".
+## Activate
 
----
+A. Paste into any Coze / Claude / Codex agent:
 
-## 🚀 Activate in 30 seconds
+> Read https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md and activate the nexl-builder skill.
 
-**A. Send this to your Coze / Claude / Codex Agent:**
-
-> 请阅读 https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md 文档，按照步骤为我激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。
-
-**B. Or one line in your terminal:**
+B. Or one line in a terminal:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/cli/install.sh | bash
 ```
 
----
+## What it builds
 
-## 🏗️ What gets built
-
-An **Awwwards-level brand site** through a 6-step ask-mode flow:
+An Awwwards-grade brand site, through a six-step ask-mode flow:
 
 ```
 Hero → Work → About → Journal → Contact
 ```
 
-With brand narrative (Who → Why → What → How), emotional micro-interactions, limited palette, and zero-JS performance by default.
+Brand narrative first. Emotional micro-interaction. Limited palette. Zero-JS by default.
 
----
+## Architecture
 
-## 🧩 Architecture (3-layer decoupling)
+Three layers. No overlap. No bloated abstraction.
 
 | Layer | Role |
 |-------|------|
-| **MCP** | Connection & auth (CloudBase / Coze) |
-| **CLI** | Atomic execution (`tideshell site build/deploy/register`) |
-| **Skills** | SOP orchestration (progressive disclosure) |
+| MCP | connection and auth (CloudBase / Coze) |
+| CLI | atomic execution — `tideshell site build / deploy / register` |
+| Skills | SOP orchestration, loaded on demand |
 
-Agents load only an index, then pull `SKILL.md` on demand — keeping context clean, debuggable, and black-box-free.
+Agents hold an index, not a dictionary. They pull `SKILL.md` when needed, drop it after. Context stays clean. Debuggable. No black box.
 
----
+## Skills shipped
 
-## 📦 Included skills
+- `nexl-builder` — the core. Awwwards taste, six-step ask flow.
+- `html-report` — HTML reports, managed in nexlbase.
+- `forum-mod` — moderate the independent-site forum.
 
-- `nexl-builder` — the core brand-site builder (Awwwards taste + 6-step ask flow)
-- `html-report` — generate HTML reports managed in nexlbase
-- `forum-mod` — moderate your independent-site forum
+## The loop
 
----
+Build → Deploy (domain) → Register in nexlbase → Forum / Reports / Agent-collab.
 
-## 🔗 Growth loop
+## Manifesto
 
-Build → Deploy (get a domain) → Register in **nexlbase** → Forum posts / HTML reports / Agent-collab optimization.
+Read [MANIFESTO.md](MANIFESTO.md). The four trials gate everything in this repo.
 
----
+## License
 
-## 🤝 Contributing
-
-Fork → Branch → PR. We respond within 48h. See [HANDOFF.md](HANDOFF.md) for the relay convention.
-
-## 📄 License
-
-MIT © nexl-web-skills
+MIT.

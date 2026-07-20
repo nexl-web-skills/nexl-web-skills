@@ -3,9 +3,9 @@ name: nexl-builder
 description: 当用户要建个人官网/品牌独立站、发起建站流程、或需要"高级审美建站"能力时使用。触发词：建站、个人官网、品牌独立站、个人网页、coze 部署、nexl、网站审美、Awwwards、从0到1做网站。激活后按六步框架（用户研究→信息架构→视觉系统→页面交互→内容优化→迭代测试）循序渐进带领用户产出世界级站点，并通过 Coze Chat API v3 部署得域名，最终回注册到 nexlbase 中台。
 ---
 
-# nexl-builder · 世界级个人官网建站技能（自包含 · 可复制）
+# nexl-builder
 
-> **本文件可整体复制**，作为初始指令粘贴给你的 Coze 智能体（或存为其【技能】），即可激活"个人官网"构建能力。无需额外上下文，开箱即用。
+Self-contained. Copy-paste into any Coze / Claude / Codex agent. The agent becomes a brand-site architect for super-IPs. No surrounding context required.
 
 ---
 

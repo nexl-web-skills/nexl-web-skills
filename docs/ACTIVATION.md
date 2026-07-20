@@ -17,17 +17,15 @@ topic: 两条极简激活语（双源：GitHub raw 主源 richard702ayu/nexl-web
 
 ## 一、范式 A —— 发给你的 Coze / Claude / Codex Agent
 
-**GitHub raw 主源（全球，无中间页，⭐ 已上线可用）**：
+**GitHub raw 主源（全球，无中间页，已上线可用）**：
 ```
-请阅读 https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md
-文档，按步骤激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。
+请阅读 https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md 并激活 nexl-builder 技能。
 ```
 > 实测：`raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md` 返回合法 YAML frontmatter，Agent 的 WebFetch 与终端 `curl` 都能直接读 → **范式 A 真正可用，无需复制粘贴降级**。
 
 **国内镜像兜底（Agent 读 GitHub 失败/GFW 时回落，待 CloudBase 部署）**：
 ```
-请阅读 https://{DEFAULT_DOMAIN}/tideshell/skills/nexl-builder/SKILL.md
-文档，按步骤激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。
+请阅读 https://{DEFAULT_DOMAIN}/tideshell/skills/nexl-builder/SKILL.md 并激活 nexl-builder 技能。
 ```
 > `{DEFAULT_DOMAIN}` = CloudBase 静态托管默认域名（免备案，但浏览器有中间页；Agent 读取失败时人工点确认后复制）。
 
