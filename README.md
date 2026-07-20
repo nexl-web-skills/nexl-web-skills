@@ -4,9 +4,9 @@ Most website generators are bloated toys. This is how a brand site should be bui
 
 中文：多数建站工具是臃肿的玩具。这才是一个品牌独立站应有的建法——由 Agent 完成，为超级 IP 而生，始于一次对话。
 
-[![Stars](https://img.shields.io/github/stars/richard702ayu/nexl-web-skills?style=social)](https://github.com/richard702ayu/nexl-web-skills)
+[![Stars](https://img.shields.io/github/stars/nexl-web-skills/nexl-web-skills?style=social)](https://github.com/nexl-web-skills/nexl-web-skills)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Star History](https://img.shields.io/badge/star--history-click-blue)](https://star-history.com/#richard702ayu/nexl-web-skills)
+[![Star History](https://img.shields.io/badge/star--history-click-blue)](https://star-history.com/#nexl-web-skills/nexl-web-skills)
 
 This repository does not ship "yet another website generator". It ships a skill spec that turns any AI agent into an Awwwards-grade brand architect.
 
@@ -24,12 +24,12 @@ This repository does not ship "yet another website generator". It ships a skill 
 
 A. Paste into any Coze / Claude / Codex agent:
 
-> Read https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md and activate the nexl-builder skill.
+> Read https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/skills/nexl-builder/SKILL.md and activate the nexl-builder skill.
 
 B. Or one line in a terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/cli/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/cli/install.sh | bash
 ```
 
 ## What it builds

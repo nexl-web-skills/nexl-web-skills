@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # TideShell CLI installer
-# curl -fsSL https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/cli/install.sh | bash
+# curl -fsSL https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/cli/install.sh | bash
 set -euo pipefail
 
-BASE_URL="${TIDE_BASE:-https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main}"
+BASE_URL="${TIDE_BASE:-https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main}"
 INSTALL_DIR="${HOME}/.tideshell"
 BIN_DIR="${INSTALL_DIR}/bin"
 SKILL_DIR="${INSTALL_DIR}/skills"
@@ -25,7 +25,7 @@ fi
 cat > "${BIN_DIR}/tideshell" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
-BASE_URL="${TIDE_BASE:-https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main}"
+BASE_URL="${TIDE_BASE:-https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main}"
 SKILL_DIR="${HOME}/.tideshell/skills"
 
 cmd="${1:-help}"; shift || true
@@ -39,7 +39,7 @@ case "$cmd" in
         echo "  Copy ${SKILL_DIR}/SKILL.md into your Coze / Claude / Codex agent, then say:"
         echo "  'activate nexl-builder and build my brand site in ask mode.'"
         echo "  Or send the agent this URL:"
-        echo "  https://raw.githubusercontent.com/richard702ayu/nexl-web-skills/main/skills/nexl-builder/SKILL.md"
+        echo "  https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/skills/nexl-builder/SKILL.md"
         ;;
       deploy)
         echo "site deploy — acquire domain via Coze (not wired yet)"
