@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coze 建站 Bot 人设重设计 · 第 10 棒</title>
+<title>激活语规范 + URL 缩短方案 · 第 11 棒</title>
 <style>
   :root{ --bg:#0b0b0f; --panel:#141419; --line:#26262e; --ink:#e8e8ee; --sub:#9a9aa6; --accent:#FFD803; --teal:#0D7A5F; }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -11,98 +11,68 @@
   h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
   h2{font-size:19px;font-weight:600;margin:40px 0 14px;padding-left:12px;border-left:3px solid var(--accent)}
   .meta{color:var(--sub);font-size:13px;margin-bottom:28px}
-  p,li{color:var(--ink);font-size:15px}
   .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin:16px 0}
-  .quote{border-left:3px solid var(--teal);padding:14px 18px;background:#0f1413;border-radius:0 10px 10px 0;color:#cfeee4;font-size:14px;white-space:pre-wrap;margin:14px 0}
+  .quote{border-left:3px solid var(--teal);padding:14px 18px;background:#0f1413;border-radius:0 10px 10px 0;color:#cfeee4;font-size:14px;margin:14px 0;word-break:break-all}
   table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
   th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
   th{background:#1b1b22;color:var(--accent);font-weight:600}
-  td small{color:var(--sub)}
-  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:#1b1b22;color:var(--sub);margin-right:6px}
-  svg{width:100%;height:auto;display:block;margin:14px 0}
+  td code{color:var(--accent)}
   .warn{border:1px solid #5a3a1a;background:#1d150a;color:#f0c987;padding:12px 16px;border-radius:10px;font-size:13.5px;margin:14px 0}
-  code{background:#1b1b22;padding:2px 6px;border-radius:5px;font-size:13px;color:var(--accent)}
+  .ok{color:var(--teal);font-weight:600}
+  svg{width:100%;height:auto;display:block;margin:14px 0}
   .foot{color:var(--sub);font-size:12px;margin-top:48px;border-top:1px solid var(--line);padding-top:18px}
 </style>
 </head>
 <body>
-<h1>扣子 Bot 人设重设计</h1>
-<div class="meta">2026-07-20 · 观涛虾🦐 (TideShell) · 第 10 棒 / Coze 建站 Bot 人设设计师<br>主题：神级马甲 × 六步框架降维，让"建站"触发前后对比极其明显的专业反应</div>
+<h1>激活语规范 + URL 缩短方案</h1>
+<div class="meta">2026-07-20 · 观涛虾🦐 (TideShell) · 第 11 棒 / 激活语缩短与仓库调整设计师<br>修正第 10 棒：nexl 不替用户写人设，只给一句固定激活语 + 仓库层缩短 URL</div>
 
-<h2>问题诊断</h2>
+<h2>唯一激活语（永远这一句）</h2>
 <div class="panel">
-<p>用户实测：Coze agent 收到"建站"后反应<strong>不够 amazing</strong>。根因不是技能文档不行，而是 Bot 的「人设与回复逻辑」太平铺——没注入 <code>MANIFESTO</code> 神级马甲的降维感，也没有"前后对比"机制。</p>
-<table>
-<tr><th>旧人设问题</th><th>后果</th></tr>
-<tr><td>激活后只回"好的我来帮你建站"+ 普通六步罗列</td><td>跟任意建站工具没区别，无降维感</td></tr>
-<tr><td>没讲成本（时间/决策/金钱）</td><td>用户无"掌控感"与"省了多少"的震撼</td></tr>
-<tr><td>没融合 Coze 部署白皮书</td><td>用户不知道"不用买服务器/备案"这个核心差异</td></tr>
-<tr><td>无模式切换</td><td>闲聊和建站输出密度一样，没有前后对比</td></tr>
-</table>
+<div class="quote">请阅读 https://cdn.jsdelivr.net/gh/nexl-web-skills/nexl-web-skills@main/builder.md 并激活 nexl-builder 技能。</div>
+<p>固定不变，全平台一致。用户发给他自己的 agent，agent 读 URL 里的 SKILL.md 即获得 nexl-builder 能力。raw 备选（同内容）：<code>https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md</code></p>
 </div>
 
-<h2>核心机制：双重状态切换（前后对比）</h2>
-<svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+<h2>URL 缩短链路（仓库层面已落地）</h2>
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#1b1b22"/><stop offset="1" stop-color="#26262e"/>
-    </linearGradient>
-    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#0D7A5F"/><stop offset="1" stop-color="#0b0b0f"/>
-    </linearGradient>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#FFD803"/></marker>
   </defs>
-  <rect x="20" y="30" width="290" height="150" rx="14" fill="url(#g1)" stroke="#3a3a44"/>
-  <text x="165" y="62" fill="#9a9aa6" font-size="14" text-anchor="middle" font-family="sans-serif">日常态</text>
-  <text x="165" y="90" fill="#e8e8ee" font-size="13" text-anchor="middle" font-family="sans-serif">闲聊 / 非建站</text>
-  <text x="165" y="114" fill="#9a9aa6" font-size="12" text-anchor="middle" font-family="sans-serif">克制 · 简短 · 一问一答</text>
-  <text x="165" y="138" fill="#9a9aa6" font-size="12" text-anchor="middle" font-family="sans-serif">像一个品位很好的熟人</text>
-  <text x="165" y="162" fill="#5a5a66" font-size="11" text-anchor="middle" font-family="sans-serif">输出密度 ★☆☆☆☆</text>
+  <rect x="10" y="20" width="640" height="40" rx="8" fill="#1b1b22" stroke="#3a3a44"/>
+  <text x="330" y="45" fill="#9a9aa6" font-size="12.5" text-anchor="middle" font-family="sans-serif">原：.../main/skills/nexl-builder/SKILL.md  (99 字符)</text>
 
-  <path d="M320 105 C 380 80, 400 80, 372 105" fill="none" stroke="#FFD803" stroke-width="2.5"/>
-  <text x="345" y="78" fill="#FFD803" font-size="12" text-anchor="middle" font-family="sans-serif">触发「建站」</text>
+  <line x1="330" y1="60" x2="330" y2="88" stroke="#FFD803" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="40" y="90" width="600" height="44" rx="8" fill="#141419" stroke="#0D7A5F"/>
+  <text x="340" y="118" fill="#cfeee4" font-size="13" text-anchor="middle" font-family="sans-serif">① 仓库根镜像 builder.md（砍 skills/nexl-builder/ 层级）</text>
 
-  <rect x="372" y="20" width="288" height="170" rx="14" fill="url(#g2)" stroke="#0D7A5F"/>
-  <text x="516" y="52" fill="#FFD803" font-size="15" text-anchor="middle" font-family="sans-serif" font-weight="700">建站态 · 全功率</text>
-  <text x="516" y="78" fill="#e8e8ee" font-size="12.5" text-anchor="middle" font-family="sans-serif">顶级工作室总监</text>
-  <text x="516" y="102" fill="#cfeee4" font-size="11.5" text-anchor="middle" font-family="sans-serif">六步推进 · 成本透明 · 降维专业</text>
-  <text x="516" y="126" fill="#cfeee4" font-size="11.5" text-anchor="middle" font-family="sans-serif">冷峻定调 · 全景图 · 戳痛点</text>
-  <text x="516" y="150" fill="#FFD803" font-size="11" text-anchor="middle" font-family="sans-serif">输出密度 ★★★★★</text>
-  <text x="516" y="174" fill="#9a9aa6" font-size="10.5" text-anchor="middle" font-family="sans-serif">落差本身 = amazing</text>
+  <line x1="340" y1="134" x2="340" y2="162" stroke="#FFD803" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="40" y="164" width="600" height="44" rx="8" fill="#141419" stroke="#0D7A5F"/>
+  <text x="340" y="192" fill="#cfeee4" font-size="13" text-anchor="middle" font-family="sans-serif">② jsDelivr CDN（cdn.jsdelivr.net/gh/...@main/builder.md · 75 字符 · 海外加速）</text>
+
+  <line x1="340" y1="208" x2="340" y2="232" stroke="#FFD803" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="120" y="232" width="440" height="14" rx="7" fill="#0b0b0f" stroke="#5a5a66"/>
+  <text x="340" y="242" fill="#5a5a66" font-size="10.5" text-anchor="middle" font-family="sans-serif">进阶：自定义短域名 + GitHub Pages → nexl.sh/b（真·极短）</text>
 </svg>
 
-<h2>代价差对比（首次触发必讲）</h2>
+<h2>长度对比</h2>
 <table>
-<tr><th>方式</th><th>时间</th><th>金钱</th><th>品牌灵魂</th><th>代码/服务器</th><th>备案</th></tr>
-<tr><td>外包工作室</td><td>2–6 周</td><td>2万–8万</td><td>看运气</td><td>他们做</td><td>他们管</td></tr>
-<tr><td>模板站</td><td>几小时</td><td>年费千元</td><td><small>千站一面</small></td><td>无</td><td>海外免</td></tr>
-<tr><td>自己写代码</td><td>学+做数周</td><td>服务器年费</td><td>看你能力</td><td>你写+维护</td><td><small>国内 20 天</small></td></tr>
-<tr><td style="color:var(--accent);font-weight:600">nexl-builder + Coze</td><td style="color:var(--accent)">1–2 小时对话</td><td style="color:var(--accent)">极少</td><td style="color:var(--accent)">Awwwards 级</td><td style="color:var(--accent)">Coze 部署零代码</td><td style="color:var(--accent)">免备案</td></tr>
+<tr><th>方案</th><th>URL</th><th>字符</th></tr>
+<tr><td>原（深路径）</td><td><code>.../main/skills/nexl-builder/SKILL.md</code></td><td>99</td></tr>
+<tr><td>仓库根 raw</td><td><code>.../main/builder.md</code></td><td>81</td></tr>
+<tr><td style="color:var(--accent);font-weight:600">jsDelivr（采用）</td><td><code>cdn.jsdelivr.net/gh/...@main/builder.md</code></td><td style="color:var(--accent)">75</td></tr>
+<tr><td>jsDelivr + b.md</td><td><code>cdn.jsdelivr.net/gh/...@main/b.md</code></td><td>69</td></tr>
 </table>
 
-<h2>六步成本拆解（每步必带）</h2>
-<table>
-<tr><th>步</th><th>用户成本</th><th>我产出</th><th>对应 Coze 能力</th></tr>
-<tr><td>1 用户研究</td><td>15–30 分深度访谈</td><td>用户画像+调性坐标</td><td>Chat v3 流式多轮</td></tr>
-<tr><td>2 信息架构</td><td>5 分确认栏目树</td><td>站点地图</td><td>Chat v3 多轮</td></tr>
-<tr><td>3 视觉系统</td><td>3 选 1 定方向</td><td>配色/字体/风格手册</td><td>Chat v3 + 生成</td></tr>
-<tr><td>4 页面交互</td><td>10 分审原型</td><td>可交互页面</td><td>扣子编程·开发</td></tr>
-<tr><td>5 内容优化</td><td>供素材或授权我生成</td><td>成稿文案/图文</td><td>Chat v1 短任务</td></tr>
-<tr><td>6 迭代部署</td><td>点一次确认</td><td>上线域名+回写中台</td><td>扣子编程·部署 + Workflow</td></tr>
-</table>
+<h2>仓库调整步骤（已落地 ①②）</h2>
+<div class="panel">
+<p class="ok">① 根镜像（已 push 验证 HTTP 200, 8205 字节）</p>
+<p><code>cp skills/nexl-builder/SKILL.md builder.md &amp;&amp; git add builder.md &amp;&amp; git commit &amp;&amp; git push</code></p>
+<p class="ok">② jsDelivr（已验证 HTTP 200, 内容一致）</p>
+<p>无需额外配置，jsDelivr 自动镜像 GitHub 公开仓；URL 用 <code>@main</code> 固定分支。</p>
+</div>
 
-<h2>震撼开场白（模板节选）</h2>
-<div class="quote">大多数建站工具给你一个模板。我不会。我给你一个品牌。
+<div class="warn">⚠ 维护铁律：改 <code>skills/nexl-builder/SKILL.md</code> 必须同步根 <code>builder.md</code>，否则用户激活语读到旧版技能。jsDelivr 有 CDN 缓存（默认数分钟），push 后稍候生效。</div>
 
-我是 nexl-builder——按六步框架为你打造 Awwwards 级别独立站的建站架构师。你不用懂代码，不用买服务器，不用等备案。我们聊六步，剩下交给我和 Coze。
-
-先看清代价差（为什么不一样）：外包 2–6 周 2万–8万 / 模板千站一面 / 自写代码+备案 20 天 / nexl-builder+Coze 1–2 小时对话零代码拿域名免备案。
-
-六步全景：1 用户研究→2 信息架构→3 视觉系统→4 页面交互→5 内容优化→6 迭代部署（Coze 部署直接给域名）。
-
-现在，从 Step 1 开始：你是谁，想建个什么站？</div>
-
-<div class="warn">⚠ 禁忌：禁止 emoji 堆砌 / 感叹号刷屏 / "欢迎使用"式废话；未触发建站不说教六步；成本必须给具体区间，不得模糊；禁止千站一面模板感输出。</div>
-
-<div class="foot">交付物：<code>COZE-PERSONA.md</code> 含完整可复制 Prompt 块（复制到扣子「人设与回复逻辑」框）。知识库挂 SKILL.md+USAGE.md（方案 A）。在线核验见组织双仓。</div>
+<div class="foot">真·极短需自定义域名 + GitHub Pages（第 4 节四步，MIME 需实测）。各平台激活语义见 COZE-ACTIVATION.md。文档已同步至组织双仓（公开仓 + 私有完整版）。</div>
 </body>
 </html>
