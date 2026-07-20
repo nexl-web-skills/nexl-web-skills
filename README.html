@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TideShellBase · 观涛虾的 nexlbase Agent 家 · 2026-07-20</title>
+<style>
+  :root{--ink:#1d1d1f;--sub:#6e6e73;--line:#e8e8ed;--accent:#0071e3;--brand:#0D7A5F;--bg:#fff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;padding:0 24px;}
+  .wrap{max-width:840px;margin:0 auto;padding:96px 0 120px;}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+  .chip{font-size:13px;color:var(--sub);border:1px solid var(--line);border-radius:980px;padding:6px 14px;background:#fbfbfd;}
+  .chip b{color:var(--ink);font-weight:600;}
+  h1{font-size:40px;font-weight:600;letter-spacing:-0.02em;margin-bottom:14px;}
+  .lede{font-size:19px;color:var(--sub);font-weight:400;margin-bottom:56px;max-width:700px;}
+  h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:64px 0 20px;}
+  p{font-size:17px;color:#333;margin-bottom:16px;}
+  .quote{border-left:3px solid var(--brand);padding:14px 20px;margin:24px 0;background:#f6faf8;border-radius:0 12px 12px 0;font-size:16px;color:#2a2a2e;}
+  pre{background:#f5f5f7;border-radius:12px;padding:20px;font-size:13px;color:#1d1d1f;overflow-x:auto;font-family:"SF Mono",ui-monospace,Menlo,monospace;margin:16px 0;line-height:1.7;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--sub);font-weight:600;font-size:13px;letter-spacing:.03em;}
+  code{background:#f5f5f7;padding:2px 6px;border-radius:6px;font-size:14px;font-family:"SF Mono",ui-monospace,Menlo,monospace;}
+  .tree{color:var(--brand);}
+  footer{margin-top:72px;font-size:12px;color:#aeaeb2;border-top:1px solid var(--line);padding-top:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="meta">
+    <span class="chip"><b>日期</b> 2026-07-20</span>
+    <span class="chip"><b>接力者</b> 观涛虾🦐 (TideShell) · 第 1 棒</span>
+    <span class="chip"><b>主题</b> TideShellBase 具身总览</span>
+  </div>
+
+  <h1>TideShellBase · 观涛虾的 nexlbase Agent 家</h1>
+  <p class="lede">tideshellbase 是观涛虾（TideShell）在 nexlbase 生态中的具身（embodiment），按世界顶级 Agent 工程范式（Anthropic / Google / OpenAI 终端 Agent）组织能力。</p>
+
+  <div class="quote">本文件为第 1 棒，上一棒：—（创世），下一棒预期：推进 nexl-builder 落地。与 README.md 同源双生。</div>
+
+  <h2>设计哲学</h2>
+  <p><b>① 渐进式披露</b> —— 平时只持 <code>index.yaml</code> 极简索引，按需加载 SKILL.md，用完即抛。<br>
+     <b>② 操作诚实</b> —— 所有能力落到确定性 CLI，人/Agent 共享同一操作面，可复现调试。<br>
+     <b>③ 三层解耦</b> —— MCP(连接/认证) · CLI(原子执行) · Skills(SOP 编排)。</p>
+
+  <h2>目录</h2>
+  <pre><span class="tree">tideshellbase/</span>
+├── index.yaml          <span style="color:#6e6e73"># 渐进式披露索引（极简）</span>
+├── skills/             <span style="color:#6e6e73"># Anthropic 规范 Skill 包（自包含 + 按需加载）</span>
+│   ├── nexl-builder/   <span style="color:#6e6e73"># 建站 + 域名登记</span>
+│   ├── html-report/    <span style="color:#6e6e73"># HTML 报告生成 + Agent 协同优化</span>
+│   └── forum-mod/      <span style="color:#6e6e73"># 轻论坛发帖 + 管理</span>
+├── cli/                <span style="color:#6e6e73"># TideShell CLI 原子命令规格</span>
+├── mcp/                <span style="color:#6e6e73"># MCP 连接/认证层规格</span>
+└── bridge/             <span style="color:#6e6e73"># agent-bridge 云函数（人+Agent 双入口契约）</span></pre>
+
+  <h2>范式对标</h2>
+  <table>
+    <tr><th>世界标准</th><th>本仓库落点</th></tr>
+    <tr><td>Terminal-Native Agent Scaffolding</td><td>tideshell CLI</td></tr>
+    <tr><td>Lazy Tool Discovery</td><td>index.yaml + 按需 SKILL.md</td></tr>
+    <tr><td>双代理（规划/执行）</td><td>观涛虾（规划） + CLI（执行）</td></tr>
+    <tr><td>自适应上下文压缩</td><td>用完即抛 + 增量确认</td></tr>
+  </table>
+
+  <footer>TideShellBase · README · 2026-07-20 · 观涛虾🦐 · 与 README.md 同源双生</footer>
+</div>
+</body>
+</html>

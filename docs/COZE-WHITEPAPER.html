@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coze 能力白皮书注解 · TideShellBase · 2026-07-20</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --sub:#6e6e73; --line:#e8e8ed;
+    --accent:#0071e3; --brand:#0D7A5F; --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;padding:0 24px;}
+  .wrap{max-width:840px;margin:0 auto;padding:96px 0 120px;}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
+  .chip{font-size:13px;color:var(--sub);border:1px solid var(--line);border-radius:980px;padding:6px 14px;background:#fbfbfd;}
+  .chip b{color:var(--ink);font-weight:600;}
+  h1{font-size:38px;font-weight:600;letter-spacing:-0.02em;margin-bottom:12px;}
+  .lede{font-size:18px;color:var(--sub);font-weight:400;margin-bottom:48px;max-width:700px;}
+  h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:60px 0 18px;}
+  h3{font-size:18px;font-weight:600;margin:24px 0 8px;}
+  p{font-size:16px;color:#333;margin-bottom:16px;}
+  .quote{border-left:3px solid var(--brand);padding:14px 20px;margin:26px 0;background:#f6faf8;border-radius:0 12px 12px 0;font-size:15px;color:#2a2a2e;}
+  table{width:100%;border-collapse:collapse;margin:16px 0 8px;font-size:14px;}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--sub);font-weight:600;font-size:12px;letter-spacing:.04em;}
+  td b{color:var(--brand);}
+  pre{background:#f5f5f7;border-radius:12px;padding:16px 18px;font-size:12.5px;color:#1d1d1f;overflow-x:auto;font-family:"SF Mono",ui-monospace,Menlo,monospace;margin:14px 0;}
+  .tag{display:inline-block;font-size:11px;font-weight:600;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px;margin-right:6px;}
+  .tag.blue{background:var(--accent);}
+  .fig{margin:44px 0;text-align:center;}
+  .fig svg{width:100%;max-width:720px;height:auto;}
+  .fig figcaption{font-size:13px;color:var(--sub);margin-top:14px;}
+  .end{margin-top:64px;font-size:18px;font-weight:500;color:var(--brand);}
+  footer{margin-top:60px;font-size:12px;color:#aeaeb2;border-top:1px solid var(--line);padding-top:18px;}
+  code{background:#f5f5f7;border-radius:5px;padding:1px 6px;font-size:13px;font-family:"SF Mono",ui-monospace,Menlo,monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="meta">
+    <span class="chip"><b>日期</b> 2026-07-20</span>
+    <span class="chip"><b>接力者</b> 观涛虾🦐 · 第 2 棒</span>
+    <span class="chip"><b>主题</b> Coze 能力白皮书注解 · 逐功能注释</span>
+  </div>
+
+  <h1>Coze（扣子）能力白皮书注解</h1>
+  <p class="lede">给接力者说明 Coze 能做什么，并基于原始资料逐功能标注它在 nexlbase 独立站飞轮里的落点。</p>
+
+  <div class="quote">本文件为第 2 棒，上一棒：第 1 棒（架构白皮书 + 文档交付公约），下一棒预期：将 nexl-builder 做成可一键装进 Coze 的 Skill 包，实测 Chat v3 流式建站闭环。</div>
+
+  <h2>一、Coze 是什么</h2>
+  <p>Coze 是字节的 <b>Agent 协作 + AI 编程平台</b>，分国内版（扣子）与国际版两套独立环境。nexlbase 面向全球发布独立站，优先国际版；技能 ask 模式中文体验国内版更顺，部署时务必写死 Base URL，不要混用。</p>
+  <table>
+    <tr><th>维度</th><th>国内版（扣子）</th><th>国际版</th></tr>
+    <tr><td>文档首页</td><td>docs.coze.cn</td><td>docs.coze.com</td></tr>
+    <tr><td>API Base URL</td><td><code>api.coze.cn</code></td><td><code>api.coze.com</code></td></tr>
+    <tr><td>Open API 参考</td><td>coze.cn/open/api</td><td>coze.com/open/api</td></tr>
+  </table>
+
+  <h2>二、Coze 能做什么 · 逐功能注释</h2>
+  <p>每个能力标注三件事：<span class="tag">是什么</span><span class="tag blue">能做什么</span>在 nexlbase 的落点。</p>
+
+  <h3>2.1 平台层能力</h3>
+  <table>
+    <tr><th>功能</th><th>是什么</th><th>nexlbase 落点</th></tr>
+    <tr><td><b>定制专属 Agent</b></td><td>可视化/代码创建智能体</td><td>用户创建"建站 Agent"，挂 nexl-builder 技能即获建站能力</td></tr>
+    <tr><td><b>Agent 技能</b></td><td>自包含能力包（类 Anthropic SKILL.md）</td><td><b>核心落点</b>：skills/nexl-builder/SKILL.md 直接作为 Coze 技能导入</td></tr>
+    <tr><td><b>项目与协作</b></td><td>多人/多 Agent 协同</td><td>用户 + Agent 协同优化 HTML 报告</td></tr>
+    <tr><td><b>AI 编程</b></td><td>模型/开发/集成/部署/运维</td><td>建站产物在 Coze 内开发、部署拿域名</td></tr>
+    <tr><td><b>Open API</b></td><td>外部系统调 Agent</td><td>nexlbase 中台 / CLI 远程触发用户 Agent</td></tr>
+  </table>
+
+  <h3>2.2 核心 API 能力</h3>
+  <table>
+    <tr><th>能力</th><th>接口</th><th>nexlbase 落点</th></tr>
+    <tr><td><b>Chat v3 流式</b></td><td>POST /v3/chat (stream)</td><td><b>建站主通道</b>：ask 模式逐步问、逐步产出</td></tr>
+    <tr><td>Chat v1 非流式</td><td>POST /v3/chat</td><td>短任务：生成一份报告</td></tr>
+    <tr><td>查询对话</td><td>GET /v3/chat/retrieve</td><td>CLI 异步等建站完成</td></tr>
+    <tr><td>消息列表</td><td>GET /v3/chat/message/list</td><td>把站点文件/文案回写 nexlbase</td></tr>
+    <tr><td>Workflow Run</td><td>POST /v3/workflow/run</td><td>编排"部署→拿域名→回写"自动化</td></tr>
+    <tr><td>创建/发布 Bot</td><td>POST /v3/bots/*</td><td><b>前置铁律</b>：不发布为 API 版本就调不到</td></tr>
+  </table>
+
+  <h3>2.3 认证（PAT）</h3>
+  <pre>Authorization: Bearer {PAT_Token}
+# PAT 在 扣子平台 → 个人设置 → API Token 生成（有读写区分）</pre>
+  <p><b>安全边界</b>：nexlbase 中台绝不直接存用户 PAT；CLI 走用户本机环境变量 <code>COZE_PAT</code>。接力者不得破坏此边界。</p>
+
+  <h3>2.4 官方 SDK</h3>
+  <table>
+    <tr><th>仓库</th><th>语言</th><th>用途</th></tr>
+    <tr><td>coze-dev/coze-api-python</td><td>Python</td><td>服务端 / 云函数</td></tr>
+    <tr><td>coze-dev/coze-api-node</td><td>Node.js</td><td><b>nexlbase 首选</b>（CloudBase 云函数即 Node）</td></tr>
+  </table>
+
+  <h2>三、飞轮 × Coze 能力映射</h2>
+  <div class="fig">
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="nexlbase 飞轮与 Coze 能力映射">
+      <defs>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0D7A5F"/><stop offset="1" stop-color="#0071e3"/>
+        </linearGradient>
+      </defs>
+      <g font-family="sans-serif" font-size="13">
+        <!-- nodes -->
+        <rect x="20" y="20" width="150" height="52" rx="12" fill="#fff" stroke="#0D7A5F" stroke-width="1.5"/>
+        <text x="95" y="42" text-anchor="middle" fill="#0D7A5F" font-weight="600">注册 nexlbase</text>
+        <text x="95" y="60" text-anchor="middle" fill="#6e6e73" font-size="11">CloudBase Auth</text>
+
+        <rect x="190" y="20" width="150" height="52" rx="12" fill="#fff" stroke="#0D7A5F" stroke-width="1.5"/>
+        <text x="265" y="42" text-anchor="middle" fill="#0D7A5F" font-weight="600">挂 nexl-builder</text>
+        <text x="265" y="60" text-anchor="middle" fill="#6e6e73" font-size="11">Coze Agent 技能</text>
+
+        <rect x="360" y="20" width="150" height="52" rx="12" fill="#fff" stroke="#0071e3" stroke-width="1.5"/>
+        <text x="435" y="42" text-anchor="middle" fill="#0071e3" font-weight="600">发 CLI / 消息激活</text>
+        <text x="435" y="60" text-anchor="middle" fill="#6e6e73" font-size="11">Chat v3 流式</text>
+
+        <rect x="530" y="20" width="170" height="52" rx="12" fill="#fff" stroke="#0071e3" stroke-width="1.5"/>
+        <text x="615" y="42" text-anchor="middle" fill="#0071e3" font-weight="600">ask 模式六步建站</text>
+        <text x="615" y="60" text-anchor="middle" fill="#6e6e73" font-size="11">平台 AI 编程</text>
+
+        <rect x="360" y="120" width="150" height="52" rx="12" fill="#fff" stroke="#0071e3" stroke-width="1.5"/>
+        <text x="435" y="142" text-anchor="middle" fill="#0071e3" font-weight="600">Coze 部署得域名</text>
+        <text x="435" y="160" text-anchor="middle" fill="#6e6e73" font-size="11">扣子编程·部署</text>
+
+        <rect x="190" y="120" width="150" height="52" rx="12" fill="#fff" stroke="#0D7A5F" stroke-width="1.5"/>
+        <text x="265" y="142" text-anchor="middle" fill="#0D7A5F" font-weight="600">域名回写中台</text>
+        <text x="265" y="160" text-anchor="middle" fill="#6e6e73" font-size="11">agent-bridge+Workflow</text>
+
+        <rect x="20" y="120" width="150" height="52" rx="12" fill="#fff" stroke="#0D7A5F" stroke-width="1.5"/>
+        <text x="95" y="142" text-anchor="middle" fill="#0D7A5F" font-weight="600">论坛 / HTML 报告</text>
+        <text x="95" y="160" text-anchor="middle" fill="#6e6e73" font-size="11">协作 + Chat v1</text>
+
+        <!-- arrows -->
+        <path d="M170 46 L186 46" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M340 46 L356 46" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M510 46 L526 46" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M615 72 L615 116" stroke="#0071e3" stroke-width="2" fill="none"/>
+        <path d="M510 146 L344 146" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M340 146 L174 146" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M265 172 L265 220" stroke="url(#g2)" stroke-width="2" fill="none"/>
+        <path d="M615 72 L615 250" stroke="#c7c7cc" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+        <path d="M95 172 L95 220" stroke="#c7c7cc" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+        <path d="M20 196 L20 250" stroke="#c7c7cc" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+        <!-- loop back arrow -->
+        <path d="M20 250 L90 250 Q100 250 100 240 L100 172" stroke="#c7c7cc" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+      </g>
+    </svg>
+    <figcaption>图：nexlbase 飞轮的每一步都由一项 Coze 能力供给——技能装能力、Chat API 跑 ask 模式、部署拿域名、Workflow 回写中台。</figcaption>
+  </div>
+
+  <h2>四、四个必记的坑</h2>
+  <p>① 文档是 SPA，工具抓只拿到标题，真内容浏览器看。<br/>② Base URL 两套不能混，写死。<br/>③ Bot 必须先发布为 API 版本，否则 /v3/chat 调不到。<br/>④ PAT 有读写区分，建站只需 chat 权限，别给全量 token。</p>
+
+  <h2>五、给下一棒</h2>
+  <p>把 nexl-builder 抽成 Coze 可导入格式并实测；用 @coze/api 打通 Chat v3；实现 <code>tideshell site deploy</code> 拿域名回写；验证两条激活语（见 docs/ACTIVATION）。</p>
+
+  <p class="end">Coze 对 nexlbase 不是"又一个聊天机器人"，而是建站能力的供给管道。读懂这张映射，就读懂了飞轮。</p>
+
+  <footer>TideShellBase · COZE-WHITEPAPER · 2026-07-20 · 观涛虾🦐 · 与 COZE-WHITEPAPER.md 同源双生</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>nexl-builder 使用指南 · 2026-07-20</title>
+<style>
+  :root{--ink:#1d1d1f;--sub:#6e6e73;--line:#e8e8ed;--accent:#0071e3;--brand:#0D7A5F;--bg:#fff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;padding:0 24px;}
+  .wrap{max-width:840px;margin:0 auto;padding:96px 0 120px;}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+  .chip{font-size:13px;color:var(--sub);border:1px solid var(--line);border-radius:980px;padding:6px 14px;background:#fbfbfd;}
+  .chip b{color:var(--ink);font-weight:600;}
+  h1{font-size:40px;font-weight:600;letter-spacing:-0.02em;margin-bottom:14px;}
+  .lede{font-size:19px;color:var(--sub);font-weight:400;margin-bottom:56px;max-width:700px;}
+  h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:64px 0 20px;}
+  h3{font-size:21px;font-weight:600;margin:30px 0 10px;}
+  p{font-size:17px;color:#333;margin-bottom:16px;}
+  .quote{border-left:3px solid var(--brand);padding:14px 20px;margin:24px 0;background:#f6faf8;border-radius:0 12px 12px 0;font-size:16px;color:#2a2a2e;}
+  pre{background:#f5f5f7;border-radius:12px;padding:18px 20px;font-size:13px;color:#1d1d1f;overflow-x:auto;font-family:"SF Mono",ui-monospace,Menlo,monospace;margin:14px 0;}
+  ol{margin:0 0 16px 22px;font-size:17px;color:#333;}
+  li{margin-bottom:8px;}
+  .step{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);}
+  .step:last-of-type{border-bottom:1px solid var(--line);}
+  .n{font-size:18px;font-weight:600;color:var(--accent);min-width:28px;}
+  footer{margin-top:72px;font-size:12px;color:#aeaeb2;border-top:1px solid var(--line);padding-top:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="meta">
+    <span class="chip"><b>日期</b> 2026-07-20</span>
+    <span class="chip"><b>接力者</b> 观涛虾🦐 (TideShell) · 第 1 棒</span>
+    <span class="chip"><b>主题</b> 如何发给 Coze Agent 激活 nexl-builder</span>
+  </div>
+
+  <h1>nexl-builder 使用指南</h1>
+  <p class="lede">把同目录 <code>SKILL.md</code> 全文复制，发给你的 Coze 智能体（或存为它的技能），它就能带你从 0 到 1 建出世界级个人官网。</p>
+
+  <div class="quote">本文件为第 1 棒，上一棒：—（创世），下一棒预期：首批用户实测建站闭环。与 USAGE.md 同源双生。</div>
+
+  <h2>三种激活方式</h2>
+
+  <h3>方式 A · 存为 Coze 技能（推荐）</h3>
+  <ol>
+    <li>扣子平台（docs.coze.cn / docs.coze.com）创建智能体。</li>
+    <li>进入【技能】或【人设与回复逻辑】，粘贴 <code>SKILL.md</code> 全文，保存。</li>
+    <li>发布时<b>勾选 API 渠道</b>。</li>
+    <li>对智能体说"用 nexl-builder 帮我建个人官网"即触发。</li>
+  </ol>
+
+  <h3>方式 B · 直接发消息（一次性）</h3>
+  <p>把 <code>SKILL.md</code> 全文作为第一条消息发出，附："请按这份技能帮我建个人官网，先进入 Step 1 用户研究。"</p>
+
+  <h3>方式 C · API 调用（开发者）</h3>
+  <pre>import { CozeAPI } from '@coze/api';
+const coze = new CozeAPI({ token: 'PAT', baseURL: 'https://api.coze.cn' });
+const stream = coze.chat.stream({
+  bot_id: 'your_bot_id', user_id: 'user_123',
+  additional_messages: [{ role: 'user', content: '用 nexl-builder 帮我建个人官网', type: 'question' }],
+});
+for await (const event of stream) console.log(event);</pre>
+
+  <h2>用户侧六步体验</h2>
+  <div class="step"><span class="n">1</span><div><b>用户研究</b> — 智能体问职业/价值/受众/调性/喜欢站点</div></div>
+  <div class="step"><span class="n">2</span><div><b>信息架构</b> — 定导航与首屏 5 秒价值</div></div>
+  <div class="step"><span class="n">3</span><div><b>视觉系统</b> — 定色彩/字体/风格</div></div>
+  <div class="step"><span class="n">4</span><div><b>页面交互</b> — 定滚动叙事与动效点</div></div>
+  <div class="step"><span class="n">5</span><div><b>内容优化</b> — 填文案、做 SEO/性能</div></div>
+  <div class="step"><span class="n">6</span><div><b>迭代测试</b> — 出 2-3 概念，你选，多版对比</div></div>
+
+  <h2>闭环到 nexlbase</h2>
+  <p>建站完成拿到域名 → 说"上传到 nexlbase" → <code>tideshell site register --domain &lt;url&gt;</code> → 进入中台发论坛帖 + 生成 HTML 报告。</p>
+
+  <footer>TideShellBase · nexl-builder/USAGE · 2026-07-20 · 观涛虾🦐 · 与 USAGE.md 同源双生</footer>
+</div>
+</body>
+</html>

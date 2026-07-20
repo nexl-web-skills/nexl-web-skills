@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>两条激活语 · 双源版</title>
+<style>
+  :root{--bg:#0b0b0f;--surface:#16161c;--line:#2a2a33;--ink:#f5f5f7;--muted:#9a9aa5;--accent:#0a84ff;--gold:#ffd803;--green:#30d158;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC",sans-serif;line-height:1.65;padding:64px 24px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:800px;margin:0 auto}
+  header{margin-bottom:48px}
+  .meta{font-size:13px;color:var(--muted);margin-bottom:16px}
+  h1{font-size:36px;font-weight:700;letter-spacing:-.02em}
+  h2{font-size:23px;font-weight:600;margin:44px 0 16px}
+  p{color:#d8d8de;font-size:16px;margin:12px 0}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;margin:20px 0}
+  pre{background:#000;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;overflow-x:auto}
+  code{font-family:"SF Mono",ui-monospace,monospace;font-size:13.5px;color:#7ee0ff;white-space:pre-wrap;word-break:break-all}
+  .tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:999px;margin-right:6px;font-weight:600}
+  .t-github{background:rgba(48,209,88,.15);color:var(--green);border:1px solid var(--green)}
+  .t-cn{background:rgba(10,132,255,.15);color:var(--accent);border:1px solid var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-size:12px;font-weight:600}
+  td{color:#dedee3}
+  .foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .note{font-size:13.5px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="meta">2026-07-20 · 观涛虾🦐 (TideShell) · 第 4 棒 · 激活语双源版</div>
+    <h1>两条极简激活语<br>开启独立站构建之旅</h1>
+    <p style="margin-top:14px">参照主流 Agent CLI 范式，用户只需<strong>发给 Agent 一句</strong>或<strong>终端敲一行</strong>，即激活 nexl-builder 建站能力。<span class="tag t-github">GitHub raw 主源</span><span class="tag t-cn">CloudBase 镜像兜底</span></p>
+  </header>
+
+  <h2>范式 A · 发给你的 Coze Agent</h2>
+  <div class="card">
+    <span class="tag t-github">GitHub raw · 全球无中间页 ⭐</span>
+    <pre><code>请阅读 https://raw.githubusercontent.com/&lt;OWNER&gt;/nexl-base-skills/main/skills/nexl-builder/SKILL.md
+文档，按步骤激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。</code></pre>
+    <p class="note">&lt;OWNER&gt; 待指定（建议 nexl-base-skills / tideshell-base）。GitHub raw 直链无"确认访问"页，Agent WebFetch 与 curl 都能直接读 → 范式 A 真激活。</p>
+  </div>
+  <div class="card">
+    <span class="tag t-cn">CloudBase 镜像 · 国内兜底</span>
+    <pre><code>请阅读 https://{DEFAULT_DOMAIN}/tideshell/skills/nexl-builder/SKILL.md
+文档，按步骤激活 nexl-builder 独立站构建技能，开启我的独立站构建之旅。</code></pre>
+    <p class="note">{DEFAULT_DOMAIN} = CloudBase 默认域名（免备案，但浏览器有中间页；Agent 读失败则人工点确认后复制）。</p>
+  </div>
+
+  <h2>范式 B · 终端一行安装 CLI</h2>
+  <div class="card">
+    <span class="tag t-github">GitHub raw 主源</span>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/&lt;OWNER&gt;/nexl-base-skills/main/cli/install.sh | bash</code></pre>
+  </div>
+  <div class="card">
+    <span class="tag t-cn">CloudBase 镜像兜底</span>
+    <pre><code>curl -fsSL https://{DEFAULT_DOMAIN}/tideshell/install.sh | bash</code></pre>
+    <p class="note">install.sh 已带双源 fallback：先 GitHub raw，失败回落 CloudBase；拉到中间页 HTML 会提示手动复制，绝不静默失败。</p>
+  </div>
+
+  <h2>双源部署清单</h2>
+  <table>
+    <tr><th>GitHub 主源 URL</th><th>国内镜像 URL</th><th>文件</th></tr>
+    <tr><td><code>.../main/skills/nexl-builder/SKILL.md</code></td><td><code>{DEFAULT_DOMAIN}/tideshell/skills/nexl-builder/SKILL.md</code></td><td>建站技能包</td></tr>
+    <tr><td><code>.../main/cli/install.sh</code></td><td><code>{DEFAULT_DOMAIN}/tideshell/install.sh</code></td><td>CLI 安装器</td></tr>
+  </table>
+
+  <h2>设计原则</h2>
+  <ul style="color:#dedee3;font-size:15.5px;margin-left:20px">
+    <li><strong>极简即入口</strong>：一句口令 = 一个动作 = 一段旅程</li>
+    <li><strong>双轨并存</strong>：自然语言 + CLI 殊途同归</li>
+    <li><strong>双源韧性</strong>：GitHub 主源（全球无中间页）+ CloudBase 镜像（国内兜底）</li>
+    <li><strong>URL 即契约</strong>：星标仓库 = 信任背书 + 自传播节点</li>
+  </ul>
+
+  <div class="foot">第 4 棒 · 上一棒：第 3 棒 CloudBase 免备案方案 · 下一棒预期：授权 owner → 建 repo → 回填占位</div>
+</div>
+</body>
+</html>
