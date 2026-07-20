@@ -13,7 +13,7 @@ echo "TideShell CLI installing from ${BASE_URL}"
 mkdir -p "$BIN_DIR" "$SKILL_DIR"
 
 if command -v curl >/dev/null 2>&1; then
-  if curl -fsSL "${BASE_URL}/skills/nexl-builder/SKILL.md" -o "${SKILL_DIR}/SKILL.md" 2>/dev/null; then
+  if curl -fsSL "${BASE_URL}/builder.md" -o "${SKILL_DIR}/SKILL.md" 2>/dev/null; then
     echo "  fetched nexl-builder -> ${SKILL_DIR}/SKILL.md"
   else
     echo "  SKILL.md fetch failed (offline? fetch later); install continues"
@@ -39,7 +39,7 @@ case "$cmd" in
         echo "  Copy ${SKILL_DIR}/SKILL.md into your Coze / Claude / Codex agent, then say:"
         echo "  'activate nexl-builder and build my brand site in ask mode.'"
         echo "  Or send the agent this URL:"
-        echo "  https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/skills/nexl-builder/SKILL.md"
+        echo "  https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md"
         ;;
       deploy)
         echo "site deploy — acquire domain via Coze (not wired yet)"

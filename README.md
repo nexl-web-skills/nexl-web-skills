@@ -24,7 +24,7 @@ This repository does not ship "yet another website generator". It ships a skill 
 
 A. Paste into any Coze / Claude / Codex agent:
 
-> Read https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/skills/nexl-builder/SKILL.md and activate the nexl-builder skill.
+> Read https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md and activate the nexl-builder skill.
 
 B. Or one line in a terminal:
 
