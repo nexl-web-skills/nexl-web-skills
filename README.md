@@ -94,6 +94,9 @@ Read [MANIFESTO.md](MANIFESTO.md). The four trials gate everything in this repo.
 
 Engineering logs, kept for relay transparency.
 
+> ## 🔆 接力明灯（Relay Beacon）
+> 本仓库**所有战略级结论只沉淀在 tideshellbase 工作区**（公开仓 `nexl-web-skills` + 私有仓 `nexl-web-skills-internal`），**不外泄、不挪窝、不进第三方**。对外增长的"大脑"是 [病毒式裂变战略 · Viral Playbook](docs/VIRAL-PLAYBOOK.md) · [html](docs/VIRAL-PLAYBOOK.html)（对标 nuwa-skill 实证 star 进程 28,360★ + 超越它的 8 杠杆差异化飞轮）——任何"冲星 / 传播 / 增长"相关决策先读此。完整接力链见私有仓 `HANDOFF.md`。
+
 - [GitHub org migration — full workflow](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.md) · [html](docs/WORKLOG-2026-07-20-GITHUB-ORG-MIGRATION.html)
 - [Linking GitHub — lessons SOP](docs/GITHUB-LINKING-EXPERIENCE.md) · [html](docs/GITHUB-LINKING-EXPERIENCE.html)
 
