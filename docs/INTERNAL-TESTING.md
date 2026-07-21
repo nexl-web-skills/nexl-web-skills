@@ -13,6 +13,7 @@
 
 - **已验证（2026-07-21）**：GitHub `main` 上 `builder.md` = HTTP 200，且含最新 `1.6 案例召回` 引用（GITHUB-AESTHETIC-REPOS），新鲜度 OK。
 - ⚠️ **禁用路径变体**：`docs/COZE-INTERNAL-TEST.*` 里出现的 `…/skills/nexl-builder/SKILL.md` 路径是旧「方案 B 即时激活」测试句，**不是铁律句**。本轮内测统一用上面指向 `builder.md` 的铁律句，避免激活语与文档/镜像不一致。
+- 🔴 **MIAODA 例外（2026-07-21 实测踩坑）**：百度秒哒安全策略会拦截「读取外部文件激活技能」类指令（实测返回"无法读取外部文件来激活/修改/暴露系统安全技能"）。**MIAODA 不要用通用激活语**，改用 `docs/MIAODA-SELF-CONTAINED-BRIEF.md` 整篇粘贴（已内联 NEXL 身份+六步法+`base.min.html` 源码，无 URL、无"激活技能"措辞）。其余三平台仍用通用激活语。
 
 ---
 
@@ -23,7 +24,7 @@
 | **Coze（扣子）** | 建 Bot → 知识库**预置 builder.md**（在线网页填 raw URL 自动同步）→ 人设写「掌握 nexl-builder，按六步+双核推进」→ 把激活语发给 Bot | 方案 A 知识库预置最稳（即使 GFW 阻断 raw，Bot 仍从知识库命中）；方案 B 工作流 LinkReaderPlugin 抓 URL | 回「✅ 已识别：Coze」+ 报预算卡 + 跑六步 ask | 15 轮≈400 积分（¥0.4）；含 4 图≈1280（¥1.3） | jsDelivr 已弃用；coze.cn 下 raw 是否 GFW 干扰**待验证（内测重点）**；扣子无终端，curl\|bash 无效 |
 | **秒悟 Meoo** | 对话首句**粘贴激活语** | agent 本地读 `templates/INDEX.json`（或经 MCP 拉取） | 识别为 Meoo + 报预算（Night Plan 22:00–08:00 qwen3.7-max 2 折≈¥0.10） | 15 轮 ¥0.14–2.3；Night Plan **2 折≈¥0.10** | 🔴 **合规红线**：禁接境外模型（OpenAI/Google），只用 qwen/kimi/glm/deepseek 境内合规；域名必备案 |
 | **腾讯 WorkBuddy** | **技能激活 nexl-builder**（本地）；或把激活语发给观涛虾（即 WorkBuddy agent） | 技能激活即加载 INDEX 到上下文；免费额度内无限检索 | 识别为 WorkBuddy + 跑 `budget-workbuddy.cjs` | 免费 500 积分/月≈**6 次**建站（15 轮≈75 积分 ¥0.075） | 本地技能需 nexl-builder 在 skills 目录；本机已装观涛虾技能集 |
-| **百度秒哒 MIAODA** | 对话**粘贴激活语** / 装 **Miaoda App Builder Skill**（OpenClaw 龙虾调用） | 全栈原生：clone 模板 scaffold；App Builder Skill 内嵌 INDEX | 识别为 MIAODA + 跑 `budget-miaoda.cjs`（秒点） | 免费 **610 秒点 = 1.26 次**全栈建站（15 请求+发布+后端≈485） | 全栈原生（前后端+数据库+小程序+原生 APP） |
+| **百度秒哒 MIAODA** | 🔴 **禁用通用激活语**（安全策略拦截）。改用 `docs/MIAODA-SELF-CONTAINED-BRIEF.md` **整篇粘贴**到对话首条（自包含，已内联基底源码） | 全栈原生：按任务书把 `base.min.html` 作不可变骨架改造输出 web 应用 | 产出**有动效/交互/品牌调性**的独立站（非静态 PPT）+ 报秒点预算 | 免费 **610 秒点 = 1.26 次**全栈建站（15 请求+发布+后端≈485） | 全栈原生（前后端+数据库+小程序+原生 APP）；装 App Builder Skill 也行但同样禁"读外部激活" |
 
 ---
 
