@@ -1,0 +1,40 @@
+name: Mirror nexl-builder to ClawHub source
+# 维护唯一真相源：本组织仓库 skills/nexl-builder/。
+# 推送到 main 且改动 skills/nexl-builder/** 时，自动镜像到个人账户仓库 richard702ayu/nexl-builder
+# （ClawHub 导入源，因 ClawHub 导入器只扫"个人账户名下"的仓库）。
+# 个人仓库内的 clawhub-publish.yml 会随后自动发布到 ClawHub。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/nexl-builder/**'
+  workflow_dispatch:
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout org repo
+        uses: actions/checkout@v4
+        with:
+          path: src
+      - name: Mirror to personal repo
+        env:
+          PAT: ${{ secrets.PERSONAL_REPO_PAT }}
+        run: |
+          set -e
+          git config --global user.email "bot@nexl.dev"
+          git config --global user.name "nexl-mirror-bot"
+          rm -rf dst && mkdir dst
+          git clone --depth 1 https://x-access-token:${PAT}@github.com/richard702ayu/nexl-builder.git dst
+          cd dst
+          # 清空旧内容（保留 .git）
+          find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} +
+          # 复制技能包（SKILL.md + references/ + 元数据）
+          cp -r ../src/skills/nexl-builder/. .
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "mirror: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
