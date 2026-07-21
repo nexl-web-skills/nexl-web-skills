@@ -36,9 +36,9 @@ npx skills add nexl-web-skills/nexl-web-skills
 
 或告诉你的 agent：`帮我安装这个 skill：https://github.com/nexl-web-skills/nexl-web-skills`
 
-**即载型（Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA 等无 skills 目录平台，铁律固定句）：**
+**即载型（Coze / 秒悟 Meoo / 腾讯 WorkBuddy 等无 skills 目录平台，铁律固定句）：**
 
-A. Paste into any Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA / Claude / Codex agent:
+A. Paste into any Coze / 秒悟 Meoo / 腾讯 WorkBuddy / Claude / Codex agent:
 
 > 请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。
 
@@ -52,7 +52,7 @@ curl -fsSL https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/mai
 
 ## Four-platform aware
 
-One fixed activation phrase. The agent self-identifies its host (Coze / Meoo / WorkBuddy / MIAODA) via runtime introspection, loads the matching budget档案, validates rule freshness against `snapshotDate`, then runs the 5-step budget advisor before building. Design: `docs/PLATFORM-ROUTING.md`.
+One fixed activation phrase. The agent self-identifies its host (Coze / Meoo / WorkBuddy) via runtime introspection, loads the matching budget档案, validates rule freshness against `snapshotDate`, then runs the 5-step budget advisor before building. Design: `docs/PLATFORM-ROUTING.md`.
 
 ## What it builds
 
@@ -105,8 +105,7 @@ Engineering logs, kept for relay transparency.
 - [Coze 预算模块](docs/COZE-BUDGET.md) · [html](docs/COZE-BUDGET.html)
 - [秒悟 Meoo 白皮书](docs/MEOO-WHITEPAPER.md) · [html](docs/MEOO-WHITEPAPER.html)
 - [腾讯 WorkBuddy 白皮书](docs/WORKBUDDY-WHITEPAPER.md) · [html](docs/WORKBUDDY-WHITEPAPER.html)
-- [百度秒哒 MIAODA 白皮书](docs/MIAODA-WHITEPAPER.md) · [html](docs/MIAODA-WHITEPAPER.html)
-- [四平台识别与路由机制](docs/PLATFORM-ROUTING.md) · [html](docs/PLATFORM-ROUTING.html)
+- [三平台识别与路由机制](docs/PLATFORM-ROUTING.md) · [html](docs/PLATFORM-ROUTING.html)
 - [双核机制设计（建站 + 品牌经纪人）](docs/NEXL-DUAL-SKILL-DESIGN.md) · [html](docs/NEXL-DUAL-SKILL-DESIGN.html)
 - [病毒式裂变战略 · Viral Playbook](docs/VIRAL-PLAYBOOK.md) · [html](docs/VIRAL-PLAYBOOK.html)
 

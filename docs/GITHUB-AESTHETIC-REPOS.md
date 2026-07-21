@@ -1,6 +1,6 @@
 # GitHub 美学前端仓库 · 外部基准库
 
-> **用途**：作为 nexl-builder 案例召回（Case Recall）的**外部美学对标源**，喂给四平台激活后的 agent。
+> **用途**：作为 nexl-builder 案例召回（Case Recall）的**外部美学对标源**，喂给三平台激活后的 agent。
 > **性质**：本库**不直接进** `templates/catalog`（不符合 nexl 暗黑金基因 + 单文件零依赖工艺）。当 `templates/INDEX.json` 内部种子不足以覆盖某行业/风格时，agent 引导用户到此库取灵感或对标。
 > **收录铁律**：仅收**已用 `gh api` 核实许可证**为 MIT / Apache-2.0 / CC0 / Unlicense 的仓库。无 license 的高美学仓库一律排除。
 

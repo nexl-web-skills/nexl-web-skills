@@ -16,7 +16,6 @@
 | Coze | ~300 积分（1000≈¥1） |
 | 秒悟 Meoo | ~80 积分（Night Plan 折后） |
 | WorkBuddy | ~50 积分（免费额度内） |
-| 秒哒 MIAODA | ~420 秒点（免费 610 覆盖 1.26 次） |
 
 ## 文件 / Files
 - `site/index.html` — 可运行站点入口（零或最小依赖）

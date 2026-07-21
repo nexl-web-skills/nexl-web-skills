@@ -1,6 +1,5 @@
 ---
 brand: 你的品牌名
-platform: Coze / Meoo / WorkBuddy / MIAODA
 tagline: 一句话定位你的品牌
 url: 站点链接或截图
 date: YYYY-MM-DD

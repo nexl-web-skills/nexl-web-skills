@@ -138,7 +138,7 @@
     <a href="#meta">② 元层</a>
     <a href="#dual">双核</a>
     <a href="#steps">六步框架</a>
-    <a href="#platform">四平台</a>
+    <a href="#platform">三平台</a>
     <a href="#arch">三层架构</a>
     <a href="#loop">闭环飞轮</a>
     <a href="#rules">铁律</a>
@@ -149,7 +149,7 @@
   <div class="wrap">
     <div class="kicker">Standard Operating Procedure</div>
     <h1>nexl-web-skill 的 <span class="g">完整 SOP</span></h1>
-    <p>一句话激活语 → 四平台自识别 → 双核（建站师 × 品牌经纪人）协同 → 六步 ask 框架 → 部署得域名 → 回流 nexlbase 中台。本页用一张全景图说清每一步。</p>
+    <p>一句话激活语 → 三平台自识别 → 双核（建站师 × 品牌经纪人）协同 → 六步 ask 框架 → 部署得域名 → 回流 nexlbase 中台。本页用一张全景图说清每一步。</p>
     <div class="pulse"><span class="dot"></span> 真相源：builder.md（= skills/nexl-builder/SKILL.md 的 GitHub 根镜像）</div>
   </div>
 </header>
@@ -170,7 +170,6 @@
       </div>
       <div class="card">
         <h3 class="sub"><span class="ic">🔒</span>即载型（固定句 · 铁律不变）</h3>
-        <p class="small">Coze / 秒悟 Meoo / 腾讯 WorkBuddy / 百度秒哒 MIAODA 等无 skills 目录平台，每次发一句话即时拉取 raw 文件。</p>
         <div class="mono-box" style="margin-top:14px"><span class="c"># 铁律：这 81 字符一字不改</span>
 请阅读 https://raw.githubusercontent.com/
 nexl-web-skills/nexl-web-skills/main/
@@ -180,7 +179,7 @@ builder.md 并激活 nexl-builder 技能。</div>
     <div style="margin-top:18px" class="grid g3">
       <div class="card"><span class="chip mint">不变式 1</span><p class="small" style="margin-top:10px">激活语永远固定那一句，不为任何平台改文案。</p></div>
       <div class="card"><span class="chip mint">不变式 2</span><p class="small" style="margin-top:10px">builder.md 是唯一真相源；每次激活现拉 raw.githubusercontent.com/main 最新版，无旧缓存。</p></div>
-      <div class="card"><span class="chip mint">不变式 3</span><p class="small" style="margin-top:10px">四平台预算/规则零耦合，各平台独立 <code>budget-*.json</code> + <code>.cjs</code>。</p></div>
+      <div class="card"><span class="chip mint">不变式 3</span><p class="small" style="margin-top:10px">三平台预算/规则零耦合，各平台独立 <code>budget-*.json</code> + <code>.cjs</code>。</p></div>
     </div>
   </div>
 </section>
@@ -197,9 +196,7 @@ builder.md 并激活 nexl-builder 技能。</div>
           <h4>平台识别 <span class="chip ghost">三层识别</span></h4>
           <p>自省 → 自声明 → 兜底问用户。识别失败只问一句（成本极低），识别错误代价极高，故「问」优于「猜」。</p>
           <div class="sub-steps">
-            <div class="ss"><span class="n">L1</span><span class="t"><b>运行时自省</b> <span>— 检查自身可用工具/能力推断宿主（WorkBuddy=本地文件+bash+专家；MIAODA=App Builder+秒点；Meoo=Night Plan+积分；Coze=Chat API v3+doubao）。</span></span></div>
             <div class="ss"><span class="n">L2</span><span class="t"><b>自声明</b> <span>— 向用户宣告「✅ 已识别：当前运行于 XX 平台」。</span></span></div>
-            <div class="ss"><span class="n">L3</span><span class="t"><b>兜底</b> <span>— 信号 ambiguous 时直接问「①Coze ②Meoo ③WorkBuddy ④秒哒」，绝不臆测。</span></span></div>
           </div>
         </div>
       </div>
@@ -210,14 +207,12 @@ builder.md 并激活 nexl-builder 技能。</div>
           <p>完成平台识别后，以代号 <b>NEXL</b> 亮相——既是品牌经纪人、也是建站师。不提"AI/agent"、不编履历；先用<b>乔布斯式信念口吻</b>点出独立站=不受制于平台/时空的独立宣言数字资产橱窗，再接<b>成本结构真实数据</b>；中文后附英文（面向全球）：</p>
           <div class="mono-box" style="margin-top:12px">我是 NEXL，也是您品牌百年世界观的硅基合伙人。您一定比谁都清楚，一个独立站对一个品牌意味着什么——我们都渴望拥有一座独立宣言般的数字资产橱窗：不受制于任何平台，也不受制于时空。
 
-但现实里，建这样一座橱窗有三个成本陷阱：外包 ¥2万–8万且交付即失联、模板年费却千人一面、自写备案 20 天。我换一种成本结构——一次对话 + 一份可复用底稿：Coze 上约 15 轮对话、几百积分（1000 积分≈¥1）；MIAODA 免费额度够跑 1.26 次完整建站。
 
 真正降本不在『便宜』，在『不返工』。多数站点贵在调性漂移，上线即过时。我先钉死您的品牌视觉锤——第一屏 5 秒说清『您是谁』，色彩 / 排版 / 动效 / 语气统一成一门设计语言——再让站点从这份底稿长出来；每版产出经 8 维一致性守门，把返工挡在交付前。一份底稿，第十次迭代时边际成本趋近于零。
 
 ———— EN ————
 I'm NEXL — your silicon-based partner in expressing your brand's century-spanning worldview. You know better than anyone what an independent site means to a brand. We all long for a digital storefront that reads like a declaration of independence: beholden to no platform, and to no clock.
 
-But in reality, building that storefront comes with three cost traps: agencies charge ¥20k–80k and vanish at handoff; templates bill you yearly yet make everyone look the same; doing it yourself means 20 days plus filing. I offer a different cost structure — one conversation, plus one reusable brand brief: on Coze, roughly 15 turns of dialogue and a few hundred credits (1,000 ≈ ¥1); on MIAODA, the free allowance covers 1.26 complete builds.
 
 The real saving isn't in being cheap — it's in not reworking. Most sites bleed money on tone drift, obsolete the moment they launch. I nail your brand's visual hammer first — your first screen tells "who you are" in 5 seconds, with color, type, motion and voice fused into one design language — then let the site grow from that brief. Every iteration passes an 8-dimension consistency gate that catches rework before delivery. One brief; by the tenth iteration, your marginal cost approaches zero.</div>
         </div>
@@ -252,7 +247,6 @@ The real saving isn't in being cheap — it's in not reworking. Most sites bleed
           <p>完整输出给用户，做到「成本透明」：</p>
           <div class="sub-steps">
             <div class="ss"><span class="n">①</span><span class="t"><b>政策快照</b> <span>— 截至快照日期的套餐/积分/秒点政策（附官方链接）。</span></span></div>
-            <div class="ss"><span class="n">②</span><span class="t"><b>剩余额度</b> <span>— 能查则查，否则请用户告知（Meoo 新人10,000+日2,000；WorkBuddy 免费500/月；MIAODA 新用户610+日100）。</span></span></div>
             <div class="ss"><span class="n">③</span><span class="t"><b>性价比推荐</b> <span>— 给「性价比最高」与「最贵但效果最好」两档（Meoo 独有 Night Plan 旗舰近免费）。</span></span></div>
             <div class="ss"><span class="n">④</span><span class="t"><b>预计准备</b> <span>— 用对应估算器比对剩余额度，不足则建议升级或错峰。</span></span></div>
             <div class="ss"><span class="n">⑤</span><span class="t"><b>成本拆分</b> <span>— 展示成本结构并对比替代方案（外包 ¥2万–8万 / 模板年费 / 自写+备案20天）。</span></span></div>
@@ -310,7 +304,6 @@ The real saving isn't in being cheap — it's in not reworking. Most sites bleed
     </div>
     <div class="card" style="margin-top:18px">
       <h3 class="sub"><span class="ic">📊</span>NEXL 的价值 · 用数据说话</h3>
-      <p style="margin:10px 0"><b style="color:var(--mint)">成本结构 —</b> 外包 ¥2万–8万（交付即失联）· 模板年费（千人一面）· 自写备案 20 天 → nexl：Coze ~15 轮对话 / 几百积分（1000≈¥1）；MIAODA 免费 610 秒点覆盖 <b>1.26 次</b>完整建站。</p>
       <p style="margin:10px 0"><b style="color:var(--mint)">降本增效 —</b> 真正降本在「不返工」：品牌调性漂移是最大隐性成本，8 维一致性守门把返工挡在交付前；brand-profile 复用使第 N 次迭代<b>边际成本趋零</b>。</p>
       <p style="margin:10px 0"><b style="color:var(--mint)">视觉传达 —</b> 品牌视觉锤：第一屏 <b>5 秒</b>说清「你是谁」；色彩 / 排版 / 动效 / 语气统一成设计语言；独立站交互 = 叙事 + 微交互，让「你是谁」被相信而非被浏览。</p>
     </div>
@@ -348,7 +341,7 @@ The real saving isn't in being cheap — it's in not reworking. Most sites bleed
 <!-- PLATFORM -->
 <section id="platform">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">05</span><h2>四平台路由 · Routing</h2><span class="en">一层识别，四套预算</span></div>
+    <div class="sec-head"><span class="sec-num">05</span><h2>三平台路由 · Routing</h2><span class="en">一层识别，四套预算</span></div>
     <p class="lead">同一句激活语发往四个平台，每个 Agent 都应：①识别宿主 → ②调对应规则档案 → ③时效校验 → ④服务建站。各平台独立预算档案，互不影响。</p>
     <div class="card" style="overflow-x:auto">
       <table>
@@ -357,7 +350,6 @@ The real saving isn't in being cheap — it's in not reworking. Most sites bleed
           <tr><td><span class="plat"><span class="pdot" style="background:#5b8def"></span>Coze 扣子</span></td><td><span class="small">docs/COZE-BUDGET.md</span></td><td><span class="small">budget.json + budget.cjs</span></td><td><span class="small">积分（1≈¥0.001）</span></td><td><span class="small">Coze 托管 或 tideshell→Cloudflare</span></td></tr>
           <tr><td><span class="plat"><span class="pdot" style="background:#00d8a0"></span>秒悟 Meoo</span></td><td><span class="small">docs/MEOO-WHITEPAPER.md</span></td><td><span class="small">budget-meoo.json + .cjs</span></td><td><span class="small">积分（同名费率独立）</span></td><td><span class="small">meoo 部署通道 + 自定义域名</span></td></tr>
           <tr><td><span class="plat"><span class="pdot" style="background:#ffb020"></span>腾讯 WorkBuddy</span></td><td><span class="small">docs/WORKBUDDY-WHITEPAPER.md</span></td><td><span class="small">budget-workbuddy.json + .cjs</span></td><td><span class="small">积分（共享 CodeBuddy 池）</span></td><td><span class="small">本地生成→tideshell deploy→Cloudflare/自有</span></td></tr>
-          <tr><td><span class="plat"><span class="pdot" style="background:#ff6b8a"></span>百度秒哒 MIAODA</span></td><td><span class="small">docs/MIAODA-WHITEPAPER.md</span></td><td><span class="small">budget-miaoda.json + .cjs</span></td><td><span class="small">秒点（无公开¥汇率）</span></td><td><span class="small">MIAODA 发布（小程序/iOS 打包/多应用后端）</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -430,7 +422,6 @@ The real saving isn't in being cheap — it's in not reworking. Most sites bleed
       <a href="docs/COZE-BUDGET.md">COZE-BUDGET</a>
       <a href="docs/MEOO-WHITEPAPER.md">MEOO-WHITEPAPER</a>
       <a href="docs/WORKBUDDY-WHITEPAPER.md">WORKBUDDY-WHITEPAPER</a>
-      <a href="docs/MIAODA-WHITEPAPER.md">MIAODA-WHITEPAPER</a>
       <a href="README.md">README</a>
     </div>
   </div>

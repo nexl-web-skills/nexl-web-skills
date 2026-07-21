@@ -16,7 +16,6 @@
 | Coze | ~300 积分 |
 | 秒悟 Meoo | ~80 积分（Night Plan 折后） |
 | WorkBuddy | ~50 积分 |
-| 秒哒 MIAODA | ~420 秒点 |
 
 ## 文件 / Files
 - `site/index.html` — 单文件，内联样式，零依赖

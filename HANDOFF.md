@@ -121,3 +121,21 @@
 **双仓推送**：公开 `6f1df30..157dc27`（18 文件）、私有 `60befbb..e0d783b`（同 17 文件，排除 builder.md）✓
 
 **铁律（新增）**：贡献治理达标 = Hugo Themes 级（PR/Issue 模板 + 行为准则 + CODEOWNERS + 自动画廊 + CI 自动重建）；preview_image 强制 3:2（1500×1000/900×600）；核心真相源改动必经 CODEOWNERS 审核。
+
+---
+
+## 第 24 棒 · 剔除百度秒哒 MIAODA —— 四平台降级三平台 · 2026-07-21 · 观涛虾🦐
+
+**指令**：主人实测 MIAODA 既触发安全策略拦截（"读取外部文件激活技能"被拒）又卡死无响应逾 1 小时，决策从目标平台移除 MIAODA。
+
+**执行（全仓一致性改造）**：
+- 真相源 `builder.md` + `skills/nexl-builder/SKILL.md`（镜像）：平台识别 4→3 分支；预算顾问去 MIAODA 加载；双核亮相成本结构去 MIAODA 段；五步/Step0 四→三；删 budget-miaoda 命令/估算段/白皮书引用（各 17 处替换）。
+- `skills/nexl-broker/SKILL.md`：去秒哒/MIAODA 提及 + 估算器四→三（4 处）。
+- `docs/PLATFORM-ROUTING.md`(+html)：删 MIAODA 例外/表格行/索引行/调用方式行，四→三（md 19 处；html 删 4 行）。
+- `docs/INTERNAL-TESTING.md`(+html)：删 MIAODA 操作卡/回流表行 + 顶部例外注，四→三（md 9 处；html 删 5 行）。
+- 删除专属资产（git rm）：`docs/MIAODA-WHITEPAPER.md(+html)`、`docs/MIAODA-SELF-CONTAINED-BRIEF.md`、`skills/nexl-builder/budget-miaoda.json`、`budget-miaoda.cjs`。
+- 门面 `README.md`/`CONTRIBUTING.md` + 模板 README + showcase + 其余白皮书/视觉 html：四→三 + 删 秒哒/MIAODA 行（脚本批量）。
+
+**验证**：全仓 Grep `MIAODA` 仅余本文件历史记录、`秒哒` 全仓清零 ✓
+
+**铁律（修正）**：原"四平台通用激活语"降为"三平台"（Coze / 秒悟 Meoo / 腾讯 WorkBuddy）；未来新增平台须先评估其安全策略兼容性（MIAODA 教训：云端 agent 禁出网/禁"读外部激活"时，自包含 brief 仍可能卡死，不如直接剔除）。

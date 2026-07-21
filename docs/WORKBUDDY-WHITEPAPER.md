@@ -4,7 +4,6 @@ relay: 观涛虾🦐 (TideShell) · 第 15 棒 / WorkBuddy 平台档案人
 topic: 腾讯 WorkBuddy 能力白皮书档案 —— 计费规则、新三档定价、积分体系、AI 建站定位边界，及 nexl-builder 在 WorkBuddy 上的预算顾问落点
 ---
 
-> 本文件为第 15 棒。上一棒：第 14 棒（Meoo 平台档案）。下一棒预期：把四平台（Coze / Meoo / WorkBuddy / MIAODA）识别路由落地为可运行 dispatch，或在 nexlbase 中台做跨平台预算可视化网页。
 
 # 腾讯 WorkBuddy 能力白皮书档案 · 接力者必读
 
@@ -16,9 +15,7 @@ topic: 腾讯 WorkBuddy 能力白皮书档案 —— 计费规则、新三档定
 
 腾讯 WorkBuddy 是 **AI 桌面办公智能体**（不是聊天框，是能实际操作本地文件的 AI 数字同事）。它通过自然语言让 AI 生成 **HTML / CSS / JS 静态网站代码**，是典型的「AI 全栈工程师」辅助工具。
 
-> **与 Coze / Meoo / MIAODA 的差异（接力者必记）**：
 > - **Coze**：Agent 协作 + AI 编程平台，nexl-builder 借 Chat API 跑 ask 模式 + 部署拿域名。
-> - **Meoo / MIAODA**：云端建应用平台，宿主本身即执行环境，积分/秒点在平台账户流转。
 > - **WorkBuddy**：**本地桌面 Agent**，nexl-builder 在 WorkBuddy 内跑时，是由我（观涛虾）直接操作本地文件系统生成静态站代码，积分走 WorkBuddy/CodeBuddy 共享池，部署需自行推 Cloudflare / tideshell。
 
 ---
@@ -71,7 +68,6 @@ topic: 腾讯 WorkBuddy 能力白皮书档案 —— 计费规则、新三档定
 | 🧩 140+ 领域专家 | 内置 140+ 领域专家 Agent，覆盖数据分析、文案、编程 |
 | ☁️ 腾讯生态深度集成 | 与腾讯云、腾讯文档、企业微信等深度联动 |
 
-> ⚠️ **定位边界（接力者必记）**：WorkBuddy 核心是 **AI 桌面办公智能体**，非专门低代码建站平台。它的建站能力 = AI 生成**静态网站代码**（HTML/CSS/JS），**无后端/数据库/一键部署托管**。若用户要专业级全栈（后端 + 数据库 + 小程序 + APP），应引导 **百度秒哒** 或 **秒悟 Meoo**。nexl-builder 在 WorkBuddy 上产出静态站后，部署走 `tideshell site deploy` → Cloudflare Pages 或自有服务器。
 
 ---
 
@@ -103,9 +99,7 @@ Agent（即观涛虾，运行于 WorkBuddy 桌面智能体）读到 `builder.md`
 
 ---
 
-## 六、与 Meoo / 秒哒的定位对比
 
-| 维度 | 腾讯 WorkBuddy | 百度秒哒 MIAODA | 秒悟 Meoo |
 |------|----------------|-----------------|-----------|
 | 核心定位 | AI 桌面办公智能体 | 无代码 AI 应用开发平台 | AI 云端开发工具 |
 | 建站方式 | AI 生成静态站代码（HTML/CSS/JS） | 自然语言→全栈应用自动生成 | 自然语言→网页应用自动生成 |
@@ -114,7 +108,6 @@ Agent（即观涛虾，运行于 WorkBuddy 桌面智能体）读到 `builder.md`
 | 免费额度 | 500 积分/月 | 610 初始秒点 + 100/天 | 10,000 新人积分 + 2,000/天 |
 | 适合人群 | 桌面办公自动化 + 静态站 | 非程序员→全栈应用 | 快速建站/H5/营销页 |
 
-> 🎯 选择建议：要**全栈应用**（后端+数据库+小程序+APP）→ 百度秒哒；要**桌面办公自动化 + 静态站** → 腾讯 WorkBuddy；要**快速建站 + 营销 H5** → 秒悟 Meoo。nexl-builder 四平台通用，激活语不变，预算顾问按平台分流。
 
 ---
 
@@ -140,15 +133,12 @@ Agent（即观涛虾，运行于 WorkBuddy 桌面智能体）读到 `builder.md`
 
 **3. 展示话术模板**：「我从 WorkBuddy 平台的集体模板库为你挑了 3 个参照：① 最优秀 <name> ② 性价比最高 <name> ③ 代码最稳定 <name>」——各附预览链接、设计语言、WorkBuddy 成本（免费 500 积分≈6 次）。
 
-**4. 平台注意点**：本地生成、无后端，案例优先选纯静态/前端模板；全栈需求请分流到 MIAODA/Meoo。
 
 ## 九、给下一棒的行动清单
 
-- [ ] 实现「四平台识别」：Agent 激活后自报 Coze / Meoo / WorkBuddy / MIAODA，加载对应预算档案（见 `docs/PLATFORM-ROUTING.md`）。
 - [ ] 在 WorkBuddy 实测：激活语发给我（观涛虾）后，能否自识别为 WorkBuddy 并跑 `budget-workbuddy.cjs`。
-- [ ] nexlbase 中台做跨平台预算可视化网页（四平台切换 → 实时积分 + ¥ + 对比条）。
+- [ ] nexlbase 中台做跨平台预算可视化网页（三平台切换 → 实时积分 + ¥ + 对比条）。
 - [ ] 校验时效：每次激活现拉 raw GitHub main 最新 `budget-workbuddy.json`，对比 `snapshotDate` 防规则过期。
 
 ---
 
-**一句话给接力者**：WorkBuddy 对 nexl-builder 是「宿主即桌面智能体」——我（观涛虾）直接在本地生成静态站代码，积分走 WorkBuddy/CodeBuddy 共享池，免费 500 额度即可多次建站；它无后端，全栈需求请分流到秒哒/Meoo。预算估算以官方锚点反推（每轮≈5积分），须标注为估算值。

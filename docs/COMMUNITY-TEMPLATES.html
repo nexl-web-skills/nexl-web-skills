@@ -111,7 +111,7 @@
   "files": ["site/index.html"], "preview":"https://...",
   "license":"MIT", "createdAt":"2026-07-21", "updatedAt":"2026-07-21"
 }</pre>
-    <p class="filelist"><code>ratings</code> 三维对应「最优秀 / 性价比最高 / 代码最稳定」；<code>cost_estimate</code> 让 agent 直接报预算；<code>platforms</code> 让四平台只调自己能跑的。</p>
+    <p class="filelist"><code>ratings</code> 三维对应「最优秀 / 性价比最高 / 代码最稳定」；<code>cost_estimate</code> 让 agent 直接报预算；<code>platforms</code> 让三平台只调自己能跑的。</p>
   </section>
 
   <!-- 4 -->
@@ -129,16 +129,15 @@
   <!-- 5 -->
   <section>
     <h2>五 · 案例调用索引 / Case-recall for agents</h2>
-    <p class="lead">被激活的 agent 如何在四平台内调出最优模板——这是 NEXL 用户远超普通入口人群的关键杠杆。</p>
+    <p class="lead">被激活的 agent 如何在三平台内调出最优模板——这是 NEXL 用户远超普通入口人群的关键杠杆。</p>
     <h3>5.1 SOP 新增「①.6 案例锚定」</h3>
     <p>平台识别（①）之后、预算顾问（③）之前：加载 <code>templates/INDEX.json</code>，按当前平台 + 用户行业/风格过滤，取 quality 前三作参照锚点展示；用户可指定「以某模板为基底」，从底稿 + 模板双源生长。</p>
-    <h3>5.2 四平台调用方式</h3>
+    <h3>5.2 三平台调用方式</h3>
     <table>
       <tr><th>平台</th><th>agent 如何加载 INDEX 并推荐</th></tr>
       <tr><td><b>Coze</b></td><td>知识库预置 INDEX.json 文本；Bot 对话第二步 read 并推荐 quality 前三</td></tr>
       <tr><td><b>秒悟 Meoo</b></td><td>激活语后本地读 INDEX（或 MCP）；Night Plan 零成本检索</td></tr>
       <tr><td><b>WorkBuddy</b></td><td>技能激活即加载 INDEX 到上下文；免费额度内无限检索</td></tr>
-      <tr><td><b>MIAODA</b></td><td>App Builder Skill 内嵌 INDEX；全栈原生 clone scaffold 起步</td></tr>
     </table>
     <h3>5.3 机器可读索引</h3>
     <p><code>templates/INDEX.json</code> 汇总所有模板的 id/name/category/platforms/ratings/cost_estimate/preview，agent 一次加载、多维过滤；CI 在模板 PR 合入时自动重建。</p>
@@ -173,7 +172,7 @@
       <tr><td>SOP 锚定步</td><td><span>builder.md</span> ①.6 案例锚定</td><td class="ok">✅</td></tr>
       <tr><td>路由索引章</td><td><span>docs/PLATFORM-ROUTING.md</span> 案例调用</td><td class="ok">✅</td></tr>
     </table>
-    <p class="filelist">待确认：四平台白皮书各补「案例调用」小节；征集 5 个种子模板覆盖五类目。</p>
+    <p class="filelist">待确认：三平台白皮书各补「案例调用」小节；征集 5 个种子模板覆盖五类目。</p>
   </section>
 
   <!-- 8 -->
@@ -194,7 +193,7 @@
 
   <section>
     <h2>九 · 下一步 / Next</h2>
-    <p>① 双仓推送本体系（公开 + 私有）。② 四平台白皮书补案例调用小节。③ 发起社区「Template Marathon」征集 5 种子。④ 内部复盘文档 nuwa 对比句按指令清零。</p>
+    <p>① 双仓推送本体系（公开 + 私有）。② 三平台白皮书补案例调用小节。③ 发起社区「Template Marathon」征集 5 种子。④ 内部复盘文档 nuwa 对比句按指令清零。</p>
   </section>
 
 </div>

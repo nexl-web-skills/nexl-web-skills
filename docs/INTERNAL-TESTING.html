@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>四平台内测激活卡 · NEXL</title>
+<title>三平台内测激活卡 · NEXL</title>
 <style>
   :root{
     --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803;
@@ -22,7 +22,7 @@
   .copy{margin-top:14px;display:inline-block;background:var(--accent);color:#0A0A0A;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
   .warn{margin-top:14px;font-size:13px;color:#FF6B6B;border-left:2px solid #FF6B6B;padding-left:12px}
   .ok{margin-top:10px;font-size:13px;color:#7CE38B}
-  /* 四平台卡片 */
+  /* 三平台卡片 */
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
   .card{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--panel)}
   .card h3{font-size:18px;font-weight:600;display:flex;align-items:center;gap:10px}
@@ -45,9 +45,8 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="meta">nexl-builder 内测文档 · 观涛虾🦐 (TideShell) · 2026-07-21 · 四平台内测统一激活语 + 操作卡 + 回流表</div>
-  <h1>四平台内测激活卡</h1>
-  <p class="sub">一句固定激活语，四个平台自识别、加载对应预算档案、校验时效并服务建站。带着这张卡去 Coze / Meoo / WorkBuddy / MIAODA 实测，测完回填下方回流表。</p>
+  <div class="meta">nexl-builder 内测文档 · 观涛虾🦐 (TideShell) · 2026-07-21 · 三平台内测统一激活语 + 操作卡 + 回流表</div>
+  <h1>三平台内测激活卡</h1>
 
   <h2>0 · 唯一激活语（铁律 · 一字不改）</h2>
   <div class="phrase">
@@ -58,7 +57,7 @@
   <div class="ok">✓ 已验证 GitHub main 上 builder.md = HTTP 200 + 含最新 1.6 案例召回引用（新鲜度 OK）</div>
   <div class="warn">⚠ 禁用路径变体：COZE-INTERNAL-TEST.* 里的 …/skills/nexl-builder/SKILL.md 是旧方案 B 测试句，非铁律句。本轮内测统一用上方指向 builder.md 的句。</div>
 
-  <h2>1 · 四平台操作卡</h2>
+  <h2>1 · 三平台操作卡</h2>
   <div class="grid">
     <div class="card">
       <h3><span class="dot"></span>Coze（扣子）</h3>
@@ -85,10 +84,8 @@
       <div class="red">ℹ 本地技能需在 skills 目录；本机已装观涛虾技能集</div>
     </div>
     <div class="card">
-      <h3><span class="dot"></span>百度秒哒 MIAODA</h3>
       <div class="row"><b>怎么发：</b>对话粘贴激活语 / 装 Miaoda App Builder Skill</div>
       <div class="row"><b>生效：</b>全栈原生 clone 模板 scaffold；Skill 内嵌 INDEX</div>
-      <div class="row"><b>验证成功：</b>识别为 MIAODA + 跑 budget-miaoda.cjs（秒点）</div>
       <div class="row"><b>预算：</b>免费 610 秒点 = 1.26 次全栈建站</div>
       <div class="red">ℹ 全栈原生（前后端+数据库+小程序+APP）</div>
     </div>
@@ -100,7 +97,6 @@
     <tr><td>Coze</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td>Meoo</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td>WorkBuddy</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>MIAODA</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </table>
 
   <h2>3 · 铁律校验（激活后 agent 必须遵守）</h2>
@@ -115,8 +111,7 @@
   <h2>4 · 内测重点验证项</h2>
   <ul>
     <li>Coze GFW 风险：coze.cn 下 raw GitHub 是否被拦截 → 决定方案 A/B</li>
-    <li>四平台自识别成功率：Agent 首句是否报出平台名</li>
-    <li>预算卡真实触发：Meoo Night Plan 折后价 / MIAODA 秒点扣减</li>
+    <li>三平台自识别成功率：Agent 首句是否报出平台名</li>
     <li>案例召回：能否调出 aurora-minimal 当标杆</li>
   </ul>
 </div>
