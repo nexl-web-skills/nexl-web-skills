@@ -5,14 +5,14 @@
 
 ---
 
-## 0. 唯一激活语（铁律 · 三平台通用 · 一字不改）
+## 0. 激活方式（两类模型：WorkBuddy 用激活语 / Coze 用人设模板）
 
 ```
 请阅读 https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/builder.md 并激活 nexl-builder 技能。
 ```
 
 - **已验证（2026-07-21）**：GitHub `main` 上 `builder.md` = HTTP 200，且含最新 `1.6 案例召回` 引用（GITHUB-AESTHETIC-REPOS），新鲜度 OK。
-- ⚠️ **禁用路径变体**：`docs/COZE-INTERNAL-TEST.*` 里出现的 `…/skills/nexl-builder/SKILL.md` 路径是旧「方案 B 即时激活」测试句，**不是铁律句**。本轮内测统一用上面指向 `builder.md` 的铁律句，避免激活语与文档/镜像不一致。
+- ⚠️ **激活模型二分（实测结论）**：① **WorkBuddy（本地 agent）** 真能 fetch `builder.md` 当技能定义 → 用铁律激活语有效；② **Coze（云端 Bot）** 没有"激活技能"语义，会把 `builder.md` 当知识库文档总结 → **改用 `docs/COZE-BOT-PERSONA.md` 人设模板（复制进 Bot 人设框），不发激活语**。
 - 
 ---
 
@@ -20,7 +20,7 @@
 
 | 平台 | 怎么发激活语 | 生效机制 | 验证成功标志 | 预算锚点（实测） | ⚠️ 注意 |
 |------|------------|---------|------------|----------------|--------|
-| **Coze（扣子）** | 建 Bot → 知识库**预置 builder.md**（在线网页填 raw URL 自动同步）→ 人设写「掌握 nexl-builder，按六步+双核推进」→ 把激活语发给 Bot | 方案 A 知识库预置最稳（即使 GFW 阻断 raw，Bot 仍从知识库命中）；方案 B 工作流 LinkReaderPlugin 抓 URL | 回「✅ 已识别：Coze」+ 报预算卡 + 跑六步 ask | 15 轮≈400 积分（¥0.4）；含 4 图≈1280（¥1.3） | jsDelivr 已弃用；coze.cn 下 raw 是否 GFW 干扰**待验证（内测重点）**；扣子无终端，curl\|bash 无效 |
+| **Coze（扣子）** | **不用激活语**；复制 `docs/COZE-BOT-PERSONA.md` 全部内容到 Bot「人设/回复逻辑」框，直接对话即可 | 人设已内联 NEXL 身份+六步+Coze 预算+基底注入；Bot 以 NEXL 身份直接运行 | 回中英双语双核亮相 + 报 Coze 预算卡 + 跑六步 ask | 15 轮≈400 积分（¥0.4）；含 4 图≈1280（¥1.3） | 人设模板已含全部指令，不依赖 fetch raw，**无 GFW 风险**；扣子无终端 |
 | **秒悟 Meoo** | 对话首句**粘贴激活语** | agent 本地读 `templates/INDEX.json`（或经 MCP 拉取） | 识别为 Meoo + 报预算（Night Plan 22:00–08:00 qwen3.7-max 2 折≈¥0.10） | 15 轮 ¥0.14–2.3；Night Plan **2 折≈¥0.10** | 🔴 **合规红线**：禁接境外模型（OpenAI/Google），只用 qwen/kimi/glm/deepseek 境内合规；域名必备案 |
 | **腾讯 WorkBuddy** | **技能激活 nexl-builder**（本地）；或把激活语发给观涛虾（即 WorkBuddy agent） | 技能激活即加载 INDEX 到上下文；免费额度内无限检索 | 识别为 WorkBuddy + 跑 `budget-workbuddy.cjs` | 免费 500 积分/月≈**6 次**建站（15 轮≈75 积分 ¥0.075） | 本地技能需 nexl-builder 在 skills 目录；本机已装观涛虾技能集 |
 
@@ -38,7 +38,7 @@
 
 ## 3. 铁律校验（激活后 agent 必须遵守）
 
-- 激活语**零改动**，不为任何平台加后缀
+- （WorkBuddy）激活语**零改动**，不为任何平台加后缀；Coze 用 `COZE-BOT-PERSONA.md` 人设模板，亦零改动
 - **不报预算不许开工**（Step 0 预算顾问协议）
 - **8 维一致性守门**每版必过
 - 底稿必导出**可复制文本块**（brand-profile 复利）
@@ -48,7 +48,7 @@
 
 ## 4. 内测重点验证项
 
-1. **Coze GFW 风险**：coze.cn 下 raw GitHub 是否被拦截 → 决定方案 A（知识库）还是方案 B（工作流）。
+1. **Coze 激活模型**：实测 Coze 不认"fetch 激活语"，改用 `COZE-BOT-PERSONA.md` 人设模板内联（已规避 GFW，无需 fetch raw）。
 2. **三平台自识别成功率**：Agent 是否真在第一句报出平台名。
 3. **预算卡真实触发**：尤其 Meoo Night Plan 折后价是否准确。
 4. **案例召回**：激活后能否调出 `aurora-minimal` 当标杆（质量/性价比/稳定性三维）。

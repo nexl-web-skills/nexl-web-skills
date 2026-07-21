@@ -139,3 +139,12 @@
 **验证**：全仓 Grep `MIAODA` 仅余本文件历史记录、`秒哒` 全仓清零 ✓
 
 **铁律（修正）**：原"四平台通用激活语"降为"三平台"（Coze / 秒悟 Meoo / 腾讯 WorkBuddy）；未来新增平台须先评估其安全策略兼容性（MIAODA 教训：云端 agent 禁出网/禁"读外部激活"时，自包含 brief 仍可能卡死，不如直接剔除）。
+
+
+---
+
+**第 25 棒 · Coze 激活模型实测修正（2026-07-22）**
+- 实测：Coze 建 Bot + 知识库预置 builder.md + 人设写「掌握 nexl-builder」+ 发激活语 → Coze 把 builder.md 当**知识库文档总结**后停住，未进入 NEXL 双核。根因：Coze 无「激活技能」语义，只有「提示词定义 Bot」模型。
+- 结论：**激活模型二分** —— ① WorkBuddy（本地 agent）fetch builder.md 当技能定义 → 激活语有效；② Coze（云端 Bot）必须「自包含内联」→ 新增 `docs/COZE-BOT-PERSONA.md` 人设模板（复制进 Bot 人设框，直接对话，不发激活语）。
+- 落地：改 INTERNAL-TESTING(.md/.html) Coze 行 + 铁律声明（激活语仅 WorkBuddy）；改 PLATFORM-ROUTING(.md/.html) 铁律「激活语零改动（仅 WorkBuddy）」；顺手补删 html 残留 Miaoda 卡片。
+- 铁律修正：「一句激活语三平台通用」破产 —— 云端 Bot 平台无法靠 fetch 激活，须内联。激活语降级为 WorkBuddy 专用；Coze 一律用人设模板，二者均零改动。
