@@ -1,8 +1,23 @@
 ---
 name: nexl-builder
-description: "Brand-independent-site generator (dual-core: Brand Broker x Site Builder). Use when: (1) user wants to build a brand website / independent site, (2) needs aesthetic interactive web pages instead of a static PPT, (3) wants to go from 0 to 1 and deliver a public domain. Provides a six-step framework, base-animation replication, 8-dimension consistency gate, and brand-profile accumulation."
+display_name: "Nexl Brand Site Generator"
+description: "Brand-site & landing-page generator for super-IPs. Use when: (1) user wants to build a brand website / independent site / landing page, (2) needs aesthetic interactive web pages (Awwwards-grade) instead of a static PPT, (3) wants to go from 0 to 1 and ship a public domain. Dual-core Brand Broker x Site Builder: six-step framework, base-animation replication, 8-dimension consistency gate, brand-profile accumulation."
 version: 1.0.0
 author: TideShell (nexl)
+categories:
+  - Agents
+  - Creative
+topics:
+  - brand-site
+  - landing-page
+  - website-generator
+  - no-code
+  - one-page-site
+  - brand-identity
+  - web-design
+  - independent-site
+  - static-site
+  - nexl
 metadata:
   openclaw:
     emoji: "🌐"
