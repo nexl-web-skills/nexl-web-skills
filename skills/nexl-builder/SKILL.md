@@ -1,8 +1,8 @@
 ---
 name: nexl-builder
 display_name: "Nexl Brand Site Generator"
-description: "Brand-site & landing-page generator for super-IPs. Use when: (1) user wants to build a brand website / independent site / landing page, (2) needs aesthetic interactive web pages (Awwwards-grade) instead of a static PPT, (3) wants to go from 0 to 1 and ship a public domain. Dual-core Brand Broker x Site Builder: six-step framework, base-animation replication, 8-dimension consistency gate, brand-profile accumulation."
-version: 1.0.0
+description: "NEXL 品牌独立站生成器 / NEXL 一句话建站（Nexl Brand Site Generator）——为品牌与超级个体生成 Awwwards 级美学交互独立站/出海官网/落地页的 AI 建站技能。Use when: (1) 用户想建品牌独立站 / 出海官网 / 落地页, (2) 需要高颜值可交互网页而非静态 PPT, (3) 想从 0 到 1 交付公网域名。双核品牌经纪人 × 建站师：六步框架、基底动效复现、8 维一致性守门、品牌档案沉淀，真正降本在「不返工」。"
+version: 1.0.1
 author: TideShell (nexl)
 categories:
   - Agents
@@ -18,6 +18,13 @@ topics:
   - independent-site
   - static-site
   - nexl
+  - 品牌独立站
+  - 一句话建站
+  - 出海
+  - 落地页
+  - 美学建站
+  - 一人公司
+  - 品牌官网
 metadata:
   openclaw:
     emoji: "🌐"
