@@ -1,9 +1,12 @@
 ---
 name: nexl-builder
-description: "品牌独立站生成器（双核：品牌经纪人 × 建站师）。使用时机：(1) 用户要建品牌官网/独立站，(2) 要美学级交互网页而非静态 PPT，(3) 要从 0 到 1 建站并交付公网域名。提供六步框架、基底动效复现、8 维一致性守门、品牌档案沉淀。"
+description: "Brand-independent-site generator (dual-core: Brand Broker x Site Builder). Use when: (1) user wants to build a brand website / independent site, (2) needs aesthetic interactive web pages instead of a static PPT, (3) wants to go from 0 to 1 and deliver a public domain. Provides a six-step framework, base-animation replication, 8-dimension consistency gate, and brand-profile accumulation."
 version: 1.0.0
 author: TideShell (nexl)
-Use when: (1) 建品牌独立站 (2) 要美学交互网页 (3) 交付公网域名
+metadata:
+  openclaw:
+    emoji: "🌐"
+    homepage: "https://github.com/nexl-web-skills/nexl-web-skills"
 ---
 
 # nexl-builder
