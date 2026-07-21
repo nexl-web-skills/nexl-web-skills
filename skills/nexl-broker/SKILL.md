@@ -120,6 +120,7 @@ brand-profile 含商业机密（定价策略、未公开产品、合规红线）
 | 用户一致 | 内容是否服务 §6 目标人群，无错配 |
 | 合规一致 | 是否触碰 §7 红线（一票否决） |
 | 调性一致 | 整体气质（高端 / 亲民 / 先锋）是否统一 |
+| 视觉交互密度 | 产出是否含 ≥1 处前端动效/交互（@keyframes stagger / IntersectionObserver reveal / 自定义 cursor / hover transform）；纯静态页视为未达 nexl 美学底线，🚫 打回补交互（与 builder Step 6 美学自检清单联动） |
 
 输出格式：逐维 ✅ / ⚠️ / 🚫 + 一句说明。
 

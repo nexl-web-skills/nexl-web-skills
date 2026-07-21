@@ -18,7 +18,7 @@
   },
   "design_language": "暗黑极简 · 字符级动效 · 磁吸光标 · 强排版 · 无渐变 · 单一强调色",
   "first_screen_pitch": "第一屏视觉锤：超大字姓名逐字浮现 + 一句定位；滚动揭示 + 自定义光标微交互",
-  "files": ["site/index.html"],
+  "files": ["site/index.html", "site/base.min.html"],
   "preview": "https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/templates/catalog/portfolio/aurora-minimal/site/index.html",
   "preview_image": "https://raw.githubusercontent.com/nexl-web-skills/nexl-web-skills/main/templates/catalog/portfolio/aurora-minimal/site/preview.svg",
   "license": "MIT",

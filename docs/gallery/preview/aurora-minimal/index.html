@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora — 极简作品集</title>
+<title>Aurora — 极简作品集</title> <!-- BRAND_NAME: 替换品牌名（如「张三 · Zhang San」） -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803;
+    --bg:#0A0A0A; --fg:#F5F5F5; --muted:#8A8A8A; --accent:#FFD803; /* --accent: 替换为 brand-profile §2 主色 */
     --line:rgba(245,245,245,.12);
     --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -177,11 +177,12 @@
 </style>
 </head>
 <body>
+<!-- NEXL BASE TEMPLATE · 以下 AURORA / Lin / 项目名 / 文案均为示例值：生成用户站时按 brand-profile 替换（{BRAND_NAME}/{BRAND_TAGLINE}/{PROJECT_N_*}），结构·动画·交互原样保留。机器友好 token 版见同目录 base.min.html -->
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
 <nav id="nav">
-  <span class="brand">AURORA</span>
+  <span class="brand"><!-- BRAND_NAME -->AURORA</span>
   <span class="menu">
     <a href="#work" data-magnetic>作品</a>
     <a href="#about" data-magnetic>关于</a>
@@ -190,12 +191,12 @@
 </nav>
 
 <header class="wrap">
-  <div class="eyebrow">Independent Designer · 独立设计师</div>
+  <div class="eyebrow"><!-- BRAND_KICKER 示例:Independent Designer -->Independent Designer · 独立设计师</div>
   <h1>
-    <span class="line" data-split>Aurora</span>
-    <span class="line" data-split>Lin</span>
+    <span class="line" data-split><!-- BRAND_NAME(行1) -->Aurora</span>
+    <span class="line" data-split><!-- BRAND_NAME(行2) -->Lin</span>
   </h1>
-  <p class="lede">用<b>最少的形</b>，讲<b>最清楚的事</b>。视觉系统、品牌与界面，在一处生长。</p>
+  <p class="lede"><!-- BRAND_TAGLINE -->用<b>最少的形</b>，讲<b>最清楚的事</b>。视觉系统、品牌与界面，在一处生长。</p>
   <div class="scroll-hint"><span class="bar"></span> Scroll</div>
 </header>
 
@@ -204,9 +205,9 @@
   <div class="grid">
     <a class="card reveal" href="#" data-magnetic>
       <span class="index">01</span>
-      <span class="k">2026 · 品牌</span>
-      <span class="t">NOVA 视觉系统</span>
-      <span class="d">为新能源品牌建立的暗黑极简识别</span>
+      <span class="k"><!-- PROJECT_1_KIND -->2026 · 品牌</span>
+      <span class="t"><!-- PROJECT_1_TITLE -->NOVA 视觉系统</span>
+      <span class="d"><!-- PROJECT_1_DESC -->为新能源品牌建立的暗黑极简识别</span>
     </a>
     <a class="card reveal" href="#" data-magnetic>
       <span class="index">02</span>
@@ -244,11 +245,11 @@
 <section id="contact" class="wrap contact">
   <h2 class="reveal">联系 / Contact</h2>
   <h3 class="reveal">说清你是谁，<br>剩下的交给我。</h3>
-  <p class="mail reveal"><a href="mailto:hello@yourdomain.com" data-magnetic>hello@yourdomain.com</a></p>
+  <p class="mail reveal"><a href="mailto:hello@yourdomain.com" data-magnetic><!-- BRAND_EMAIL -->hello@yourdomain.com</a></p>
 </section>
 
 <footer class="wrap">
-  <span>© 2026 Aurora Lin · 模板 MIT 授权</span>
+  <span><!-- BRAND_COPYRIGHT -->© 2026 Aurora Lin · 模板 MIT 授权</span>
   <span>由 <a href="https://github.com/nexl-web-skills/nexl-web-skills" target="_blank" rel="noopener">nexl</a> 驱动 · 独立站数字资产</span>
 </footer>
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>根因诊断 · 生成站点无美学</title>
+<style>
+  :root{--bg:#0A0A0A;--fg:#F5F5F5;--muted:#8A8A8A;--accent:#FFD803;--line:rgba(245,245,245,.12);--red:#FF6B6B;--green:#7CFC9B}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;padding:48px 28px}
+  .wrap{max-width:880px;margin:0 auto}
+  h1{font-size:clamp(30px,6vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+  .sub{color:var(--muted);margin-top:14px;font-size:16px}
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:56px 0 22px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.1em;padding:3px 9px;border-radius:99px;margin-bottom:12px}
+  .tag.red{background:rgba(255,107,107,.14);color:var(--red)}
+  .tag.green{background:rgba(124,252,155,.14);color:var(--green)}
+  .tag.amber{background:rgba(255,216,3,.14);color:var(--accent)}
+  code{background:rgba(245,245,245,.08);padding:2px 6px;border-radius:5px;font-size:13px;color:var(--accent)}
+  .root{border-left:3px solid var(--accent);padding:18px 22px;background:rgba(255,216,3,.05);border-radius:0 12px 12px 0;margin:32px 0;font-size:17px}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th,td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+  th{color:var(--accent);font-weight:600}
+  td{color:var(--muted)}
+  footer{margin-top:56px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>生成站点「无美学」根因诊断</h1>
+  <p class="sub">Meoo 内测反馈 · 流程完美，产物像 PPT · 2026-07-21</p>
+
+  <div class="root">
+    一句话根因：我们把「美学」当成了<strong>文字风格描述</strong>传给平台，而平台生成模型无法把文字翻译成复杂前端代码。正确做法是把「美学」作为<strong>可运行的基底代码</strong>强制注入生成流程。
+  </div>
+
+  <h2>四个断点</h2>
+
+  <div class="card">
+    <span class="tag red">断点 1</span>
+    <h3>案例召回只"展示"、不"注入代码"</h3>
+    <p>§1.6 仅把 <code>INDEX.json</code> 的文字元数据（"字符级动效·磁吸光标"）展示给用户；<code>preview</code> 字段的 raw HTML 链接只是展示用，<strong>技能无任何指令让 agent 去 fetch 源码作基底</strong>。模型拿到词、自己"实现"→ 复杂动效被静默丢弃。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag red">断点 2</span>
+    <h3>Step 3 / 4 是"自由设计"，无"强制套用骨架"</h3>
+    <p>Step 3「定义色彩/字体/选风格」、Step 4「关键动效点」都是让 agent 从零设计，<strong>没有"以选中 site/index.html 为不可变骨架、仅替换品牌变量"的硬指令</strong>。美学完全看模型临场发挥。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag red">断点 3</span>
+    <h3>broker 守门只查"一致性"，不查"视觉交互密度"</h3>
+    <p>守门 8 维的"视觉一致"仅查色板/字体/质感是否对齐，<strong>不查"有没有动画、有没有交互、视觉锤是否到位"</strong>。朴素静态站只要颜色对就放行——美学维度没人守。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag amber">断点 4</span>
+    <h3>平台生成机制错配（Meoo）</h3>
+    <p>Meoo 是云端 AI 开发工具，<strong>不会自动加载仓库 <code>templates/catalog</code> 代码</strong>。只给文字描述时它用默认朴素模板。必须把 aurora 完整 HTML 源码塞进 prompt 让它"改"而非"造"。</p>
+  </div>
+
+  <h2>解决方案构想</h2>
+
+  <div class="card">
+    <span class="tag green">A 治本</span>
+    <h3>基底代码注入机制</h3>
+    <p>§1.6 后加硬指令：选中模板<strong>必须读取 <code>site/index.html</code> 完整源码作不可变骨架</strong>，仅替换 <code>{{BRAND_NAME}}</</code>、<code>--accent</code> 占位符，禁重写结构/动画/交互；Case Recall 改"内联基底代码块"而非只给链接。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag green">B 分平台</span>
+    <h3>分平台基底交付格式</h3>
+    <p>云端 agent（Meoo/Coze）可能禁出网 / 难处理长 HTML → 在 builder.md <strong>内联去品牌化基底骨架</strong>或提供 <code>base.min.html</code> 轻量版；指令升级为"复现等效视觉与交互（在你的框架内）"。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag amber">C 兜底</span>
+    <h3>美学守门门禁</h3>
+    <p>broker 守门 8 维外新增<strong>「视觉交互密度」校验维</strong>：检查产出含 <code>@keyframes</code>/<code>IntersectionObserver</code>/自定义 <code>cursor</code>；缺失核心动效打回。Step 6 加美学自检清单。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag amber">D 验证</span>
+    <h3>回归测试</h3>
+    <p>把本次 Meoo 失败做成回归用例：下次跑激活语+指定 aurora 基底，检查产出是否含动画/交互，不通过则方案未生效。</p>
+  </div>
+
+  <h2>落地优先级（待主人拍板）</h2>
+  <table>
+    <tr><th>优先级</th><th>动作</th><th>改动</th></tr>
+    <tr><td>P0</td><td>A1+A2 强制读取基底 + aurora 加锚点</td><td>builder.md + aurora/site/index.html</td></tr>
+    <tr><td>P0</td><td>B 内联基底代码块 / 轻量版</td><td>builder.md + base.min.html</td></tr>
+    <tr><td>P1</td><td>C 美学守门维 + Step 6 自检</td><td>nexl-broker/SKILL.md + builder.md</td></tr>
+    <tr><td>P2</td><td>D Meoo 回归测试</td><td>docs/</td></tr>
+  </table>
+
+  <footer>
+    文档：docs/ROOT-CAUSE-NO-AESTHETICS.md · 属 nexl 集体复盘资产 · 改动 builder.md 须主人确认 + 同步 SKILL.md 镜像 + 双仓推送
+  </footer>
+</div>
+</body>
+</html>
